@@ -1,0 +1,11 @@
+# Preservar byte-exactos los archivos de proyecto y binarios
+*.qet -text
+*.elmt -text
+*.docx binary
+*.png binary
+*.jpg binary
+
+# Python y Markdown: finales de línea nativos
+*.py text
+*.md text
+*.json text
