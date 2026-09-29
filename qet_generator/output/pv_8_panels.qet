@@ -1,0 +1,446 @@
+<project title="String FV 8 paneles - Prueba" version="0.100.0">
+    <properties>
+        <property show="1" name="saveddate">28/09/2026</property>
+        <property show="1" name="savedtime">15:43</property>
+        <property show="1" name="saveddate-eu">28-09-2026</property>
+        <property show="1" name="saveddate-us">2026-09-28</property>
+        <property show="1" name="savedfilename">pv_8_panels</property>
+        <property show="1" name="savedfilepath">pv_8_panels.qet</property>
+    </properties>
+    <newdiagrams>
+        <border rows="8" cols="17" displaycols="true" displayrows="true" rowsize="80" colsize="60" />
+        <inset plant="" date="" title="" auto_page_num="" locmach="" filename="" displayAt="bottom" folio="%id/%total" indexrev="" version="" author="" />
+        <conductors dash-size="2" bus="" color2="#000000" text_color="#000000" bicolor="false" type="multi" num="_" horizrotatetext="0" displaytext="1" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" />
+        <report label="%f-%l%c" />
+        <xrefs>
+            <xref snapto="label" switchprefix="" displayhas="cross" master_label="%f-%l%c" offset="40" delayprefix="" type="coil" showpowerctc="true" xrefpos="AlignTop" slave_label="(%f-%l%c)" powerprefix="" />
+        </xrefs>
+        <conductors_autonums freeze_new_conductors="false" current_autonum="" />
+        <folio_autonums />
+        <element_autonums freeze_new_elements="false" current_autonum="" />
+    </newdiagrams>
+    <diagram title="String FV - 8 paneles en serie con proteccion DC" version="0.100.0" author="Generador QET" date="20260928" order="1" cols="17" rows="8" colsize="60" rowsize="80" height="660" displaycols="true" displayrows="true" displayAt="bottom" folio="%id/%total" auto_page_num="" indexrev="A" locmach="" plant="" filename="" freezeNewConductor="false" freezeNewElement="false">
+        <properties>
+            <property show="1" name="date" />
+            <property show="1" name="title" />
+            <property show="1" name="filename" />
+            <property show="1" name="folio" />
+            <property show="1" name="author" />
+        </properties>
+        <defaultconductor dash-size="2" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="_" displaytext="1" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" />
+        <elements>
+            <element uuid="{ca24ec64-be8f-4ad9-9e65-2922245c60c7}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="60" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="0" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="1" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="2" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="3" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{7ac3220e-ae90-47aa-ba27-671f335e4dd0}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{cdb1bd8b-c83d-42dc-bcff-9107d0f13a3b}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="180" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="4" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="5" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="6" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="7" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV2</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{e6bd9889-4a79-4867-ad08-de9b232d9d1c}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{5c53e0ab-9010-444d-8a87-13e4e0caac22}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="300" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="8" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="9" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="10" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="11" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV3</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{6e0f8228-93f3-47fd-8d50-c1fa81dc10cd}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{fe63ba84-f6ca-4e5d-84c8-ddf362602743}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="420" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="12" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="13" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="14" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="15" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV4</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{6f63d4c9-fda8-4e2c-996a-3f53e5a4ac8e}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{708b94b1-ea75-4b37-8a2d-82c5872c22d1}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="540" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="16" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="17" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="18" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="19" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV5</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{de5dbfac-c40c-4d31-9741-d5c184216c25}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{6922dd07-5b9f-471f-aee0-bf27dfc4c8e0}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="660" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="20" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="21" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="22" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="23" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV6</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{b9a2c4a6-611d-4b5a-8573-7e0937c05ed4}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{9abd6f08-9ec1-4252-beae-1a372c0557c9}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="780" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="24" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="25" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="26" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="27" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV7</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{9e54ec55-1a32-4ba6-a3f7-c2df23a9f97b}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{0b34c16b-e9d3-497d-a055-f099a9dee42f}" orientation="0" type="embed://import/10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt" x="900" y="150" z="10" freezeLabel="false" prefix="P">
+                <terminals>
+                    <terminal id="28" orientation="3" x="-5" y="6" uuid="{343464fc-267d-4838-be38-4e469c170cef}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="29" orientation="3" x="-5" y="12" uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="30" orientation="1" x="5" y="9" uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" type="Generic" name="" number="" nameHidden="0" />
+                    <terminal id="31" orientation="1" x="5" y="3" uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">PV8</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{b530c8d4-2beb-4cbf-9848-bbf39c5fa015}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-22.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{2b4cc7f6-3e1e-466d-83bd-4156aa56b784}" orientation="0" type="embed://import/10_electric/10_allpole/200_fuses_protective_gears/11_circuit_breakers/disjonct-m_1f.elmt" x="905" y="250" z="10" freezeLabel="false" prefix="Q">
+                <terminals>
+                    <terminal id="32" orientation="0" x="0" y="-30" uuid="{4bc9f11b-af63-4db3-86fa-e39aed2097cb}" type="Generic" name="IN.1" number="" nameHidden="0" />
+                    <terminal id="33" orientation="2" x="0" y="20" uuid="{43b1df3a-c1d0-4947-ae97-f224c1fe15e5}" type="Generic" name="OUT.2" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="designation">Proteccion DC string (SUPUESTO - pendiente doc.)</elementInformation>
+                    <elementInformation show="1" name="quantity">1</elementInformation>
+                    <elementInformation show="1" name="label">QDC1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{5e9dad27-a943-4c2d-abab-e4d5ffd56d5a}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="10" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-17.5">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element uuid="{cf31f1c2-9700-4d98-920f-0cb431254457}" orientation="0" type="embed://import/10_electric/10_allpole/130_terminals_terminal_strips/borne_finale.elmt" x="905" y="330" z="10" freezeLabel="false" prefix="X">
+                <terminals>
+                    <terminal id="34" orientation="0" x="0" y="-10" uuid="{60dfbe44-503d-42ca-b827-469296468240}" type="Generic" name="" number="" nameHidden="0" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation show="1" name="location" />
+                    <elementInformation show="1" name="comment" />
+                    <elementInformation show="1" name="formula" />
+                    <elementInformation show="1" name="label">X1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" uuid="{0675d1a3-b177-4fee-9f2a-4a63edbf4788}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" text_from="ElementInfo" x="5" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" keep_visual_rotation="true" y="-18">
+                        <text />
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+        </elements>
+        <conductors>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{ca24ec64-be8f-4ad9-9e65-2922245c60c7}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{cdb1bd8b-c83d-42dc-bcff-9107d0f13a3b}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{cdb1bd8b-c83d-42dc-bcff-9107d0f13a3b}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{5c53e0ab-9010-444d-8a87-13e4e0caac22}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{5c53e0ab-9010-444d-8a87-13e4e0caac22}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{fe63ba84-f6ca-4e5d-84c8-ddf362602743}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{fe63ba84-f6ca-4e5d-84c8-ddf362602743}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{708b94b1-ea75-4b37-8a2d-82c5872c22d1}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{708b94b1-ea75-4b37-8a2d-82c5872c22d1}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{6922dd07-5b9f-471f-aee0-bf27dfc4c8e0}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{6922dd07-5b9f-471f-aee0-bf27dfc4c8e0}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{9abd6f08-9ec1-4252-beae-1a372c0557c9}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{9abd6f08-9ec1-4252-beae-1a372c0557c9}" terminal1="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" element2="{0b34c16b-e9d3-497d-a055-f099a9dee42f}" terminal2="{343464fc-267d-4838-be38-4e469c170cef}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{0b34c16b-e9d3-497d-a055-f099a9dee42f}" terminal1="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" element2="{2b4cc7f6-3e1e-466d-83bd-4156aa56b784}" terminal2="{4bc9f11b-af63-4db3-86fa-e39aed2097cb}">
+                <sequentialNumbers />
+            </conductor>
+            <conductor dash-size="2" x="0" bus="" color2="#000000" text_color="#000000" bicolor="false" horizrotatetext="0" type="multi" num="" displaytext="1" y="0" conductor_color="" conductor_section="" formula="" numsize="7" horizontal-alignment="AlignBottom" onetextperfolio="0" function="" freezeLabel="false" vertirotatetext="270" tension_protocol="" condsize="1" cable="" vertical-alignment="AlignRight" element1="{2b4cc7f6-3e1e-466d-83bd-4156aa56b784}" terminal1="{43b1df3a-c1d0-4947-ae97-f224c1fe15e5}" element2="{cf31f1c2-9700-4d98-920f-0cb431254457}" terminal2="{60dfbe44-503d-42ca-b827-469296468240}">
+                <sequentialNumbers />
+            </conductor>
+        </conductors>
+        <inputs>
+            <input rotation="0" x="60" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:0; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;STRING FV - 8 paneles en serie -&gt; proteccion DC -&gt; salida&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" y="60" tagg="label" size="9" rotate="true" />
+            <input rotation="0" x="935" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:0; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;X1 = salida string (+) hacia proteccion DC&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" y="380" tagg="label" size="9" rotate="true" />
+        </inputs>
+        <shapes />
+    </diagram>
+    <collection>
+        <category name="import">
+            <category name="10_electric">
+                <category name="10_allpole">
+                    <category name="392_generators_sources">
+                        <category name="10_generators">
+                            <element name="pvcell.elmt">
+                                <definition version="0.100.0" type="element" link_type="simple" width="70" height="60" hotspot_x="33" hotspot_y="34">
+                                    <uuid uuid="{10264871-06c6-8c59-1e47-0146251df201}" />
+                                    <names>
+                                        <name lang="ca">PVCell</name>
+                                        <name lang="cs">Fotovoltaický panel DC</name>
+                                        <name lang="de">Photovoltaikmodul</name>
+                                        <name lang="el">Φωτοβολταϊκή κυψέλη</name>
+                                        <name lang="en">PVCell</name>
+                                        <name lang="es">Celda fotovoltaica</name>
+                                        <name lang="fr">Caisson solaire photovoltaïque</name>
+                                        <name lang="it">Fotovoltaico</name>
+                                        <name lang="nl">Zonnepaneel DC</name>
+                                        <name lang="nl_BE">Zonnepaneel DC</name>
+                                        <name lang="pl">Bateria ogniw fotowoltanicznych</name>
+                                    </names>
+                                    <informations>Author: Arun Kishore Eswara 
+License: Creative Commons Attribution 3.0 base License</informations>
+                                    <description>
+                                        <line x1="12.05" y1="21.75" x2="14.53" y2="21.75" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <rect x="-1.8" y="-19.13" width="4.26" height="37.65" rx="0" ry="0" style="line-style:normal;line-weight:hight;filling:white;color:white" antialias="true" />
+                                        <line x1="12.82" y1="23" x2="13.81" y2="23" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <rect x="-5" y="-11" width="10" height="31" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" />
+                                        <polygon x1="-5" y1="20" x2="-10" y2="22" x3="-10" y3="23" x4="10" y4="23" x5="10" y5="22" x6="5" y6="20" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" />
+                                        <polygon x1="-28.79" y1="-11" x2="-5.42" y2="-30.69" x3="32" y3="-30.69" x4="9.78" y4="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" />
+                                        <polygon x1="-11.82" y1="-21.56" x2="-8.07" y2="-24.38" x3="-2.08" y3="-24.38" x4="-5.64" y4="-21.56" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="0.28" y1="-21.56" x2="4" y2="-24.38" x3="10" y3="-24.38" x4="6.46" y4="-21.56" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="-10.72" y1="-12.26" x2="-7" y2="-15.08" x3="-1" y3="-15.08" x4="-4.54" y4="-12.26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="12.38" y1="-21.56" x2="16.13" y2="-24.38" x3="22.12" y3="-24.38" x4="18.56" y4="-21.56" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="5.78" y1="-26.21" x2="9.53" y2="-29" x3="15.52" y3="-29" x4="12" y4="-26.21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="17.88" y1="-26.21" x2="21.63" y2="-29" x3="27.62" y3="-29" x4="24.06" y4="-26.21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="-6.32" y1="-26.21" x2="-2.57" y2="-29" x3="3.42" y3="-29" x4="-0.14" y4="-26.21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="0.28" y1="-12.26" x2="4" y2="-15.08" x3="10" y3="-15.08" x4="6.46" y4="-12.26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="-22.82" y1="-12.26" x2="-19.07" y2="-15.08" x3="-13.08" y3="-15.08" x4="-16.64" y4="-12.26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="-5.22" y1="-16.91" x2="-1.47" y2="-19.73" x3="4.52" y3="-19.73" x4="1" y4="-16.91" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="-17.32" y1="-16.91" x2="-13.57" y2="-19.73" x3="-7.58" y3="-19.73" x4="-11.14" y4="-16.91" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <polygon x1="6.88" y1="-16.91" x2="10.63" y2="-19.73" x3="16.62" y3="-19.73" x4="13.06" y4="-16.91" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <line x1="5" y1="15" x2="13.25" y2="15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <line x1="13.25" y1="15" x2="13.25" y2="20.5" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <line x1="10.5" y1="20.5" x2="16" y2="20.5" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <dynamic_text x="20" y="-22.5" z="22" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{e32a240b-4f51-4813-b930-7b282a5f5c0f}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular">
+                                            <text />
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <terminal uuid="{343464fc-267d-4838-be38-4e469c170cef}" name="" x="-5" y="6" orientation="w" type="Generic" />
+                                        <terminal uuid="{6c6c7701-f84d-4121-b499-ef28f26468d6}" name="" x="-5" y="12" orientation="w" type="Generic" />
+                                        <terminal uuid="{97cec1fc-cea0-437b-b09d-c4b68befb33e}" name="" x="5" y="9" orientation="e" type="Generic" />
+                                        <terminal uuid="{0c84da20-ecba-4a45-aff6-baf8d8f6629e}" name="" x="5" y="3" orientation="e" type="Generic" />
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                    <category name="200_fuses_protective_gears">
+                        <category name="11_circuit_breakers">
+                            <element name="disjonct-m_1f.elmt">
+                                <definition version="0.100.0" type="element" link_type="master" width="30" height="70" hotspot_x="8" hotspot_y="40">
+                                    <uuid uuid="{2a83d9ff-3d9c-9a83-ca4e-1d4079f982cd}" />
+                                    <names>
+                                        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+                                        <name lang="ca">Interruptor</name>
+                                        <name lang="cs">Dvoupólový jistič 1 pól chránící</name>
+                                        <name lang="de">Leitungsschutzschalter LS 1P</name>
+                                        <name lang="en">Circuit-breaker</name>
+                                        <name lang="es">Disyuntor termico magnetico en polo P</name>
+                                        <name lang="fr">Disjoncteur bipolaire 1 pole protege</name>
+                                        <name lang="hu">Kismegszakító 1 pólusú</name>
+                                        <name lang="it">Int. Aut. Magneto-termico 1P</name>
+                                        <name lang="nl">Lastscheider 1P</name>
+                                        <name lang="pl">Wyłącznik</name>
+                                    </names>
+                                    <kindInformations>
+                                        <kindInformation name="type">protection</kindInformation>
+                                    </kindInformations>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <line x1="0" y1="15.5" x2="0" y2="20" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <arc x="-4" y="10.5" width="8" height="5" start="270" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                                        <polygon x1="0" y1="10.5" x2="0" y2="8" x3="5" y3="8" x4="5" y4="3" x5="0" y5="3" x6="0" y6="0" x7="-5" y7="-20" closed="false" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+                                        <line x1="0" y1="-30" x2="0" y2="-20" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <line x1="2" y1="-25" x2="-2" y2="-21" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                                        <dynamic_text x="10" y="-17.5" z="6" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{b3b0aba4-6a49-4225-9525-4a3fb043d24e}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular">
+                                            <text>-F1</text>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <line x1="-2" y1="-25" x2="2" y2="-21" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                                        <line x1="-2" y1="-19" x2="2" y2="-19" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                        <terminal uuid="{4bc9f11b-af63-4db3-86fa-e39aed2097cb}" name="IN.1" x="0" y="-30" orientation="n" type="Generic" />
+                                        <terminal uuid="{43b1df3a-c1d0-4947-ae97-f224c1fe15e5}" name="OUT.2" x="0" y="20" orientation="s" type="Generic" />
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                    <category name="130_terminals_terminal_strips">
+                        <element name="borne_finale.elmt">
+                            <definition version="0.100.0" type="element" link_type="terminal" width="20" height="30" hotspot_x="10" hotspot_y="21">
+                                <uuid uuid="{2bd9a000-12a4-3665-9feb-4e44bdd3b2ed}" />
+                                <names>
+                                    <name lang="ar">طرف نهائي</name>
+                                    <name lang="ca">Born final</name>
+                                    <name lang="cs">Koncová svorka</name>
+                                    <name lang="de">Endklemme</name>
+                                    <name lang="en">Terminal block</name>
+                                    <name lang="es">Punto de unión</name>
+                                    <name lang="fr">Borne finale</name>
+                                    <name lang="hu">Sorkapocs</name>
+                                    <name lang="it">Terminale di fine</name>
+                                    <name lang="nl">Klem eind</name>
+                                    <name lang="pl">Zacisk</name>
+                                    <name lang="pt">Terminal de fim</name>
+                                    <name lang="ru">Клеммник</name>
+                                </names>
+                                <kindInformations>
+                                    <kindInformation name="type">generic</kindInformation>
+                                    <kindInformation name="function">generic</kindInformation>
+                                </kindInformations>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <dynamic_text x="5" y="-2.5" z="1" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{774c1c86-3136-4535-b9ee-dea137151183}" font="Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular">
+                                        <text>_</text>
+                                    </dynamic_text>
+                                    <dynamic_text x="5" y="-18" z="2" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{3d28d543-04ce-41da-818f-b53a1c4df214}" font="Liberation Sans,10,-1,5,50,0,0,0,0,0,Regular">
+                                        <text />
+                                        <info_name>label</info_name>
+                                    </dynamic_text>
+                                    <line x1="0" y1="-10" x2="0" y2="-3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" />
+                                    <ellipse x="-2.5" y="-2.5" width="5" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" />
+                                    <terminal uuid="{60dfbe44-503d-42ca-b827-469296468240}" name="" x="0" y="-10" orientation="n" type="Generic" />
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

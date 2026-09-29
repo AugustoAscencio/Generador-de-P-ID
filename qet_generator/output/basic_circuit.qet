@@ -1,0 +1,222 @@
+<project title="QET Generator Test" version="0.100.0">
+    <properties>
+        <property name="saveddate" show="1">28/09/2026</property>
+        <property name="saveddate-eu" show="1">28-09-2026</property>
+        <property name="saveddate-us" show="1">2026-09-28</property>
+        <property name="savedfilename" show="1">basic_circuit</property>
+        <property name="savedfilepath" show="1">C:/Users/Augusto Ascencio/Downloads/QElectroTech/qet_generator/output/basic_circuit.qet</property>
+        <property name="savedtime" show="1">14:25</property>
+    </properties>
+    <newdiagrams>
+        <border cols="17" colsize="60" rows="8" displaycols="true" displayrows="true" rowsize="80"/>
+        <inset date="null" title="" auto_page_num="" displayAt="bottom" filename="" author="" plant="" locmach="" indexrev="" folio="%id/%total" version=""/>
+        <conductors num="_" conductor_color="" type="multi" displaytext="1" onetextperfolio="0" vertirotatetext="270" color2="#000000" horizrotatetext="0" bicolor="false" condsize="1" numsize="7" tension_protocol="" bus="" dash-size="2" conductor_section="" vertical-alignment="AlignRight" function="" horizontal-alignment="AlignBottom" text_color="#000000" cable="" formula=""/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref type="protection" displayhas="cross" offset="0" slave_label="(%f-%l%c)" showpowerctc="true" delayprefix="" switchprefix="" powerprefix="" snapto="label" xrefpos="" master_label="%f-%l%c"/>
+            <xref type="coil" displayhas="cross" offset="40" slave_label="(%f-%l%c)" showpowerctc="true" delayprefix="" switchprefix="" powerprefix="" snapto="label" xrefpos="AlignTop" master_label="%f-%l%c"/>
+            <xref type="commutator" displayhas="cross" offset="0" slave_label="(%f-%l%c)" showpowerctc="true" delayprefix="" switchprefix="" powerprefix="" snapto="label" xrefpos="" master_label="%f-%l%c"/>
+        </xrefs>
+        <conductors_autonums freeze_new_conductors="false" current_autonum=""/>
+        <folio_autonums/>
+        <element_autonums freeze_new_elements="false" current_autonum=""/>
+    </newdiagrams>
+    <diagram colsize="60" indexrev="A" displaycols="true" plant="" locmach="" title="Circuito de prueba - Fuente / Proteccion / Carga" rows="8" rowsize="80" height="660" filename="" order="1" date="20260928" author="Generador QET" version="0.100.0" freezeNewConductor="false" cols="17" displayAt="bottom" auto_page_num="" folio="%id/%total" displayrows="true" freezeNewElement="false">
+        <properties>
+            <property name="author" show="1"></property>
+            <property name="date" show="1"></property>
+            <property name="filename" show="1"></property>
+            <property name="folio" show="1"></property>
+            <property name="title" show="1"></property>
+        </properties>
+        <defaultconductor num="_" conductor_color="" type="multi" displaytext="1" vertirotatetext="270" onetextperfolio="0" color2="#000000" horizrotatetext="0" bicolor="false" condsize="1" numsize="7" tension_protocol="" bus="" dash-size="2" conductor_section="" vertical-alignment="AlignRight" function="" horizontal-alignment="AlignBottom" text_color="#000000" cable="" formula=""/>
+        <elements>
+            <element type="embed://import/10_electric/10_allpole/391_consumers_actuators/10_engines/moteur_mono.elmt" x="250" y="340" z="10" freezeLabel="false" prefix="M" uuid="{575f733e-568d-40d4-a8ad-bf3b26277dcb}" orientation="0">
+                <terminals>
+                    <terminal x="-5" y="-16" id="0" orientation="0"/>
+                    <terminal x="5" y="-16" id="1" orientation="0"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">M1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" Halignment="AlignLeft" x="18" y="3.5" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" uuid="{640be09c-95bf-4a37-9be1-15c3eb8c423d}" keep_visual_rotation="true" text_from="ElementInfo" Valignment="AlignTop">
+                        <text>M1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element type="embed://import/10_electric/10_allpole/392_generators_sources/70_voltage_current_sources/tention_n.elmt" x="300" y="100" z="10" freezeLabel="false" prefix="F" uuid="{092db10a-85b8-45c3-8691-ba73305f9572}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="2" orientation="0"/>
+                    <terminal x="0" y="16" id="3" orientation="2"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">F1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" Halignment="AlignLeft" x="12.75" y="-9.5" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" uuid="{332c94fd-7f07-4c53-99c4-dc6da9ded5a9}" keep_visual_rotation="true" text_from="ElementInfo" Valignment="AlignTop">
+                        <text>F1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element type="embed://import/10_electric/10_allpole/200_fuses_protective_gears/11_circuit_breakers/disjonct-m_1f.elmt" x="300" y="220" z="10" freezeLabel="false" prefix="Q" uuid="{b23dc81c-7be3-463a-9562-6dd15272a143}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-26" id="4" orientation="0"/>
+                    <terminal x="0" y="16" id="5" orientation="2"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation name="label" show="1">Q1</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text frame="false" Halignment="AlignLeft" x="10" y="-17.5" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" uuid="{3168e669-b713-41c1-9036-f2ef2951dd24}" keep_visual_rotation="true" text_from="ElementInfo" Valignment="AlignTop">
+                        <text>Q1</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="" conductor_color="" type="multi" element2_name="Motor monofásico" x="0" y="0" displaytext="1" vertirotatetext="270" onetextperfolio="0" color2="#000000" horizrotatetext="0" element1_name="Disyuntor termico magnetico en polo P" bicolor="false" element1="{b23dc81c-7be3-463a-9562-6dd15272a143}" condsize="1" numsize="7" element2="{575f733e-568d-40d4-a8ad-bf3b26277dcb}" tension_protocol="" dash-size="2" bus="" freezeLabel="false" conductor_section="" vertical-alignment="AlignRight" terminal1="{43b1df3a-c1d0-4947-ae97-f224c1fe15e5}" terminalname1="OUT.2" terminal2="{08628e91-f2be-43c9-9dd7-eb470478a926}" terminalname2="" element2_label="M1" element1_label="Q1" function="" horizontal-alignment="AlignBottom" text_color="#000000" formula="" cable="">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor num="" conductor_color="" type="multi" element2_name="Disyuntor termico magnetico en polo P" x="0" y="0" displaytext="1" vertirotatetext="270" onetextperfolio="0" color2="#000000" horizrotatetext="0" element1_name="Fuente de tensión (nuevo)" bicolor="false" element1="{092db10a-85b8-45c3-8691-ba73305f9572}" condsize="1" numsize="7" element2="{b23dc81c-7be3-463a-9562-6dd15272a143}" tension_protocol="" dash-size="2" bus="" freezeLabel="false" conductor_section="" vertical-alignment="AlignRight" terminal1="{2f272e4f-7582-44a7-abb4-a45638c66936}" terminalname1="" terminal2="{4bc9f11b-af63-4db3-86fa-e39aed2097cb}" terminalname2="IN.1" element2_label="Q1" element1_label="F1" function="" horizontal-alignment="AlignBottom" text_color="#000000" formula="" cable="">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+        <inputs>
+            <input x="480" y="480" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:0; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>PRUEBA DE CONCEPTO - Generador automatico QET (v0.1)&lt;/p>&lt;/body>&lt;/html>"/>
+        </inputs>
+    </diagram>
+    <collection>
+        <category name="import">
+            <category name="10_electric">
+                <category name="10_allpole">
+                    <category name="392_generators_sources">
+                        <category name="70_voltage_current_sources">
+                            <element name="tention_n.elmt">
+                                <definition type="element" link_type="simple" hotspot_x="15" hotspot_y="30" width="30" height="60" version="0.100.0">
+                                    <uuid uuid="{afce6fe7-cf0d-2f58-5034-5b6b011f8e14}"/>
+                                    <names>
+                                        <name lang="ar">مصدر جهد (جديد)</name>
+                                        <name lang="ca">Font de tensió (nova)</name>
+                                        <name lang="cs">Zdroj napětí (nový)</name>
+                                        <name lang="de">Spannungsquelle (neu)</name>
+                                        <name lang="el">Παροχή τάσης (νεο)</name>
+                                        <name lang="en">Voltage source (new)</name>
+                                        <name lang="es">Fuente de tensión (nuevo)</name>
+                                        <name lang="fr">Source de tension (nouveau)</name>
+                                        <name lang="it">Generatore di tensione (nuovo)</name>
+                                        <name lang="nl">Spanningsbron nieuw</name>
+                                        <name lang="pl">Źródło napięcia (nowy)</name>
+                                        <name lang="pt">Fonte de tensão (novo)</name>
+                                        <name lang="ru">Источник напряжения (новый)</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <ellipse x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20"/>
+                                        <dynamic_text Halignment="AlignLeft" frame="false" x="12.75" y="-9.5" z="2" rotation="0" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" text_width="-1" uuid="{747441a4-9f21-4d26-80c5-4198a1d2abdf}" keep_visual_rotation="false" Valignment="AlignTop" text_from="ElementInfo">
+                                            <text/>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <line end1="none" end2="none" y1="-20" antialias="false" y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="0" length2="1.5"/>
+                                        <terminal type="Generic" x="0" y="-20" name="" uuid="{0bf05fd2-2d74-4300-b575-40374e91319c}" orientation="n"/>
+                                        <terminal type="Generic" x="0" y="20" name="" uuid="{2f272e4f-7582-44a7-abb4-a45638c66936}" orientation="s"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                    <category name="200_fuses_protective_gears">
+                        <category name="11_circuit_breakers">
+                            <element name="disjonct-m_1f.elmt">
+                                <definition type="element" link_type="master" hotspot_x="8" hotspot_y="40" width="30" height="70" version="0.100.0">
+                                    <uuid uuid="{2a83d9ff-3d9c-9a83-ca4e-1d4079f982cd}"/>
+                                    <names>
+                                        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+                                        <name lang="ca">Interruptor</name>
+                                        <name lang="cs">Dvoupólový jistič 1 pól chránící</name>
+                                        <name lang="de">Leitungsschutzschalter LS 1P</name>
+                                        <name lang="en">Circuit-breaker</name>
+                                        <name lang="es">Disyuntor termico magnetico en polo P</name>
+                                        <name lang="fr">Disjoncteur bipolaire 1 pole protege</name>
+                                        <name lang="hu">Kismegszakító 1 pólusú</name>
+                                        <name lang="it">Int. Aut. Magneto-termico 1P</name>
+                                        <name lang="nl">Lastscheider 1P</name>
+                                        <name lang="pl">Wyłącznik</name>
+                                    </names>
+                                    <kindInformations>
+                                        <kindInformation name="type">protection</kindInformation>
+                                    </kindInformations>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <line end1="none" end2="none" y1="15.5" antialias="false" y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="0" length2="1.5"/>
+                                        <arc x="-4" y="10.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" width="8" height="5" angle="180"/>
+                                        <polygon x6="0" x7="-5" closed="false" y1="10.5" antialias="true" y2="8" y3="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y4="3" x2="0" y5="3" x3="5" y6="0" x4="5" y7="-20" x5="0"/>
+                                        <line end1="none" end2="none" y1="-30" antialias="false" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="0" length2="1.5"/>
+                                        <line end1="none" end2="none" y1="-25" antialias="true" y2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" length1="1.5" x2="-2" length2="1.5"/>
+                                        <dynamic_text Halignment="AlignLeft" frame="false" x="10" y="-17.5" z="6" rotation="0" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" text_width="-1" uuid="{b3b0aba4-6a49-4225-9525-4a3fb043d24e}" keep_visual_rotation="false" Valignment="AlignTop" text_from="ElementInfo">
+                                            <text>-F1</text>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <line end1="none" end2="none" y1="-25" antialias="true" y2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" length1="1.5" x2="2" length2="1.5"/>
+                                        <line end1="none" end2="none" y1="-19" antialias="false" y2="-19" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" length1="1.5" x2="2" length2="1.5"/>
+                                        <terminal type="Generic" x="0" y="-30" name="IN.1" uuid="{4bc9f11b-af63-4db3-86fa-e39aed2097cb}" orientation="n"/>
+                                        <terminal type="Generic" x="0" y="20" name="OUT.2" uuid="{43b1df3a-c1d0-4947-ae97-f224c1fe15e5}" orientation="s"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                    <category name="391_consumers_actuators">
+                        <category name="10_engines">
+                            <element name="moteur_mono.elmt">
+                                <definition type="element" link_type="simple" hotspot_x="31" hotspot_y="29" width="50" height="70" version="0.90">
+                                    <uuid uuid="{9f39b156-37e7-a986-3a32-bafd120661ec}"/>
+                                    <names>
+                                        <name lang="ar">محرّك أحادي الوجه</name>
+                                        <name lang="ca">Motor monofàsic</name>
+                                        <name lang="cs">Jednofázový motor</name>
+                                        <name lang="de">Wechselstrom Motor</name>
+                                        <name lang="el">Μονοφασικό μοτέρ</name>
+                                        <name lang="en">One-phase engine</name>
+                                        <name lang="es">Motor monofásico</name>
+                                        <name lang="fr">Moteur monophasé</name>
+                                        <name lang="it">Motore monofase</name>
+                                        <name lang="nl">Motor 1AC</name>
+                                        <name lang="pl">Silnik jednofazowy</name>
+                                        <name lang="pt">Motor monofásico</name>
+                                        <name lang="ru">Однофазный эл. мотор</name>
+                                    </names>
+                                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                    <description>
+                                        <text x="-10" y="19" rotation="0" font="Liberation Sans,18,-1,5,50,0,0,0,0,0,Regular" color="#000000" text="M"/>
+                                        <ellipse x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="30" height="30"/>
+                                        <dynamic_text Halignment="AlignLeft" frame="false" x="18" y="3.5" z="3" rotation="0" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" text_width="-1" uuid="{03cb7e78-7712-4ffc-8ea7-f803463ec74e}" keep_visual_rotation="false" Valignment="AlignTop" text_from="ElementInfo">
+                                            <text/>
+                                            <info_name>label</info_name>
+                                        </dynamic_text>
+                                        <line end1="none" end2="none" y1="-19" antialias="false" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" length1="1.5" x2="5" length2="1.5"/>
+                                        <line end1="none" end2="none" y1="-19" antialias="false" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4.75" length1="1.5" x2="-4.75" length2="1.5"/>
+                                        <terminal type="Generic" x="5" y="-20" name="" uuid="{ae33cdf2-f694-421c-a3ac-dfe14ea264da}" orientation="n"/>
+                                        <terminal type="Generic" x="-5" y="-20" name="" uuid="{08628e91-f2be-43c9-9dd7-eb470478a926}" orientation="n"/>
+                                    </description>
+                                </definition>
+                            </element>
+                        </category>
+                    </category>
+                </category>
+            </category>
+        </category>
+    </collection>
+</project>

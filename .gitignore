@@ -1,0 +1,12 @@
+# Artefactos de sistema / herramientas ajenas
+.qodo/
+__pycache__/
+*.pyc
+Thumbs.db
+desktop.ini
+
+# Instaladores grandes (no pertenecen al repositorio)
+*.exe
+
+# Word temporales
+~$*.docx

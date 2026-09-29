@@ -1,0 +1,188 @@
+{
+  "project": {
+    "title": "String FV 8 paneles - Prueba",
+    "author": "Generador QET",
+    "filename": "pv_8_panels.qet"
+  },
+  "diagram": {
+    "title": "String FV - 8 paneles en serie con proteccion DC",
+    "indexrev": "A",
+    "order": 1
+  },
+  "elements": [
+    {
+      "id": "PV1",
+      "type": "pv_cell",
+      "x": 60,
+      "y": 150,
+      "label": "PV1",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV2",
+      "type": "pv_cell",
+      "x": 180,
+      "y": 150,
+      "label": "PV2",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV3",
+      "type": "pv_cell",
+      "x": 300,
+      "y": 150,
+      "label": "PV3",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV4",
+      "type": "pv_cell",
+      "x": 420,
+      "y": 150,
+      "label": "PV4",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV5",
+      "type": "pv_cell",
+      "x": 540,
+      "y": 150,
+      "label": "PV5",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV6",
+      "type": "pv_cell",
+      "x": 660,
+      "y": 150,
+      "label": "PV6",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV7",
+      "type": "pv_cell",
+      "x": 780,
+      "y": 150,
+      "label": "PV7",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "PV8",
+      "type": "pv_cell",
+      "x": 900,
+      "y": 150,
+      "label": "PV8",
+      "info": {
+        "designation": "Panel FV 650Wp (SUPUESTO - doc. tecnico: 625-650Wp)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "QDC1",
+      "type": "circuit_breaker_1p",
+      "x": 905,
+      "y": 250,
+      "label": "QDC1",
+      "info": {
+        "designation": "Proteccion DC string (SUPUESTO - pendiente doc.)",
+        "quantity": "1"
+      }
+    },
+    {
+      "id": "X1",
+      "type": "dc_terminal",
+      "x": 905,
+      "y": 330,
+      "label": "X1"
+    }
+  ],
+  "connections": [
+    {
+      "from": "PV1",
+      "from_terminal": 2,
+      "to": "PV2",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV2",
+      "from_terminal": 2,
+      "to": "PV3",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV3",
+      "from_terminal": 2,
+      "to": "PV4",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV4",
+      "from_terminal": 2,
+      "to": "PV5",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV5",
+      "from_terminal": 2,
+      "to": "PV6",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV6",
+      "from_terminal": 2,
+      "to": "PV7",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV7",
+      "from_terminal": 2,
+      "to": "PV8",
+      "to_terminal": 0
+    },
+    {
+      "from": "PV8",
+      "from_terminal": 3,
+      "to": "QDC1",
+      "to_terminal": 0
+    },
+    {
+      "from": "QDC1",
+      "from_terminal": 1,
+      "to": "X1",
+      "to_terminal": 0
+    }
+  ],
+  "texts": [
+    {
+      "x": 60,
+      "y": 60,
+      "text": "STRING FV - 8 paneles en serie -> proteccion DC -> salida"
+    },
+    {
+      "x": 935,
+      "y": 380,
+      "text": "X1 = salida string (+) hacia proteccion DC"
+    }
+  ]
+}

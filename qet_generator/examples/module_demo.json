@@ -1,0 +1,248 @@
+{
+  "project": {
+    "title": "Modulo FV tipo M001 - 8 paneles",
+    "author": "Generador QET",
+    "filename": "module_M001.qet"
+  },
+  "diagrams": [
+    {
+      "title": "M001 - String FV 8 paneles + protección DC",
+      "order": 1,
+      "elements": [
+        {
+          "id": "M001-PV1",
+          "type": "pv_cell",
+          "x": 60,
+          "y": 150,
+          "label": "PV1",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV2",
+          "type": "pv_cell",
+          "x": 180,
+          "y": 150,
+          "label": "PV2",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV3",
+          "type": "pv_cell",
+          "x": 300,
+          "y": 150,
+          "label": "PV3",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV4",
+          "type": "pv_cell",
+          "x": 420,
+          "y": 150,
+          "label": "PV4",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV5",
+          "type": "pv_cell",
+          "x": 540,
+          "y": 150,
+          "label": "PV5",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV6",
+          "type": "pv_cell",
+          "x": 660,
+          "y": 150,
+          "label": "PV6",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV7",
+          "type": "pv_cell",
+          "x": 780,
+          "y": 150,
+          "label": "PV7",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-PV8",
+          "type": "pv_cell",
+          "x": 900,
+          "y": 150,
+          "label": "PV8",
+          "info": {
+            "designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"
+          }
+        },
+        {
+          "id": "M001-QDC1",
+          "type": "circuit_breaker_1p",
+          "x": 905,
+          "y": 250,
+          "label": "QDC1",
+          "info": {
+            "designation": "Protección DC string (SUPUESTO - pendiente doc.)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "M001-X1",
+          "type": "dc_terminal",
+          "x": 905,
+          "y": 330,
+          "label": "X1"
+        }
+      ],
+      "connections": [
+        {
+          "from": "M001-PV1",
+          "from_terminal": 2,
+          "to": "M001-PV2",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV2",
+          "from_terminal": 2,
+          "to": "M001-PV3",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV3",
+          "from_terminal": 2,
+          "to": "M001-PV4",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV4",
+          "from_terminal": 2,
+          "to": "M001-PV5",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV5",
+          "from_terminal": 2,
+          "to": "M001-PV6",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV6",
+          "from_terminal": 2,
+          "to": "M001-PV7",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV7",
+          "from_terminal": 2,
+          "to": "M001-PV8",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-PV8",
+          "from_terminal": 3,
+          "to": "M001-QDC1",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-QDC1",
+          "from_terminal": 1,
+          "to": "M001-X1",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 60,
+          "text": "M001 - STRING FV: 8 paneles en serie -> proteccion DC -> borne de salida"
+        },
+        {
+          "x": 935,
+          "y": 380,
+          "text": "X1 = salida string hacia proteccion DC"
+        }
+      ]
+    },
+    {
+      "title": "M001 - Auxiliar 24VDC (estructura supuesta)",
+      "order": 2,
+      "elements": [
+        {
+          "id": "M001-FU24V",
+          "type": "ac_source",
+          "x": 200,
+          "y": 100,
+          "label": "FU24V",
+          "info": {
+            "designation": "Fuente 24VDC (SUPUESTO)"
+          }
+        },
+        {
+          "id": "M001-F24",
+          "type": "circuit_breaker_1p",
+          "x": 200,
+          "y": 220,
+          "label": "F24"
+        },
+        {
+          "id": "M001-H1",
+          "type": "lamp",
+          "x": 350,
+          "y": 300,
+          "label": "H1",
+          "info": {
+            "designation": "Indicador (SUPUESTO)"
+          }
+        },
+        {
+          "id": "M001-X2",
+          "type": "dc_terminal",
+          "x": 350,
+          "y": 380,
+          "label": "X2"
+        }
+      ],
+      "connections": [
+        {
+          "from": "M001-FU24V",
+          "from_terminal": 1,
+          "to": "M001-F24",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-F24",
+          "from_terminal": 1,
+          "to": "M001-H1",
+          "to_terminal": 0
+        },
+        {
+          "from": "M001-H1",
+          "from_terminal": 1,
+          "to": "M001-X2",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 480,
+          "text": "ESTRUCTURA SUPUESTA - pendiente del documento tecnico: DomBusTracker2, actuadores azimut/elevacion, sensores NPN, anemometro, RS485, USR-DR404/W610, PE, borneras"
+        }
+      ]
+    }
+  ]
+}

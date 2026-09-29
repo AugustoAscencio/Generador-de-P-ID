@@ -1,0 +1,73 @@
+{
+  "_comment": "Catalogo de simbolos: tipo logico del JSON -> archivo .elmt REAL de la biblioteca instalada. prefix = prefijo de autonumeracion QET.",
+  "ac_source": {
+    "elmt_path": "10_electric/10_allpole/392_generators_sources/70_voltage_current_sources/tention_n.elmt",
+    "prefix": "F",
+    "description": "Fuente de tension (nuevo)"
+  },
+  "circuit_breaker_1p": {
+    "elmt_path": "10_electric/10_allpole/200_fuses_protective_gears/11_circuit_breakers/disjonct-m_1f.elmt",
+    "prefix": "Q",
+    "description": "Disyuntor termico magnetico en polo P"
+  },
+  "motor_1p": {
+    "elmt_path": "10_electric/10_allpole/391_consumers_actuators/10_engines/moteur_mono.elmt",
+    "prefix": "M",
+    "description": "Motor monofasico"
+  },
+  "pv_cell": {
+    "elmt_path": "10_electric/10_allpole/392_generators_sources/10_generators/pvcell.elmt",
+    "prefix": "P",
+    "description": "Celda fotovoltaica (panel FV)"
+  },
+  "lamp": {
+    "elmt_path": "10_electric/10_allpole/380_signaling_operating/11_optical_signaling/lampe2.elmt",
+    "prefix": "H",
+    "description": "Lampara"
+  },
+  "dc_terminal": {
+    "elmt_path": "10_electric/10_allpole/130_terminals_terminal_strips/borne_finale.elmt",
+    "prefix": "X",
+    "description": "Punto de union / borne final"
+  },
+  "circuit_breaker_2p": {
+    "elmt_path": "10_electric/10_allpole/200_fuses_protective_gears/11_circuit_breakers/disjonct-m_2f.elmt",
+    "prefix": "Q",
+    "description": "Disyuntor termico magnetico bipolar 2P (IN.1/OUT.2/IN.3/OUT.4)"
+  },
+  "spd_dc": {
+    "elmt_path": "10_electric/10_allpole/200_fuses_protective_gears/90_overvoltage_protections/parafoudre.elmt",
+    "prefix": "F",
+    "description": "Proteccion contra descargas (SPD, EN 60617 07-22-03)"
+  },
+  "ground": {
+    "elmt_path": "10_electric/10_allpole/110_network_supplies/terre.elmt",
+    "prefix": "PE",
+    "description": "Tierra (PE)"
+  },
+  "dc_motor": {
+    "elmt_path": "10_electric/10_allpole/391_consumers_actuators/10_engines/moteur_dc.elmt",
+    "prefix": "M",
+    "description": "Motor de corriente continua"
+  },
+  "capacitor": {
+    "elmt_path": "10_electric/10_allpole/395_electronics_semiconductors/02_capacitors/capacite.elmt",
+    "prefix": "C",
+    "description": "Condensador"
+  },
+  "proximity_npn": {
+    "elmt_path": "10_electric/10_allpole/390_sensors_instruments/02_sensors_inductive/capteur_ind_no_3p.elmt",
+    "prefix": "FC",
+    "description": "Sensor inductivo NA 3 terminales (NPN 3 cables)"
+  },
+  "push_button": {
+    "elmt_path": "10_electric/10_allpole/380_signaling_operating/20_push_buttons/poussoir.elmt",
+    "prefix": "PB",
+    "description": "Pulsador NA"
+  },
+  "selector_2pos": {
+    "elmt_path": "10_electric/10_allpole/380_signaling_operating/21_selector_switches/commut_2_position_fixe.elmt",
+    "prefix": "SEL",
+    "description": "Selector 2 posiciones fijo"
+  }
+}

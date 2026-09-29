@@ -1,0 +1,4527 @@
+{
+  "project": {
+    "title": "PROYECTO FV 588 MÓDULOS — SEGUEIDOR BIAXIAL 8×650 Wp",
+    "author": "Documentación eléctrica (Generador QET)",
+    "filename": "Proyecto_FV_588_Modulos.qet"
+  },
+  "diagrams": [
+    {
+      "title": "D-001 — ARQUITECTURA DEL SISTEMA E ÍNDICE DE PLANOS",
+      "order": 1,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "SISTEMA FOTOVOLTAICO CON SEGUIMIENTO SOLAR BIAXIAL",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "588 MÓDULOS × 8 PANELES 650 Wp · UBICACIÓN: PUERTO MADRYN, CHUBUT (CAP. 1)"
+        },
+        {
+          "x": 68,
+          "y": 107,
+          "text": "SISTEMA COMPLETO — 588 MÓDULOS (M-001…M-588)"
+        },
+        {
+          "x": 230,
+          "y": 155,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 175,
+          "text": "ARQUITECTURA DE REPETICIÓN — VER D-018"
+        },
+        {
+          "x": 230,
+          "y": 223,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 243,
+          "text": "MÓDULO TIPO — ESQUEMAS D-002 A D-016"
+        },
+        {
+          "x": 230,
+          "y": 291,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 311,
+          "text": "INTERFAZ CON PLANTA — VER D-017"
+        },
+        {
+          "x": 230,
+          "y": 359,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 379,
+          "text": "COMUNICACIÓN CON SISTEMA SUPERIOR — VER D-013"
+        },
+        {
+          "x": 492,
+          "y": 100,
+          "text": "ÍNDICE DE PLANOS",
+          "size": 11
+        },
+        {
+          "x": 492,
+          "y": 130,
+          "text": "D-001  ARQUITECTURA DEL SISTEMA E ÍNDICE",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 152,
+          "text": "D-002  DIAGRAMA GENERAL DEL MÓDULO TIPO",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 174,
+          "text": "D-003  STRING FOTOVOLTAICO 8 PANELES",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 196,
+          "text": "D-004  PROTECCIÓN DC (QF-DC + SPD)",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 218,
+          "text": "D-005  ALIMENTACIÓN 24 VDC",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 240,
+          "text": "D-006  EJE DE ELEVACIÓN",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 262,
+          "text": "D-007  EJE DE AZIMUT",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 284,
+          "text": "D-008  SENSORES Y ENTRADAS",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 306,
+          "text": "D-009  SISTEMA DE VIENTO / STOW",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 328,
+          "text": "D-010  MAPA DE ENTRADAS Y SALIDAS",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 350,
+          "text": "D-011  DIAGRAMA DE ESTADOS",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 372,
+          "text": "D-012  SEGURIDAD Y ENCLAVAMIENTOS",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 394,
+          "text": "D-013  COMUNICACIONES RS485 / IoT",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 416,
+          "text": "D-014  PUESTA A TIERRA TT",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 438,
+          "text": "D-015  CANALIZACIONES",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 460,
+          "text": "D-016  BORNERAS E INTERFACES",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 482,
+          "text": "D-017  INTERFAZ CON PLANTA",
+          "size": 8
+        },
+        {
+          "x": 492,
+          "y": 504,
+          "text": "D-018  MÓDULO TIPO × 588",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 452,
+          "text": "POTENCIA TOTAL: 588 × 5,2 kWp = 3.057,6 kWp ≈ 3,06 MWp (CÁLCULO DERIVADO DEL REQUISITO)"
+        },
+        {
+          "x": 60,
+          "y": 474,
+          "text": "SEGURIDAD ESTRUCTURAL: CIRSOC 102-2025 · VIENTO DE DISEÑO 50 m/s · STOW A 20 m/s (§3.2 / §4.9)"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 100,
+          "x2": 420,
+          "y2": 150,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 168,
+          "x2": 420,
+          "y2": 218,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 236,
+          "x2": 420,
+          "y2": 286,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 304,
+          "x2": 420,
+          "y2": 354,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 372,
+          "x2": 420,
+          "y2": 422,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 480,
+          "y1": 90,
+          "x2": 960,
+          "y2": 540,
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-002 — DIAGRAMA GENERAL DEL MÓDULO TIPO",
+      "order": 2,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "MÓDULO TIPO — SEGUEIDOR SOLAR BIAXIAL — 8 × 650 Wp = 5,2 kWp",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "REQUISITO DEL CLIENTE: 588 MÓDULOS (M-001…M-588) · ESTE ESQUEMA ES EL MÓDULO TIPO × 588 — VER D-001 / D-018"
+        },
+        {
+          "x": 68,
+          "y": 97,
+          "text": "8 × PANEL FV 650 Wp (PV-01…PV-08)"
+        },
+        {
+          "x": 68,
+          "y": 116,
+          "text": "STRING 5,2 kWp EN SERIE — VER D-003"
+        },
+        {
+          "x": 180,
+          "y": 148,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 165,
+          "text": "STRING DC"
+        },
+        {
+          "x": 68,
+          "y": 184,
+          "text": "332,8 V VMP · 402,2 V VOC · 16,44 A ISC"
+        },
+        {
+          "x": 180,
+          "y": 216,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 233,
+          "text": "PROTECCIÓN DC — QF-DC 25 A CURVA C"
+        },
+        {
+          "x": 68,
+          "y": 252,
+          "text": "BIPOLAR ≥600 VDC + SPD-DC TIPO 2 — VER D-004"
+        },
+        {
+          "x": 180,
+          "y": 284,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 301,
+          "text": "SALIDA DC → BORNERA TB-DC"
+        },
+        {
+          "x": 68,
+          "y": 320,
+          "text": "CABLE H1Z2Z2-K 6 mm² (EN 50618) — VER D-016/D-017"
+        },
+        {
+          "x": 408,
+          "y": 97,
+          "text": "FUENTE 24 VDC — FU-24VDC"
+        },
+        {
+          "x": 408,
+          "y": 116,
+          "text": "ALIMENTACIÓN DE CONTROL Y ACTUADORES — VER D-005"
+        },
+        {
+          "x": 520,
+          "y": 148,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 165,
+          "text": "PROTECCIÓN 24 VDC — 6 A POR EJE"
+        },
+        {
+          "x": 408,
+          "y": 184,
+          "text": "CURVA C, BIPOLAR (F-ELEV / F-AZ) — VER D-005"
+        },
+        {
+          "x": 520,
+          "y": 216,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 233,
+          "text": "CONTROLADOR DomBusTracker2 — CTRL-01"
+        },
+        {
+          "x": 408,
+          "y": 252,
+          "text": "4 RELÉS Q0.0–Q0.3 · ENTRADAS NPN — VER D-005…D-010"
+        },
+        {
+          "x": 460,
+          "y": 284,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 580,
+          "y": 284,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 301,
+          "text": "ACTUADORES SVH7 — M-ELEV / M-AZ"
+        },
+        {
+          "x": 408,
+          "y": 320,
+          "text": "MOTORREDUCTOR DOBLE EJE 24 VDC — VER D-006/D-007"
+        },
+        {
+          "x": 580,
+          "y": 352,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 369,
+          "text": "SENSORES: FC ×4 NPN · AN-WIND · LUZ"
+        },
+        {
+          "x": 408,
+          "y": 388,
+          "text": "I0.0–I0.3 · AI0 · AI1/AI2 (0–10 V) — VER D-008/D-009"
+        },
+        {
+          "x": 660,
+          "y": 240,
+          "text": "→",
+          "size": 10
+        },
+        {
+          "x": 728,
+          "y": 233,
+          "text": "RS485 (A/B) — TERMINACIÓN 120 Ω"
+        },
+        {
+          "x": 728,
+          "y": 252,
+          "text": "CABLE APANTALLADO, 115200 bps — VER D-013"
+        },
+        {
+          "x": 840,
+          "y": 284,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 728,
+          "y": 301,
+          "text": "USR-DR404 — CONCENTADOR"
+        },
+        {
+          "x": 728,
+          "y": 320,
+          "text": "RS485 → ETHERNET/WI-FI · 32 DISPOSITIVOS/RAMAL"
+        },
+        {
+          "x": 840,
+          "y": 352,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 728,
+          "y": 369,
+          "text": "ETHERNET / WI-FI"
+        },
+        {
+          "x": 840,
+          "y": 420,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 728,
+          "y": 437,
+          "text": "USR-W610 → DOMOTICZ / SISTEMA SUPERIOR"
+        },
+        {
+          "x": 728,
+          "y": 456,
+          "text": "MONITOREO REMOTO — VER D-013"
+        },
+        {
+          "x": 60,
+          "y": 470,
+          "text": "NOTAS:"
+        },
+        {
+          "x": 60,
+          "y": 488,
+          "text": "1) PE: ESQUEMA TT, 8 JABALINAS — VER D-014"
+        },
+        {
+          "x": 60,
+          "y": 506,
+          "text": "2) CANALIZACIÓN SEGREGADA: POTENCIA DC / CONTROL 24 VDC / RS485 EN CAÑOS INDEPENDIENTES — VER D-015"
+        },
+        {
+          "x": 60,
+          "y": 524,
+          "text": "3) PENDIENTE DE VERIFICACIÓN: NUMERACIÓN FÍSICA DE TERMINALES DEL DISPOSITIVO (VER D-016)"
+        },
+        {
+          "x": 60,
+          "y": 542,
+          "text": "4) RED DE PLANTA (COLECCIÓN DC/COM): FUERA DEL ALCANCE DE LOS DOCUMENTOS FUENTE — VER D-017"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 90,
+          "x2": 300,
+          "y2": 144,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 158,
+          "x2": 300,
+          "y2": 212,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 226,
+          "x2": 300,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 294,
+          "x2": 300,
+          "y2": 348,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 90,
+          "x2": 640,
+          "y2": 144,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 158,
+          "x2": 640,
+          "y2": 212,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 226,
+          "x2": 640,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 294,
+          "x2": 640,
+          "y2": 348,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 362,
+          "x2": 640,
+          "y2": 416,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 720,
+          "y1": 226,
+          "x2": 960,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 720,
+          "y1": 294,
+          "x2": 960,
+          "y2": 348,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 720,
+          "y1": 362,
+          "x2": 960,
+          "y2": 416,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 720,
+          "y1": 430,
+          "x2": 960,
+          "y2": 484,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-003 — STRING FOTOVOLTAICO 8 PANELES EN SERIE",
+      "order": 3,
+      "elements": [
+        {
+          "id": "PV-01",
+          "type": "pv_cell",
+          "x": 60,
+          "y": 150,
+          "label": "PV-01",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-02",
+          "type": "pv_cell",
+          "x": 180,
+          "y": 150,
+          "label": "PV-02",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-03",
+          "type": "pv_cell",
+          "x": 300,
+          "y": 150,
+          "label": "PV-03",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-04",
+          "type": "pv_cell",
+          "x": 420,
+          "y": 150,
+          "label": "PV-04",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-05",
+          "type": "pv_cell",
+          "x": 540,
+          "y": 150,
+          "label": "PV-05",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-06",
+          "type": "pv_cell",
+          "x": 660,
+          "y": 150,
+          "label": "PV-06",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-07",
+          "type": "pv_cell",
+          "x": 780,
+          "y": 150,
+          "label": "PV-07",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "PV-08",
+          "type": "pv_cell",
+          "x": 900,
+          "y": 150,
+          "label": "PV-08",
+          "info": {
+            "designation": "Panel FV JKM625-650N 650 Wp (Doc. §2.1.1)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "X1",
+          "type": "dc_terminal",
+          "x": 55,
+          "y": 220,
+          "label": "X1",
+          "info": {
+            "designation": "Borne salida string (TB-DC) — polaridad a verificar"
+          }
+        },
+        {
+          "id": "X2",
+          "type": "dc_terminal",
+          "x": 905,
+          "y": 220,
+          "label": "X2",
+          "info": {
+            "designation": "Borne salida string (TB-DC) — polaridad a verificar"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "from": "PV-01",
+          "from_terminal": 2,
+          "to": "PV-02",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-02",
+          "from_terminal": 2,
+          "to": "PV-03",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-03",
+          "from_terminal": 2,
+          "to": "PV-04",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-04",
+          "from_terminal": 2,
+          "to": "PV-05",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-05",
+          "from_terminal": 2,
+          "to": "PV-06",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-06",
+          "from_terminal": 2,
+          "to": "PV-07",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-07",
+          "from_terminal": 2,
+          "to": "PV-08",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-01",
+          "from_terminal": 1,
+          "to": "X1",
+          "to_terminal": 0
+        },
+        {
+          "from": "PV-08",
+          "from_terminal": 3,
+          "to": "X2",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "STRING FOTOVOLTAICO — 8 PANELES EN SERIE",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "PANELES: JKM625-650N-66HL4M-BDV-Z1 · 650 Wp · VMP 41,6 V · IMP 15,64 A · VOC 50,28 V · ISC 16,44 A (Doc. §4.1.1)"
+        },
+        {
+          "x": 445,
+          "y": 210,
+          "text": "X1 — EXTREMO SALIDA 1"
+        },
+        {
+          "x": 760,
+          "y": 210,
+          "text": "X2 — EXTREMO SALIDA 2"
+        },
+        {
+          "x": 60,
+          "y": 262,
+          "text": "VMP,STRING = 8 × 41,6 V = 332,8 V · VOC,STRING = 8 × 50,28 V = 402,2 V (Doc. §4.1.1)"
+        },
+        {
+          "x": 60,
+          "y": 284,
+          "text": "ISC,STRING = 16,44 A · CORRIENTE DE DISEÑO IB = 1,25 × ISC = 20,55 A (Doc. §4.1.2, AEA 90364-7-712)"
+        },
+        {
+          "x": 60,
+          "y": 306,
+          "text": "CABLE: H1Z2Z2-K 6 mm² (EN 50618) UNIPOLAR + PE 6 mm² · CAÑO PVC Ø20 mm SEPARADO DE SEÑAL (Doc. §4.1.3/§4.2.4/§4.3)"
+        },
+        {
+          "x": 60,
+          "y": 328,
+          "text": "CONTINUIDAD: PV-01 → PV-08 EN SERIE · SALIDA → PROTECCIÓN DC (VER D-004)"
+        },
+        {
+          "x": 60,
+          "y": 360,
+          "text": "PENDIENTE DE VERIFICACIÓN: ASIGNACIÓN DE POLARIDAD (+/−) POR TERMINAL DEL PANEL (SÍMBOLO GENÉRICO DE BIBLIOTECA)"
+        },
+        {
+          "x": 60,
+          "y": 382,
+          "text": "REQUISITO DEL CLIENTE: 588 MÓDULOS × ESTE STRING (M-001…M-588) — VER D-018"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 40,
+          "y1": 80,
+          "x2": 960,
+          "y2": 200,
+          "dash": true,
+          "color": "#7f7f7f"
+        }
+      ]
+    },
+    {
+      "title": "D-004 — PROTECCIÓN DC DEL STRING",
+      "order": 4,
+      "elements": [
+        {
+          "id": "D004-X1",
+          "type": "dc_terminal",
+          "x": 250,
+          "y": 80,
+          "label": "X1"
+        },
+        {
+          "id": "D004-X2",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 80,
+          "label": "X2"
+        },
+        {
+          "id": "D004-QF",
+          "type": "circuit_breaker_2p",
+          "x": 260,
+          "y": 170,
+          "label": "QF-DC",
+          "info": {
+            "designation": "Interruptor termomagnético bipolar DC 25A curva C ≥600 VDC (§4.1.4)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "D004-X3",
+          "type": "dc_terminal",
+          "x": 250,
+          "y": 330,
+          "label": "X3"
+        },
+        {
+          "id": "D004-X4",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 330,
+          "label": "X4"
+        },
+        {
+          "id": "D004-SPD",
+          "type": "spd_dc",
+          "x": 520,
+          "y": 260,
+          "label": "SPD-DC",
+          "info": {
+            "designation": "Descargador de sobretensiones tipo 2 (§4.1.4)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "D004-PE",
+          "type": "ground",
+          "x": 700,
+          "y": 330,
+          "label": "PE"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D004-X1",
+          "from_terminal": 0,
+          "to": "D004-QF",
+          "to_terminal": 0
+        },
+        {
+          "from": "D004-X2",
+          "from_terminal": 0,
+          "to": "D004-QF",
+          "to_terminal": 2
+        },
+        {
+          "from": "D004-QF",
+          "from_terminal": 1,
+          "to": "D004-X3",
+          "to_terminal": 0
+        },
+        {
+          "from": "D004-QF",
+          "from_terminal": 3,
+          "to": "D004-X4",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "PROTECCIÓN DC — TABLERO DE CONTINUA",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "STRING: 332,8 V VMP / 402,2 V VOC · IB = 20,55 A (§4.1)"
+        },
+        {
+          "x": 295,
+          "y": 66,
+          "text": "X1 (+) / X2 (−) DESDE STRING — VER D-003"
+        },
+        {
+          "x": 295,
+          "y": 316,
+          "text": "SALIDA PROTEGIDA → INTERFAZ DE PLANTA (VER D-017)"
+        },
+        {
+          "x": 545,
+          "y": 235,
+          "text": "SPD TIPO 2 EN TABLERO DE CONTINUA (§4.1.4)"
+        },
+        {
+          "x": 545,
+          "y": 257,
+          "text": "CONEXIONADO SEGÚN FABRICANTE:"
+        },
+        {
+          "x": 545,
+          "y": 277,
+          "text": "NO DETALLADO EN LA DOCUMENTACIÓN (PENDIENTE)"
+        },
+        {
+          "x": 720,
+          "y": 306,
+          "text": "PE 6 mm² (§4.2.4)"
+        },
+        {
+          "x": 720,
+          "y": 326,
+          "text": "EQUIPOTENCIALIDAD — VER D-014"
+        },
+        {
+          "x": 60,
+          "y": 400,
+          "text": "QF-DC: INTERRUPTOR TERMOMAGNÉTICO BIPOLAR DC · CURVA C · IN = 25 A · AISLACIÓN ≥ 600 VDC (§4.1.4)"
+        },
+        {
+          "x": 60,
+          "y": 422,
+          "text": "CRITERIO: IB (20,55 A) ≤ IN ≤ IZ · IN ≤ 35 A (FUSIBLE DE SERIE MÁX. DEL PANEL — §4.1.4)"
+        },
+        {
+          "x": 60,
+          "y": 444,
+          "text": "ÚNICO STRING → SIN PROTECCIÓN DE SOBRECORRIENTE POR STRING (§4.1.4)"
+        },
+        {
+          "x": 60,
+          "y": 466,
+          "text": "ENTRADA: D-003 (X1/X2) · SALIDA: D-017 (X3/X4) · PE: D-014"
+        }
+      ],
+      "shapes": []
+    },
+    {
+      "title": "D-005 — ALIMENTACIÓN 24 VDC Y PROTECCIONES",
+      "order": 5,
+      "elements": [
+        {
+          "id": "D005-FU",
+          "type": "ac_source",
+          "x": 250,
+          "y": 100,
+          "label": "FU-24VDC",
+          "info": {
+            "designation": "Fuente 24 VDC según alimentación de motores (§2.5.1)"
+          }
+        },
+        {
+          "id": "D005-XCTRL",
+          "type": "dc_terminal",
+          "x": 500,
+          "y": 80,
+          "label": "X-CTRL"
+        },
+        {
+          "id": "D005-FE",
+          "type": "circuit_breaker_2p",
+          "x": 260,
+          "y": 220,
+          "label": "F-ELEV",
+          "info": {
+            "designation": "Termomagnético bipolar 24VDC curva C 6 A — eje elevación (§4.1.5)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "D005-FA",
+          "type": "circuit_breaker_2p",
+          "x": 420,
+          "y": 220,
+          "label": "F-AZ",
+          "info": {
+            "designation": "Termomagnético bipolar 24VDC curva C 6 A — eje azimut (§4.1.5)",
+            "quantity": "1"
+          }
+        },
+        {
+          "id": "D005-E1",
+          "type": "dc_terminal",
+          "x": 250,
+          "y": 340,
+          "label": "X-E1"
+        },
+        {
+          "id": "D005-E2",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 340,
+          "label": "X-E2"
+        },
+        {
+          "id": "D005-A1",
+          "type": "dc_terminal",
+          "x": 410,
+          "y": 340,
+          "label": "X-A1"
+        },
+        {
+          "id": "D005-A2",
+          "type": "dc_terminal",
+          "x": 430,
+          "y": 340,
+          "label": "X-A2"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D005-FU",
+          "from_terminal": 0,
+          "to": "D005-XCTRL",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FU",
+          "from_terminal": 1,
+          "to": "D005-FE",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FU",
+          "from_terminal": 1,
+          "to": "D005-FA",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FE",
+          "from_terminal": 1,
+          "to": "D005-E1",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FE",
+          "from_terminal": 3,
+          "to": "D005-E2",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FA",
+          "from_terminal": 1,
+          "to": "D005-A1",
+          "to_terminal": 0
+        },
+        {
+          "from": "D005-FA",
+          "from_terminal": 3,
+          "to": "D005-A2",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "ALIMENTACIÓN 24 VDC — CONTROL Y ACTUADORES",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "SEPARACIÓN DE ALIMENTACIÓN DE CONTROL Y DE ACTUADORES (§2.5.1 / §4.1.5)"
+        },
+        {
+          "x": 520,
+          "y": 66,
+          "text": "ALIMENTACIÓN DE CONTROL → CTRL-01 — VER D-010"
+        },
+        {
+          "x": 520,
+          "y": 86,
+          "text": "SEPARADA DE LA ALIMENTACIÓN DE ACTUADORES"
+        },
+        {
+          "x": 300,
+          "y": 330,
+          "text": "→ M-ELEV (+) — VER D-006"
+        },
+        {
+          "x": 300,
+          "y": 350,
+          "text": "→ M-ELEV (−)"
+        },
+        {
+          "x": 460,
+          "y": 330,
+          "text": "→ M-AZ (+) — VER D-007"
+        },
+        {
+          "x": 460,
+          "y": 350,
+          "text": "→ M-AZ (−)"
+        },
+        {
+          "x": 60,
+          "y": 420,
+          "text": "F-ELEV / F-AZ: TERMOMAGNÉTICO BIPOLAR 24 VDC · CURVA C · IN = 6 A POR EJE (§4.1.5)"
+        },
+        {
+          "x": 60,
+          "y": 442,
+          "text": "CABLE DE ACTUADORES: MULTIPOLAR APANTALLADO 1,5 mm² (IRAM 2183) · PE 2,5 mm² (§4.1.5 / §4.2.4)"
+        },
+        {
+          "x": 60,
+          "y": 464,
+          "text": "FU-24VDC SEGÚN ALIMENTACIÓN DE LOS MOTORES SVH7 (§2.5.1)"
+        }
+      ],
+      "shapes": []
+    },
+    {
+      "title": "D-006 — EJE DE ELEVACIÓN",
+      "order": 6,
+      "elements": [
+        {
+          "id": "D6-Q0.1",
+          "type": "dc_terminal",
+          "x": 370,
+          "y": 150,
+          "label": "Q0.1"
+        },
+        {
+          "id": "D6-Q0.0",
+          "type": "dc_terminal",
+          "x": 390,
+          "y": 150,
+          "label": "Q0.0"
+        },
+        {
+          "id": "D6-F-ELEV",
+          "type": "circuit_breaker_2p",
+          "x": 380,
+          "y": 250,
+          "label": "F-ELEV",
+          "info": {
+            "designation": "Termomagnético bipolar 24VDC curva C 6 A — ELEVACIÓN (§4.1.5)"
+          }
+        },
+        {
+          "id": "D6-M1",
+          "type": "dc_terminal",
+          "x": 370,
+          "y": 360,
+          "label": "X-M1"
+        },
+        {
+          "id": "D6-M2",
+          "type": "dc_terminal",
+          "x": 390,
+          "y": 360,
+          "label": "X-M2"
+        },
+        {
+          "id": "D6-FC-ELEV-N",
+          "type": "proximity_npn",
+          "x": 700,
+          "y": 260,
+          "label": "FC-ELEV-N",
+          "info": {
+            "designation": "Sensor de proximidad NPN NO 3 cables 6–36 VDC (§2.3.2, Anexo 4)"
+          }
+        },
+        {
+          "id": "D6-VI0.0",
+          "type": "dc_terminal",
+          "x": 710,
+          "y": 150,
+          "label": "+24V"
+        },
+        {
+          "id": "D6-GI0.0",
+          "type": "dc_terminal",
+          "x": 690,
+          "y": 150,
+          "label": "GND"
+        },
+        {
+          "id": "D6-INI0.0",
+          "type": "dc_terminal",
+          "x": 700,
+          "y": 350,
+          "label": "I0.0"
+        },
+        {
+          "id": "D6-FC-ELEV-S",
+          "type": "proximity_npn",
+          "x": 860,
+          "y": 260,
+          "label": "FC-ELEV-S",
+          "info": {
+            "designation": "Sensor de proximidad NPN NO 3 cables 6–36 VDC (§2.3.2, Anexo 4)"
+          }
+        },
+        {
+          "id": "D6-VI0.1",
+          "type": "dc_terminal",
+          "x": 870,
+          "y": 150,
+          "label": "+24V"
+        },
+        {
+          "id": "D6-GI0.1",
+          "type": "dc_terminal",
+          "x": 850,
+          "y": 150,
+          "label": "GND"
+        },
+        {
+          "id": "D6-INI0.1",
+          "type": "dc_terminal",
+          "x": 860,
+          "y": 350,
+          "label": "I0.1"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D6-Q0.1",
+          "from_terminal": 0,
+          "to": "D6-F-ELEV",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-Q0.0",
+          "from_terminal": 0,
+          "to": "D6-F-ELEV",
+          "to_terminal": 2
+        },
+        {
+          "from": "D6-F-ELEV",
+          "from_terminal": 1,
+          "to": "D6-M1",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-F-ELEV",
+          "from_terminal": 3,
+          "to": "D6-M2",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-VI0.0",
+          "from_terminal": 0,
+          "to": "D6-FC-ELEV-N",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-GI0.0",
+          "from_terminal": 0,
+          "to": "D6-FC-ELEV-N",
+          "to_terminal": 1
+        },
+        {
+          "from": "D6-FC-ELEV-N",
+          "from_terminal": 2,
+          "to": "D6-INI0.0",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-VI0.1",
+          "from_terminal": 0,
+          "to": "D6-FC-ELEV-S",
+          "to_terminal": 0
+        },
+        {
+          "from": "D6-GI0.1",
+          "from_terminal": 0,
+          "to": "D6-FC-ELEV-S",
+          "to_terminal": 1
+        },
+        {
+          "from": "D6-FC-ELEV-S",
+          "from_terminal": 2,
+          "to": "D6-INI0.1",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "EJE DE ELEVACIÓN — CONTROL POR RELÉS Q0.0/Q0.1",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "SALIDAS Q0.0 / Q0.1 DEL CTRL-01 → F-ELEV → SVH7 — ELEVACIÓN (§4.8 / §4.1.5)"
+        },
+        {
+          "x": 68,
+          "y": 117,
+          "text": "CTRL-01 — DomBusTracker2 (VER D-010)"
+        },
+        {
+          "x": 68,
+          "y": 136,
+          "text": "Q0.0 → ELEVACIÓN + (RL1) · Q0.1 → ELEVACIÓN − (RL2)"
+        },
+        {
+          "x": 70,
+          "y": 190,
+          "text": "ENTRADAS I0.0 / I0.1 ← FINALES DE CARRERA"
+        },
+        {
+          "x": 70,
+          "y": 212,
+          "text": "ENCLAVAMIENTOS DE SEGURIDAD — VER D-012"
+        },
+        {
+          "x": 240,
+          "y": 140,
+          "text": "Q0.1 → ELEVACIÓN − (RL2)"
+        },
+        {
+          "x": 415,
+          "y": 140,
+          "text": "Q0.0 → ELEVACIÓN + (RL1)"
+        },
+        {
+          "x": 240,
+          "y": 352,
+          "text": "→ SVH7 ELEVACIÓN (−) — VER D-016"
+        },
+        {
+          "x": 415,
+          "y": 352,
+          "text": "→ SVH7 ELEVACIÓN (+) — VER D-016"
+        },
+        {
+          "x": 68,
+          "y": 407,
+          "text": "SVH7 — EJE ELEVACIÓN"
+        },
+        {
+          "x": 68,
+          "y": 426,
+          "text": "24 VDC · 71:1 · 937 N·m · RETENCIÓN 10,4 kN·m · AUTOBLOQUEANTE (§2.2.1 / §4.6)"
+        },
+        {
+          "x": 560,
+          "y": 400,
+          "text": "FC-ELEV-N → I0.0: FIN DE CARRERA NORTE — ELEVACIÓN MÁXIMA (§4.8.1)"
+        },
+        {
+          "x": 560,
+          "y": 422,
+          "text": "FC-ELEV-S → I0.1: FIN DE CARRERA SUR — ELEVACIÓN MÍNIMA (§4.8.1)"
+        },
+        {
+          "x": 560,
+          "y": 444,
+          "text": "SENSOR NPN SINKING · REFERENCIA COMÚN A GND (§2.3.2)"
+        },
+        {
+          "x": 560,
+          "y": 466,
+          "text": "EL FINAL DE CARRERA ENCLAVA EL MOVIMIENTO HACIA SU LÍMITE EN CUALQUIER MODO (§4.9.2 — VER D-012)"
+        },
+        {
+          "x": 60,
+          "y": 496,
+          "text": "Q0.0 / Q0.1 MUTUAMENTE EXCLUYENTES — VER D-012"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 340,
+          "y2": 330,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 400,
+          "x2": 340,
+          "y2": 470,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-007 — EJE DE AZIMUT",
+      "order": 7,
+      "elements": [
+        {
+          "id": "D7-Q0.3",
+          "type": "dc_terminal",
+          "x": 370,
+          "y": 150,
+          "label": "Q0.3"
+        },
+        {
+          "id": "D7-Q0.2",
+          "type": "dc_terminal",
+          "x": 390,
+          "y": 150,
+          "label": "Q0.2"
+        },
+        {
+          "id": "D7-F-AZ",
+          "type": "circuit_breaker_2p",
+          "x": 380,
+          "y": 250,
+          "label": "F-AZ",
+          "info": {
+            "designation": "Termomagnético bipolar 24VDC curva C 6 A — AZIMUT (§4.1.5)"
+          }
+        },
+        {
+          "id": "D7-M1",
+          "type": "dc_terminal",
+          "x": 370,
+          "y": 360,
+          "label": "X-M1"
+        },
+        {
+          "id": "D7-M2",
+          "type": "dc_terminal",
+          "x": 390,
+          "y": 360,
+          "label": "X-M2"
+        },
+        {
+          "id": "D7-FC-AZ-E",
+          "type": "proximity_npn",
+          "x": 700,
+          "y": 260,
+          "label": "FC-AZ-E",
+          "info": {
+            "designation": "Sensor de proximidad NPN NO 3 cables 6–36 VDC (§2.3.2, Anexo 4)"
+          }
+        },
+        {
+          "id": "D7-VI0.2",
+          "type": "dc_terminal",
+          "x": 710,
+          "y": 150,
+          "label": "+24V"
+        },
+        {
+          "id": "D7-GI0.2",
+          "type": "dc_terminal",
+          "x": 690,
+          "y": 150,
+          "label": "GND"
+        },
+        {
+          "id": "D7-INI0.2",
+          "type": "dc_terminal",
+          "x": 700,
+          "y": 350,
+          "label": "I0.2"
+        },
+        {
+          "id": "D7-FC-AZ-O",
+          "type": "proximity_npn",
+          "x": 860,
+          "y": 260,
+          "label": "FC-AZ-O",
+          "info": {
+            "designation": "Sensor de proximidad NPN NO 3 cables 6–36 VDC (§2.3.2, Anexo 4)"
+          }
+        },
+        {
+          "id": "D7-VI0.3",
+          "type": "dc_terminal",
+          "x": 870,
+          "y": 150,
+          "label": "+24V"
+        },
+        {
+          "id": "D7-GI0.3",
+          "type": "dc_terminal",
+          "x": 850,
+          "y": 150,
+          "label": "GND"
+        },
+        {
+          "id": "D7-INI0.3",
+          "type": "dc_terminal",
+          "x": 860,
+          "y": 350,
+          "label": "I0.3"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D7-Q0.3",
+          "from_terminal": 0,
+          "to": "D7-F-AZ",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-Q0.2",
+          "from_terminal": 0,
+          "to": "D7-F-AZ",
+          "to_terminal": 2
+        },
+        {
+          "from": "D7-F-AZ",
+          "from_terminal": 1,
+          "to": "D7-M1",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-F-AZ",
+          "from_terminal": 3,
+          "to": "D7-M2",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-VI0.2",
+          "from_terminal": 0,
+          "to": "D7-FC-AZ-E",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-GI0.2",
+          "from_terminal": 0,
+          "to": "D7-FC-AZ-E",
+          "to_terminal": 1
+        },
+        {
+          "from": "D7-FC-AZ-E",
+          "from_terminal": 2,
+          "to": "D7-INI0.2",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-VI0.3",
+          "from_terminal": 0,
+          "to": "D7-FC-AZ-O",
+          "to_terminal": 0
+        },
+        {
+          "from": "D7-GI0.3",
+          "from_terminal": 0,
+          "to": "D7-FC-AZ-O",
+          "to_terminal": 1
+        },
+        {
+          "from": "D7-FC-AZ-O",
+          "from_terminal": 2,
+          "to": "D7-INI0.3",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "EJE DE AZIMUT — CONTROL POR RELÉS Q0.2/Q0.3",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "SALIDAS Q0.2 / Q0.3 DEL CTRL-01 → F-AZ → SVH7 — AZIMUT (§4.8 / §4.1.5)"
+        },
+        {
+          "x": 68,
+          "y": 117,
+          "text": "CTRL-01 — DomBusTracker2 (VER D-010)"
+        },
+        {
+          "x": 68,
+          "y": 136,
+          "text": "Q0.2 → AZIMUT + (RL3) · Q0.3 → AZIMUT − (RL4)"
+        },
+        {
+          "x": 70,
+          "y": 190,
+          "text": "ENTRADAS I0.2 / I0.3 ← FINALES DE CARRERA"
+        },
+        {
+          "x": 70,
+          "y": 212,
+          "text": "ENCLAVAMIENTOS DE SEGURIDAD — VER D-012"
+        },
+        {
+          "x": 240,
+          "y": 140,
+          "text": "Q0.3 → AZIMUT − (RL4)"
+        },
+        {
+          "x": 415,
+          "y": 140,
+          "text": "Q0.2 → AZIMUT + (RL3)"
+        },
+        {
+          "x": 240,
+          "y": 352,
+          "text": "→ SVH7 AZIMUT (−) — VER D-016"
+        },
+        {
+          "x": 415,
+          "y": 352,
+          "text": "→ SVH7 AZIMUT (+) — VER D-016"
+        },
+        {
+          "x": 68,
+          "y": 407,
+          "text": "SVH7 — EJE AZIMUT"
+        },
+        {
+          "x": 68,
+          "y": 426,
+          "text": "24 VDC · 71:1 · TORQUE 937 N·m · INERCIA DESPRECIABLE (§4.5)"
+        },
+        {
+          "x": 560,
+          "y": 400,
+          "text": "FC-AZ-E → I0.2: LÍMITE DE GIRO ESTE (§4.8.1)"
+        },
+        {
+          "x": 560,
+          "y": 422,
+          "text": "FC-AZ-O → I0.3: LÍMITE DE GIRO OESTE (§4.8.1)"
+        },
+        {
+          "x": 560,
+          "y": 444,
+          "text": "SENSOR NPN SINKING · REFERENCIA COMÚN A GND (§2.3.2)"
+        },
+        {
+          "x": 560,
+          "y": 466,
+          "text": "EL FINAL DE CARRERA ENCLAVA EL MOVIMIENTO HACIA SU LÍMITE EN CUALQUIER MODO (§4.9.2 — VER D-012)"
+        },
+        {
+          "x": 60,
+          "y": 496,
+          "text": "Q0.2 / Q0.3 MUTUAMENTE EXCLUYENTES — VER D-012"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 340,
+          "y2": 330,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 400,
+          "x2": 340,
+          "y2": 470,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-008 — SENSORES Y ENTRADAS",
+      "order": 8,
+      "elements": [
+        {
+          "id": "D008-FC-ELEV-N",
+          "type": "proximity_npn",
+          "x": 100,
+          "y": 260,
+          "label": "FC-ELEV-N",
+          "info": {
+            "designation": "Sensor proximidad NPN NO 3 cables (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-VI0.0",
+          "type": "dc_terminal",
+          "x": 110,
+          "y": 180,
+          "label": "+24V"
+        },
+        {
+          "id": "D008-GI0.0",
+          "type": "dc_terminal",
+          "x": 90,
+          "y": 180,
+          "label": "GND"
+        },
+        {
+          "id": "D008-INI0.0",
+          "type": "dc_terminal",
+          "x": 100,
+          "y": 340,
+          "label": "I0.0"
+        },
+        {
+          "id": "D008-FC-ELEV-S",
+          "type": "proximity_npn",
+          "x": 260,
+          "y": 260,
+          "label": "FC-ELEV-S",
+          "info": {
+            "designation": "Sensor proximidad NPN NO 3 cables (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-VI0.1",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 180,
+          "label": "+24V"
+        },
+        {
+          "id": "D008-GI0.1",
+          "type": "dc_terminal",
+          "x": 250,
+          "y": 180,
+          "label": "GND"
+        },
+        {
+          "id": "D008-INI0.1",
+          "type": "dc_terminal",
+          "x": 260,
+          "y": 340,
+          "label": "I0.1"
+        },
+        {
+          "id": "D008-FC-AZ-E",
+          "type": "proximity_npn",
+          "x": 420,
+          "y": 260,
+          "label": "FC-AZ-E",
+          "info": {
+            "designation": "Sensor proximidad NPN NO 3 cables (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-VI0.2",
+          "type": "dc_terminal",
+          "x": 430,
+          "y": 180,
+          "label": "+24V"
+        },
+        {
+          "id": "D008-GI0.2",
+          "type": "dc_terminal",
+          "x": 410,
+          "y": 180,
+          "label": "GND"
+        },
+        {
+          "id": "D008-INI0.2",
+          "type": "dc_terminal",
+          "x": 420,
+          "y": 340,
+          "label": "I0.2"
+        },
+        {
+          "id": "D008-FC-AZ-O",
+          "type": "proximity_npn",
+          "x": 580,
+          "y": 260,
+          "label": "FC-AZ-O",
+          "info": {
+            "designation": "Sensor proximidad NPN NO 3 cables (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-VI0.3",
+          "type": "dc_terminal",
+          "x": 590,
+          "y": 180,
+          "label": "+24V"
+        },
+        {
+          "id": "D008-GI0.3",
+          "type": "dc_terminal",
+          "x": 570,
+          "y": 180,
+          "label": "GND"
+        },
+        {
+          "id": "D008-INI0.3",
+          "type": "dc_terminal",
+          "x": 580,
+          "y": 340,
+          "label": "I0.3"
+        },
+        {
+          "id": "D008-PB-ELEV-P",
+          "type": "push_button",
+          "x": 100,
+          "y": 440,
+          "label": "PB-ELEV-P",
+          "info": {
+            "designation": "Pulsador manual local (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-INI0.4",
+          "type": "dc_terminal",
+          "x": 100,
+          "y": 525,
+          "label": "I0.4"
+        },
+        {
+          "id": "D008-PB-ELEV-N",
+          "type": "push_button",
+          "x": 260,
+          "y": 440,
+          "label": "PB-ELEV-N",
+          "info": {
+            "designation": "Pulsador manual local (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-INI0.5",
+          "type": "dc_terminal",
+          "x": 260,
+          "y": 525,
+          "label": "I0.5"
+        },
+        {
+          "id": "D008-PB-AZ-P",
+          "type": "push_button",
+          "x": 420,
+          "y": 440,
+          "label": "PB-AZ-P",
+          "info": {
+            "designation": "Pulsador manual local (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-INI0.6",
+          "type": "dc_terminal",
+          "x": 420,
+          "y": 525,
+          "label": "I0.6"
+        },
+        {
+          "id": "D008-PB-AZ-N",
+          "type": "push_button",
+          "x": 580,
+          "y": 440,
+          "label": "PB-AZ-N",
+          "info": {
+            "designation": "Pulsador manual local (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-INI0.7",
+          "type": "dc_terminal",
+          "x": 580,
+          "y": 525,
+          "label": "I0.7"
+        },
+        {
+          "id": "D008-SEL",
+          "type": "selector_2pos",
+          "x": 700,
+          "y": 440,
+          "label": "SEL-AM",
+          "info": {
+            "designation": "Selector Manual/Automático (§4.8.1)"
+          }
+        },
+        {
+          "id": "D008-INI1.0",
+          "type": "dc_terminal",
+          "x": 700,
+          "y": 525,
+          "label": "I1.0"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D008-VI0.0",
+          "from_terminal": 0,
+          "to": "D008-FC-ELEV-N",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-GI0.0",
+          "from_terminal": 0,
+          "to": "D008-FC-ELEV-N",
+          "to_terminal": 1
+        },
+        {
+          "from": "D008-FC-ELEV-N",
+          "from_terminal": 2,
+          "to": "D008-INI0.0",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-VI0.1",
+          "from_terminal": 0,
+          "to": "D008-FC-ELEV-S",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-GI0.1",
+          "from_terminal": 0,
+          "to": "D008-FC-ELEV-S",
+          "to_terminal": 1
+        },
+        {
+          "from": "D008-FC-ELEV-S",
+          "from_terminal": 2,
+          "to": "D008-INI0.1",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-VI0.2",
+          "from_terminal": 0,
+          "to": "D008-FC-AZ-E",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-GI0.2",
+          "from_terminal": 0,
+          "to": "D008-FC-AZ-E",
+          "to_terminal": 1
+        },
+        {
+          "from": "D008-FC-AZ-E",
+          "from_terminal": 2,
+          "to": "D008-INI0.2",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-VI0.3",
+          "from_terminal": 0,
+          "to": "D008-FC-AZ-O",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-GI0.3",
+          "from_terminal": 0,
+          "to": "D008-FC-AZ-O",
+          "to_terminal": 1
+        },
+        {
+          "from": "D008-FC-AZ-O",
+          "from_terminal": 2,
+          "to": "D008-INI0.3",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-PB-ELEV-P",
+          "from_terminal": 1,
+          "to": "D008-INI0.4",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-PB-ELEV-N",
+          "from_terminal": 1,
+          "to": "D008-INI0.5",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-PB-AZ-P",
+          "from_terminal": 1,
+          "to": "D008-INI0.6",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-PB-AZ-N",
+          "from_terminal": 1,
+          "to": "D008-INI0.7",
+          "to_terminal": 0
+        },
+        {
+          "from": "D008-SEL",
+          "from_terminal": 1,
+          "to": "D008-INI1.0",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "SENSORES Y ENTRADAS — DIGITALES Y ANALÓGICAS",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "ALIMENTACIÓN 24 VDC · NPN SINKING · REFERENCIA COMÚN A GND (§2.3.2 / §4.8)"
+        },
+        {
+          "x": 60,
+          "y": 372,
+          "text": "FC N — ELEV. MÁXIMA",
+          "size": 8
+        },
+        {
+          "x": 220,
+          "y": 372,
+          "text": "FC S — ELEV. MÍNIMA",
+          "size": 8
+        },
+        {
+          "x": 380,
+          "y": 372,
+          "text": "FC E — AZIMUT",
+          "size": 8
+        },
+        {
+          "x": 540,
+          "y": 372,
+          "text": "FC O — AZIMUT",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 552,
+          "text": "PB ELEV +",
+          "size": 8
+        },
+        {
+          "x": 220,
+          "y": 552,
+          "text": "PB ELEV −",
+          "size": 8
+        },
+        {
+          "x": 380,
+          "y": 552,
+          "text": "PB AZ +",
+          "size": 8
+        },
+        {
+          "x": 540,
+          "y": 552,
+          "text": "PB AZ −",
+          "size": 8
+        },
+        {
+          "x": 750,
+          "y": 552,
+          "text": "SEL-AUTO/MAN: I1.0=1 AUTO · I1.0=0 MANUAL (§4.9.1)",
+          "size": 8
+        },
+        {
+          "x": 708,
+          "y": 117,
+          "text": "AN-WIND → AI0: ANEMÓMETRO 3–5 V — VER D-009"
+        },
+        {
+          "x": 708,
+          "y": 181,
+          "text": "I1.1: ALARMA DE VIENTO (UMBRAL SUPERADO) — VER D-009/D-012"
+        },
+        {
+          "x": 708,
+          "y": 245,
+          "text": "AI1: SENSOR DE LUZ EJE NORTE/SUR · 0–10 V (§4.8.2)"
+        },
+        {
+          "x": 708,
+          "y": 309,
+          "text": "AI2: SENSOR DE LUZ EJE ESTE/OESTE · 0–10 V (§4.8.2)"
+        },
+        {
+          "x": 708,
+          "y": 373,
+          "text": "SENSORES DE LUZ IMPERMEABLES INCLUIDOS EN EL EQUIPO (§2.2.2)"
+        },
+        {
+          "x": 700,
+          "y": 430,
+          "text": "ENTRADAS DEL CONTROLADOR — VER D-010 (MAPA DE E/S)",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 530,
+          "text": "NUMERACIÓN FÍSICA DE BORNES: PENDIENTE DE VERIFICACIÓN",
+          "size": 8
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 700,
+          "y1": 110,
+          "x2": 960,
+          "y2": 150,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 700,
+          "y1": 174,
+          "x2": 960,
+          "y2": 214,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 700,
+          "y1": 238,
+          "x2": 960,
+          "y2": 278,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 700,
+          "y1": 302,
+          "x2": 960,
+          "y2": 342,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 700,
+          "y1": 366,
+          "x2": 960,
+          "y2": 406,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-009 — SISTEMA DE VIENTO Y POSICIÓN STOW",
+      "order": 9,
+      "elements": [
+        {
+          "id": "D009-XW",
+          "type": "dc_terminal",
+          "x": 150,
+          "y": 200,
+          "label": "WIND"
+        },
+        {
+          "id": "D009-CW",
+          "type": "capacitor",
+          "x": 260,
+          "y": 250,
+          "label": "C-WIND",
+          "info": {
+            "designation": "Condensador 100–220 µF entre Wind y GND (§2.2.2)"
+          }
+        },
+        {
+          "id": "D009-XG",
+          "type": "dc_terminal",
+          "x": 150,
+          "y": 320,
+          "label": "GND"
+        },
+        {
+          "id": "D009-AI0",
+          "type": "dc_terminal",
+          "x": 360,
+          "y": 200,
+          "label": "AI0"
+        }
+      ],
+      "connections": [
+        {
+          "from": "D009-XW",
+          "from_terminal": 0,
+          "to": "D009-CW",
+          "to_terminal": 0
+        },
+        {
+          "from": "D009-CW",
+          "from_terminal": 1,
+          "to": "D009-XG",
+          "to_terminal": 0
+        },
+        {
+          "from": "D009-XW",
+          "from_terminal": 0,
+          "to": "D009-AI0",
+          "to_terminal": 0
+        }
+      ],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "SISTEMA DE VIENTO — DETECCIÓN, ALARMA Y POSICIÓN STOW",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "FUNCIÓN DE SEGURIDAD ANTE VIENTO EXCESIVO (§2.2.2 / §4.9)"
+        },
+        {
+          "x": 60,
+          "y": 166,
+          "text": "SEÑAL DE ANEMÓMETRO: 3–5 V (§2.2.2)"
+        },
+        {
+          "x": 290,
+          "y": 235,
+          "text": "C-WIND: 100–220 µF ENTRE WIND Y GND (§2.2.2)"
+        },
+        {
+          "x": 390,
+          "y": 166,
+          "text": "→ ENTRADA ANALÓGICA AI0 DEL CTRL-01"
+        },
+        {
+          "x": 568,
+          "y": 117,
+          "text": "AI0: VELOCIDAD DE VIENTO (3–5 V)"
+        },
+        {
+          "x": 760,
+          "y": 154,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 568,
+          "y": 191,
+          "text": "UMBRAL OPERATIVO: VIENTO > 20 m/s (§4.9.1)"
+        },
+        {
+          "x": 760,
+          "y": 228,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 568,
+          "y": 265,
+          "text": "ALARMA DE VIENTO → I1.1 = 1 (§4.8.1)"
+        },
+        {
+          "x": 760,
+          "y": 302,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 568,
+          "y": 339,
+          "text": "INTERRUMPE SEGUIMIENTO → STOW: θ2 = 90° (VER D-011)"
+        },
+        {
+          "x": 760,
+          "y": 376,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 568,
+          "y": 413,
+          "text": "RETORNO: SELECTOR EN AUTO + RETARDO DE SEGURIDAD (§4.9.2)"
+        },
+        {
+          "x": 60,
+          "y": 430,
+          "text": "EL STOW TIENE PRIORIDAD ABSOLUTA SOBRE AUTOMÁTICO Y MANUAL (§4.9.2)"
+        },
+        {
+          "x": 60,
+          "y": 452,
+          "text": "POSICIÓN STOW: PANELES VERTICALES (θ2 = 90°) — MÍNIMA RESISTENCIA AERODINÁMICA (§4.9)"
+        },
+        {
+          "x": 60,
+          "y": 474,
+          "text": "DISEÑO ESTRUCTURAL DE VIENTO: 50 m/s (CIRSOC 102-2025) — VER D-002"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 560,
+          "y1": 110,
+          "x2": 960,
+          "y2": 150,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 560,
+          "y1": 184,
+          "x2": 960,
+          "y2": 224,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 560,
+          "y1": 258,
+          "x2": 960,
+          "y2": 298,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 560,
+          "y1": 332,
+          "x2": 960,
+          "y2": 372,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 560,
+          "y1": 406,
+          "x2": 960,
+          "y2": 446,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-010 — MAPA DE ENTRADAS Y SALIDAS",
+      "order": 10,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "MAPA DE ENTRADAS Y SALIDAS — CTRL-01 DomBusTracker2",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "ARQUITECTURA DE E/S SEGÚN §4.8 (CONVENCIÓN IEC 61131-3)"
+        },
+        {
+          "x": 80,
+          "y": 97,
+          "text": "DIR"
+        },
+        {
+          "x": 200,
+          "y": 97,
+          "text": "SEÑAL / DESCRIPCIÓN"
+        },
+        {
+          "x": 560,
+          "y": 97,
+          "text": "ELEMENTO / NOTAS"
+        },
+        {
+          "x": 80,
+          "y": 122,
+          "text": "I0.0",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 122,
+          "text": "FIN DE CARRERA NORTE — ELEVACIÓN MÁXIMA",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 122,
+          "text": "FC-ELEV-N (NPN) — VER D-006",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 145,
+          "text": "I0.1",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 145,
+          "text": "FIN DE CARRERA SUR — ELEVACIÓN MÍNIMA",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 145,
+          "text": "FC-ELEV-S (NPN) — VER D-006",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 168,
+          "text": "I0.2",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 168,
+          "text": "FIN DE CARRERA ESTE — AZIMUT",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 168,
+          "text": "FC-AZ-E (NPN) — VER D-007",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 191,
+          "text": "I0.3",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 191,
+          "text": "FIN DE CARRERA OESTE — AZIMUT",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 191,
+          "text": "FC-AZ-O (NPN) — VER D-007",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 214,
+          "text": "I0.4",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 214,
+          "text": "PULSADOR MANUAL ELEVACIÓN +",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 214,
+          "text": "PB-ELEV+ — VER D-008",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 237,
+          "text": "I0.5",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 237,
+          "text": "PULSADOR MANUAL ELEVACIÓN −",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 237,
+          "text": "PB-ELEV− — VER D-008",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 260,
+          "text": "I0.6",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 260,
+          "text": "PULSADOR MANUAL AZIMUT +",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 260,
+          "text": "PB-AZ+ — VER D-008",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 283,
+          "text": "I0.7",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 283,
+          "text": "PULSADOR MANUAL AZIMUT −",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 283,
+          "text": "PB-AZ− — VER D-008",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 306,
+          "text": "I1.0",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 306,
+          "text": "SELECTOR MANUAL / AUTOMÁTICO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 306,
+          "text": "SEL-AUTO/MAN — VER D-008",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 329,
+          "text": "I1.1",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 329,
+          "text": "ALARMA DE VIENTO (UMBRAL SUPERADO)",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 329,
+          "text": "DERIVADA DE AI0 — VER D-009",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 352,
+          "text": "AI0",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 352,
+          "text": "ANEMÓMETRO — VELOCIDAD DE VIENTO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 352,
+          "text": "AN-WIND · 3–5 V — VER D-009",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 375,
+          "text": "AI1",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 375,
+          "text": "SENSOR DE LUZ EJE NORTE/SUR",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 375,
+          "text": "LUZ N/S · 0–10 V (EN EQUIPO)",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 398,
+          "text": "AI2",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 398,
+          "text": "SENSOR DE LUZ EJE ESTE/OESTE",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 398,
+          "text": "LUZ E/O · 0–10 V (EN EQUIPO)",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 421,
+          "text": "Q0.0",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 421,
+          "text": "RELÉ RL1 — ELEVACIÓN, SENTIDO POSITIVO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 421,
+          "text": "→ M-ELEV — VER D-006",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 444,
+          "text": "Q0.1",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 444,
+          "text": "RELÉ RL2 — ELEVACIÓN, SENTIDO NEGATIVO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 444,
+          "text": "→ M-ELEV — VER D-006",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 467,
+          "text": "Q0.2",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 467,
+          "text": "RELÉ RL3 — AZIMUT, SENTIDO POSITIVO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 467,
+          "text": "→ M-AZ — VER D-007",
+          "size": 8
+        },
+        {
+          "x": 80,
+          "y": 490,
+          "text": "Q0.3",
+          "size": 8
+        },
+        {
+          "x": 200,
+          "y": 490,
+          "text": "RELÉ RL4 — AZIMUT, SENTIDO NEGATIVO",
+          "size": 8
+        },
+        {
+          "x": 560,
+          "y": 490,
+          "text": "→ M-AZ — VER D-007",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 532,
+          "text": "Q0.4 (RL5 ZUMBADOR) / Q0.5 (RL6 RESERVA): ARQUITECTURA GENÉRICA §4.8.3 — NO CONFIRMADAS COMO SALIDAS FÍSICAS (EQUIPO: 4 RELÉS) — PENDIENTE DE VERIFICACIÓN",
+          "size": 8
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 90,
+          "x2": 960,
+          "y2": 520,
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 90,
+          "x2": 960,
+          "y2": 118,
+          "fill": "#dbe7f3",
+          "color": "#1f4e79"
+        }
+      ]
+    },
+    {
+      "title": "D-011 — DIAGRAMA DE ESTADOS",
+      "order": 11,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "DIAGRAMA DE ESTADOS DEL CONTROL DE SEGUIMIENTO",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "CUATRO ESTADOS SEGÚN §4.9.1 · TRANSICIONES POR ENTRADAS DIGITALES Y ANALÓGICAS"
+        },
+        {
+          "x": 68,
+          "y": 117,
+          "text": "ESTADO 0 — REPOSO / INICIALIZACIÓN"
+        },
+        {
+          "x": 68,
+          "y": 136,
+          "text": "VERIFICA FINALES DE CARRERA I0.0–I0.3 · HOMOLOGA POSICIÓN (§4.9.1)"
+        },
+        {
+          "x": 200,
+          "y": 175,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 220,
+          "y": 172,
+          "text": "INICIALIZACIÓN COMPLETA →"
+        },
+        {
+          "x": 68,
+          "y": 197,
+          "text": "ESTADO 1 — SEGUIMIENTO AUTOMÁTICO"
+        },
+        {
+          "x": 68,
+          "y": 216,
+          "text": "I1.0 = 1 · I1.1 = 0 · CINEMÁTICA INVERSA → Q0.0–Q0.3 (§4.9.1)"
+        },
+        {
+          "x": 68,
+          "y": 337,
+          "text": "ESTADO 3 — MODO MANUAL"
+        },
+        {
+          "x": 68,
+          "y": 356,
+          "text": "I1.0 = 0 · PULSADORES I0.4–I0.7 · ENCLAVADO POR FC (§4.9.1)"
+        },
+        {
+          "x": 508,
+          "y": 117,
+          "text": "ESTADO 2 — STOW / POSICIÓN DE SEGURIDAD"
+        },
+        {
+          "x": 508,
+          "y": 136,
+          "text": "θ2 = 90° · AI0 > 20 m/s → I1.1 = 1 (§4.9.1)"
+        },
+        {
+          "x": 500,
+          "y": 180,
+          "text": "ACCESIBLE DESDE E0 / E1 / E3 CON VIENTO > UMBRAL — PRIORIDAD ABSOLUTA (§4.9.2)",
+          "size": 8
+        },
+        {
+          "x": 370,
+          "y": 205,
+          "text": "→",
+          "size": 10
+        },
+        {
+          "x": 386,
+          "y": 202,
+          "text": "SELECTOR → MANUAL (I1.0 = 0)",
+          "size": 8
+        },
+        {
+          "x": 370,
+          "y": 260,
+          "text": "←",
+          "size": 10
+        },
+        {
+          "x": 386,
+          "y": 257,
+          "text": "SELECTOR → AUTOMÁTICO (I1.0 = 1)",
+          "size": 8
+        },
+        {
+          "x": 370,
+          "y": 135,
+          "text": "→",
+          "size": 10
+        },
+        {
+          "x": 386,
+          "y": 132,
+          "text": "VIENTO > 20 m/s (AI0 → I1.1 = 1)",
+          "size": 8
+        },
+        {
+          "x": 370,
+          "y": 290,
+          "text": "→",
+          "size": 10
+        },
+        {
+          "x": 386,
+          "y": 287,
+          "text": "VIENTO > 20 m/s (DESDE MANUAL)",
+          "size": 8
+        },
+        {
+          "x": 370,
+          "y": 300,
+          "text": "←",
+          "size": 10
+        },
+        {
+          "x": 386,
+          "y": 317,
+          "text": "CESÓ ALARMA + RETARDO + SELECTOR EN AUTO (§4.9.2)",
+          "size": 8
+        },
+        {
+          "x": 500,
+          "y": 220,
+          "text": "PERMANECE EN E2 MIENTRAS I1.1 = 1 ",
+          "size": 8
+        },
+        {
+          "x": 500,
+          "y": 240,
+          "text": "MÁS RETARDO DE SEGURIDAD TRAS EL CESE (§4.9.1)",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 440,
+          "text": "PRIORIDAD: E2 (STOW) SOBRE E1 (AUTOMÁTICO) Y E3 (MANUAL) — ENCLAVAMIENTO DE MÁXIMA PRIORIDAD (§4.9.2)"
+        },
+        {
+          "x": 60,
+          "y": 462,
+          "text": "LOS FINALES DE CARRERA BLOQUEAN EL MOVIMIENTO HACIA SU LÍMITE EN CUALQUIER MODO (§4.9.2 — VER D-012)"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 360,
+          "y2": 170,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 190,
+          "x2": 360,
+          "y2": 250,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 330,
+          "x2": 360,
+          "y2": 390,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 500,
+          "y1": 110,
+          "x2": 840,
+          "y2": 170,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-012 — SEGURIDAD Y ENCLAVAMIENTOS",
+      "order": 12,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "SEGURIDAD Y ENCLAVAMIENTOS DEL CONTROL",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "ENCLAVAMIENTOS VÁLIDOS EN CUALQUIER ESTADO (§4.9.2)"
+        },
+        {
+          "x": 68,
+          "y": 107,
+          "text": "STOW (ESTADO 2) — PRIORIDAD MÁXIMA SOBRE SEGUIMIENTO Y MANUAL"
+        },
+        {
+          "x": 68,
+          "y": 177,
+          "text": "1) FINAL DE CARRERA (I0.0–I0.3) IMPIDE EL MOVIMIENTO HACIA EL LÍMITE CORRESPONDIENTE EN CUALQUIER MODO"
+        },
+        {
+          "x": 68,
+          "y": 247,
+          "text": "2) ALARMA DE VIENTO (I1.1) INTERRUMPE EL SEGUIMIENTO E INICIA STOW"
+        },
+        {
+          "x": 68,
+          "y": 317,
+          "text": "3) RETORNO TRAS STOW: SOLO CON SELECTOR EN AUTOMÁTICO — SIN REINICIOS NO SUPERVISADOS"
+        },
+        {
+          "x": 68,
+          "y": 387,
+          "text": "4) AUTOBLOQUEO MECÁNICO SVH7 (TORNILLO SINFIN 71:1): RETENCIÓN 10,4 kN·m — SIN FRENO ADICIONAL (§4.6)"
+        },
+        {
+          "x": 668,
+          "y": 177,
+          "text": "Q0.0 — ELEVACIÓN +"
+        },
+        {
+          "x": 828,
+          "y": 177,
+          "text": "Q0.1 — ELEVACIÓN −"
+        },
+        {
+          "x": 660,
+          "y": 228,
+          "text": "MUTUAMENTE EXCLUYENTES (ENCLAVAMIENTO LÓGICO — §4.9.2)",
+          "size": 8
+        },
+        {
+          "x": 668,
+          "y": 257,
+          "text": "Q0.2 — AZIMUT +"
+        },
+        {
+          "x": 828,
+          "y": 257,
+          "text": "Q0.3 — AZIMUT −"
+        },
+        {
+          "x": 660,
+          "y": 308,
+          "text": "MUTUAMENTE EXCLUYENTES (ENCLAVAMIENTO LÓGICO — §4.9.2)",
+          "size": 8
+        },
+        {
+          "x": 660,
+          "y": 330,
+          "text": "LOS DOS SENTIDOS DE UN MISMO EJE NO PUEDEN ACTIVARSE SIMULTÁNEAMENTE (§4.9.2)",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 470,
+          "text": "EL MOVIMIENTO HACIA STOW SE EJECUTA AUMENTANDO θ2 HASTA 90° INDEPENDIENTEMENTE DEL MODO (§4.9.1)"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 100,
+          "x2": 960,
+          "y2": 150,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 170,
+          "x2": 620,
+          "y2": 220,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 240,
+          "x2": 620,
+          "y2": 290,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 310,
+          "x2": 620,
+          "y2": 360,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 380,
+          "x2": 620,
+          "y2": 430,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 660,
+          "y1": 170,
+          "x2": 800,
+          "y2": 220,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 820,
+          "y1": 170,
+          "x2": 960,
+          "y2": 220,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 660,
+          "y1": 250,
+          "x2": 800,
+          "y2": 300,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 820,
+          "y1": 250,
+          "x2": 960,
+          "y2": 300,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-013 — COMUNICACIONES RS485 / IoT",
+      "order": 13,
+      "elements": [
+        {
+          "id": "D013-A",
+          "type": "dc_terminal",
+          "x": 400,
+          "y": 140,
+          "label": "A"
+        },
+        {
+          "id": "D013-B",
+          "type": "dc_terminal",
+          "x": 480,
+          "y": 140,
+          "label": "B"
+        },
+        {
+          "id": "D013-SH",
+          "type": "dc_terminal",
+          "x": 560,
+          "y": 140,
+          "label": "SH"
+        }
+      ],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "COMUNICACIONES — RS485 / IoT",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "DomBusTracker2 → USR-DR404 → Ethernet/Wi-Fi → USR-W610 → Domoticz (§2.4 / §2.5)"
+        },
+        {
+          "x": 68,
+          "y": 117,
+          "text": "CTRL-01 — DomBusTracker2"
+        },
+        {
+          "x": 68,
+          "y": 136,
+          "text": "BORNES A / B DEL BUS RS485 (§2.5.1)"
+        },
+        {
+          "x": 388,
+          "y": 166,
+          "text": "A",
+          "size": 8
+        },
+        {
+          "x": 468,
+          "y": 166,
+          "text": "B",
+          "size": 8
+        },
+        {
+          "x": 548,
+          "y": 166,
+          "text": "APANTALLADO (2×0,22 mm — FIG. 2.4)",
+          "size": 8
+        },
+        {
+          "x": 388,
+          "y": 200,
+          "text": "NUMERACIÓN DE BORNES: PENDIENTE DE VERIFICACIÓN — VER D-016",
+          "size": 8
+        },
+        {
+          "x": 408,
+          "y": 247,
+          "text": "USR-DR404 — CONCENTADOR"
+        },
+        {
+          "x": 408,
+          "y": 266,
+          "text": "RS485 → ETHERNET/WI-FI · HASTA 32 DISPOSITIVOS · < 1200 m (§2.4.1)"
+        },
+        {
+          "x": 550,
+          "y": 304,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 325,
+          "text": "ETHERNET / WI-FI"
+        },
+        {
+          "x": 550,
+          "y": 372,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 408,
+          "y": 393,
+          "text": "USR-W610 — SERVIDOR SERIAL"
+        },
+        {
+          "x": 408,
+          "y": 412,
+          "text": "RS232/RS485 → RJ45 / WI-FI 2,4 GHz · 280 m · 24 DISP. (§2.4.4)"
+        },
+        {
+          "x": 710,
+          "y": 405,
+          "text": "→",
+          "size": 10
+        },
+        {
+          "x": 738,
+          "y": 393,
+          "text": "DOMOTICZ / SISTEMA SUPERIOR"
+        },
+        {
+          "x": 738,
+          "y": 412,
+          "text": "MONITOREO REMOTO EN TIEMPO REAL (§2.4.5)"
+        },
+        {
+          "x": 60,
+          "y": 240,
+          "text": "BUS DEL MÓDULO: CTRL-01 → TB-RS485 (A/B)"
+        },
+        {
+          "x": 60,
+          "y": 262,
+          "text": "TERMINACIÓN: RESISTENCIA DE 120 Ω EN LOS EXTREMOS DEL BUS (§2.5.1)"
+        },
+        {
+          "x": 60,
+          "y": 284,
+          "text": "VELOCIDAD DEL BUS: 115200 bps (§2.5.3)"
+        },
+        {
+          "x": 60,
+          "y": 306,
+          "text": "PROTOCOLO MODBUS MAESTO-ESCLAVO (§2.4.1)"
+        },
+        {
+          "x": 60,
+          "y": 470,
+          "text": "RED DE COMUNICACIONES A NIVEL DE PLANTA: NO DISEÑADA — FUERA DEL ALCANCE DE LA DOCUMENTACIÓN (§2.4.1) — VER D-017"
+        },
+        {
+          "x": 60,
+          "y": 492,
+          "text": "TOPOLOGÍA PARA 588 MÓDULOS: PENDIENTE DE INGENIERÍA DE PLANTA"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 300,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 240,
+          "x2": 700,
+          "y2": 300,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 318,
+          "x2": 700,
+          "y2": 368,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 400,
+          "y1": 386,
+          "x2": 700,
+          "y2": 446,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 730,
+          "y1": 386,
+          "x2": 960,
+          "y2": 446,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-014 — PUESTA A TIERRA DEL MÓDULO (TT)",
+      "order": 14,
+      "elements": [
+        {
+          "id": "E1",
+          "type": "ground",
+          "x": 100,
+          "y": 400,
+          "label": "E1"
+        },
+        {
+          "id": "E2",
+          "type": "ground",
+          "x": 200,
+          "y": 400,
+          "label": "E2"
+        },
+        {
+          "id": "E3",
+          "type": "ground",
+          "x": 300,
+          "y": 400,
+          "label": "E3"
+        },
+        {
+          "id": "E4",
+          "type": "ground",
+          "x": 400,
+          "y": 400,
+          "label": "E4"
+        },
+        {
+          "id": "E5",
+          "type": "ground",
+          "x": 500,
+          "y": 400,
+          "label": "E5"
+        },
+        {
+          "id": "E6",
+          "type": "ground",
+          "x": 600,
+          "y": 400,
+          "label": "E6"
+        },
+        {
+          "id": "E7",
+          "type": "ground",
+          "x": 700,
+          "y": 400,
+          "label": "E7"
+        },
+        {
+          "id": "E8",
+          "type": "ground",
+          "x": 800,
+          "y": 400,
+          "label": "E8"
+        }
+      ],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "PUESTA A TIERRA DEL MÓDULO — ESQUEMA TT",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "ELECTRODOS DE DISPERSIÓN + EQUIPOTENCIALIDAD DE MASAS (§4.2)"
+        },
+        {
+          "x": 68,
+          "y": 117,
+          "text": "ESTRUCTURA — BASTIDORES + VIGAS"
+        },
+        {
+          "x": 180,
+          "y": 166,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 348,
+          "y": 117,
+          "text": "COLUMNA"
+        },
+        {
+          "x": 460,
+          "y": 166,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 628,
+          "y": 117,
+          "text": "GABINETE CTRL-01 + TABLERO DC"
+        },
+        {
+          "x": 740,
+          "y": 166,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 191,
+          "text": "CONDUCTOR DE PROTECCIÓN PE — BARRA DE EQUIPOTENCIALIDAD DEL MÓDULO"
+        },
+        {
+          "x": 68,
+          "y": 210,
+          "text": "PE 6 mm² (CIRCUITO FV) · PE 2,5 mm² (24 VDC) — §4.2.4"
+        },
+        {
+          "x": 450,
+          "y": 240,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 68,
+          "y": 263,
+          "text": "SISTEMA DE TIERRA LOCAL — ESQUEMA TT (§4.2.1)"
+        },
+        {
+          "x": 450,
+          "y": 312,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 70,
+          "y": 350,
+          "text": "8 × JABALINA DE ACERO COBRADO · L = 1,5 m · Ø 5/8″ · SEPARACIÓN s = L = 1,5 m · INTERCONECTADAS CON CONDUCTOR DE COBRE DESNUDO (§4.2.3)",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 490,
+          "text": "TRATAMIENTO QUÍMICO DEL TERRENO: BENTONITA SÓDICA / GEL ELECTROLÍTICO (−30 A 50 % ρ) — §4.2.3"
+        },
+        {
+          "x": 60,
+          "y": 512,
+          "text": "VERIFICAR CON TELURÍMETRO · OBJETIVO DE DISEÑO ≤ 10 Ω (§4.2.2)"
+        },
+        {
+          "x": 60,
+          "y": 534,
+          "text": "MALLA GENERAL DE PLANTA: FUERA DEL ALCANCE (IEEE 80) — VER D-017",
+          "size": 8
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 300,
+          "y2": 160,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 340,
+          "y1": 110,
+          "x2": 580,
+          "y2": 160,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 620,
+          "y1": 110,
+          "x2": 860,
+          "y2": 160,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 184,
+          "x2": 860,
+          "y2": 234,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 256,
+          "x2": 860,
+          "y2": 306,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 340,
+          "x2": 900,
+          "y2": 470,
+          "dash": true,
+          "color": "#7f7f7f"
+        }
+      ]
+    },
+    {
+      "title": "D-015 — CANALIZACIONES",
+      "order": 15,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "FILOSOFÍA DE CANALIZACIÓN — SEGREGACIÓN DE CIRCUITOS",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "CONDUCTOS INDEPENDIENTES PARA POTENCIA, CONTROL Y SEÑAL (§4.3 / AEA 90364-5)"
+        },
+        {
+          "x": 75,
+          "y": 118,
+          "text": "CAÑO 1 — CIRCUITO DE CONTINUA (POTENCIA)"
+        },
+        {
+          "x": 75,
+          "y": 140,
+          "text": "2 × H1Z2Z2-K 6 mm² (+ / − DEL STRING) + PE 6 mm² · PVC PESADO Ø 20 mm IRAM 2206-3 (§4.1.3 / §4.2.4 / §4.3.3)",
+          "size": 8
+        },
+        {
+          "x": 75,
+          "y": 162,
+          "text": "TRAMO: PANELES → TABLERO DE CONTINUA",
+          "size": 8
+        },
+        {
+          "x": 75,
+          "y": 238,
+          "text": "CAÑO 2 — CONTROL / ACCIONAMIENTO 24 VDC"
+        },
+        {
+          "x": 75,
+          "y": 260,
+          "text": "MULTIPOLAR APANTALLADO 1,5 mm² (IRAM 2183) + PE 2,5 mm² (§4.1.5)",
+          "size": 8
+        },
+        {
+          "x": 75,
+          "y": 282,
+          "text": "TRAMO: FUENTE → F-ELEV / F-AZ → ACTUADORES SVH7",
+          "size": 8
+        },
+        {
+          "x": 75,
+          "y": 358,
+          "text": "CAÑO 3 — SEÑAL / COMUNICACIÓN"
+        },
+        {
+          "x": 75,
+          "y": 380,
+          "text": "PAR APANTALLADO RS485 2 × 0,22 mm + SEÑALES ANALÓGICAS AI0–AI2 (§2.5.1)",
+          "size": 8
+        },
+        {
+          "x": 75,
+          "y": 402,
+          "text": "TRAMO: SENSORES / GATEWAY → GABINETE CTRL-01",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 470,
+          "text": "SEGREGACIÓN POTENCIA / CONTROL / SEÑAL EN CONDUCTOS INDEPENDIENTES PARA REDUCIR INTERFERENCIAS (§4.3.3)"
+        },
+        {
+          "x": 60,
+          "y": 492,
+          "text": "FACTOR DE RELLENO MÁXIMO 35 % DE LA SECCIÓN INTERNA PARA ≥ 3 CONDUCTORES (§4.3.1)"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 110,
+          "x2": 960,
+          "y2": 200,
+          "fill": "#e8f5e9",
+          "color": "#1e7d32",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 230,
+          "x2": 960,
+          "y2": 320,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 350,
+          "x2": 960,
+          "y2": 440,
+          "fill": "#fdf3e3",
+          "color": "#b26a00",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-016 — BORNERAS E INTERFACES",
+      "order": 16,
+      "elements": [
+        {
+          "id": "TBDC0",
+          "type": "dc_terminal",
+          "x": 110,
+          "y": 200,
+          "label": "X1+"
+        },
+        {
+          "id": "TBDC1",
+          "type": "dc_terminal",
+          "x": 190,
+          "y": 200,
+          "label": "X2−"
+        },
+        {
+          "id": "TBDC2",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 200,
+          "label": "PE"
+        },
+        {
+          "id": "TBCI0",
+          "type": "dc_terminal",
+          "x": 500,
+          "y": 200,
+          "label": "+24V"
+        },
+        {
+          "id": "TBCI1",
+          "type": "dc_terminal",
+          "x": 545,
+          "y": 200,
+          "label": "GND"
+        },
+        {
+          "id": "TBCI2",
+          "type": "dc_terminal",
+          "x": 590,
+          "y": 200,
+          "label": "I0.0"
+        },
+        {
+          "id": "TBCI3",
+          "type": "dc_terminal",
+          "x": 635,
+          "y": 200,
+          "label": "I0.1"
+        },
+        {
+          "id": "TBCI4",
+          "type": "dc_terminal",
+          "x": 680,
+          "y": 200,
+          "label": "I0.2"
+        },
+        {
+          "id": "TBCI5",
+          "type": "dc_terminal",
+          "x": 725,
+          "y": 200,
+          "label": "I0.3"
+        },
+        {
+          "id": "TBCI6",
+          "type": "dc_terminal",
+          "x": 770,
+          "y": 200,
+          "label": "AI0"
+        },
+        {
+          "id": "TBCI7",
+          "type": "dc_terminal",
+          "x": 815,
+          "y": 200,
+          "label": "AI1"
+        },
+        {
+          "id": "TBCI8",
+          "type": "dc_terminal",
+          "x": 860,
+          "y": 200,
+          "label": "AI2"
+        },
+        {
+          "id": "TBCO0",
+          "type": "dc_terminal",
+          "x": 500,
+          "y": 350,
+          "label": "Q0.0"
+        },
+        {
+          "id": "TBCO1",
+          "type": "dc_terminal",
+          "x": 560,
+          "y": 350,
+          "label": "Q0.1"
+        },
+        {
+          "id": "TBCO2",
+          "type": "dc_terminal",
+          "x": 620,
+          "y": 350,
+          "label": "Q0.2"
+        },
+        {
+          "id": "TBCO3",
+          "type": "dc_terminal",
+          "x": 680,
+          "y": 350,
+          "label": "Q0.3"
+        },
+        {
+          "id": "TBRS0",
+          "type": "dc_terminal",
+          "x": 110,
+          "y": 350,
+          "label": "A"
+        },
+        {
+          "id": "TBRS1",
+          "type": "dc_terminal",
+          "x": 190,
+          "y": 350,
+          "label": "B"
+        },
+        {
+          "id": "TBRS2",
+          "type": "dc_terminal",
+          "x": 270,
+          "y": 350,
+          "label": "SH"
+        }
+      ],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "BORNERAS E INTERFACES DEL MÓDULO",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "ETIQUETAS POR SEÑAL / FUNCIÓN — VER D-002 / D-004 / D-013"
+        },
+        {
+          "x": 70,
+          "y": 108,
+          "text": "TB-DC — BORNERA DE CONTINUA",
+          "size": 10
+        },
+        {
+          "x": 70,
+          "y": 225,
+          "text": "STRING (D-003) · PROTECCIÓN (D-004) · PLANTA (D-017)",
+          "size": 8
+        },
+        {
+          "x": 470,
+          "y": 108,
+          "text": "TB-CTRL — ENTRADAS (SENSORES / ANALÓGICAS)",
+          "size": 10
+        },
+        {
+          "x": 470,
+          "y": 225,
+          "text": "FC NPN I0.0–I0.3 (D-006/D-007/D-008) · AI0–AI2 (D-009/§4.8.2)",
+          "size": 8
+        },
+        {
+          "x": 470,
+          "y": 288,
+          "text": "TB-CTRL — SALIDAS A ACTUADORES (DESDE F-ELEV / F-AZ)",
+          "size": 10
+        },
+        {
+          "x": 470,
+          "y": 375,
+          "text": "→ M-ELEV / M-AZ (SVH7) — VER D-005/D-006/D-007",
+          "size": 8
+        },
+        {
+          "x": 70,
+          "y": 288,
+          "text": "TB-RS485 — COMUNICACIÓN",
+          "size": 10
+        },
+        {
+          "x": 70,
+          "y": 375,
+          "text": "BUS 2 × 0,22 mm APANTALLADO — VER D-013",
+          "size": 8
+        },
+        {
+          "x": 60,
+          "y": 430,
+          "text": "NUMERACIÓN FÍSICA DE TERMINALES DEL DISPOSITIVO: NO DOCUMENTADA — PENDIENTE DE VERIFICACIÓN (SEÑALES SEGÚN §2.5.1 / §4.8)"
+        },
+        {
+          "x": 60,
+          "y": 452,
+          "text": "LAS ETIQUETAS INDICAN SEÑAL / FUNCIÓN, NO NÚMEROS DE BORNE"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 100,
+          "x2": 400,
+          "y2": 250,
+          "color": "#1e7d32",
+          "width": 1.5
+        },
+        {
+          "x1": 460,
+          "y1": 100,
+          "x2": 960,
+          "y2": 250,
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 460,
+          "y1": 280,
+          "x2": 960,
+          "y2": 400,
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 280,
+          "x2": 400,
+          "y2": 400,
+          "color": "#b26a00",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-017 — INTERFAZ CON PLANTA",
+      "order": 17,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "INTERFAZ DEL MÓDULO CON EL SISTEMA DE NIVEL SUPERIOR",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "QUÉ SALE DEL MÓDULO Y QUÉ REQUIERE INGENIERÍA DE PLANTA"
+        },
+        {
+          "x": 68,
+          "y": 107,
+          "text": "MÓDULO TIPO — ESQUEMAS D-002 A D-016"
+        },
+        {
+          "x": 68,
+          "y": 207,
+          "text": "SALIDA DC PROTEGIDA — TB-DC: X1+ / X2− / PE (D-004 / D-016)"
+        },
+        {
+          "x": 230,
+          "y": 254,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 70,
+          "y": 280,
+          "text": "INTERFAZ DE PLANTA — RED DE COLECCIÓN DC"
+        },
+        {
+          "x": 70,
+          "y": 300,
+          "text": "FUERA DEL ALCANCE DE LA DOCUMENTACIÓN (§4.1)",
+          "size": 8
+        },
+        {
+          "x": 70,
+          "y": 320,
+          "text": "REQUIERE INGENIERÍA DE PLANTA",
+          "size": 8
+        },
+        {
+          "x": 468,
+          "y": 207,
+          "text": "RS485 — TB-RS485: A / B / SH (D-013 / D-016)"
+        },
+        {
+          "x": 630,
+          "y": 254,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 470,
+          "y": 280,
+          "text": "INTERFAZ DE COMUNICACIÓN — RED DE PLANTA"
+        },
+        {
+          "x": 470,
+          "y": 300,
+          "text": "NO DISEÑADA EN LA DOCUMENTACIÓN (§2.4.1)",
+          "size": 8
+        },
+        {
+          "x": 470,
+          "y": 320,
+          "text": "CONCENTRADORES USR-DR404: ~19 RAMALES DE 32 PARA 588 MÓDULOS (CÁLCULO DERIVADO)",
+          "size": 8
+        },
+        {
+          "x": 68,
+          "y": 387,
+          "text": "TIERRA LOCAL TT — 8 JABALINAS (D-014)"
+        },
+        {
+          "x": 230,
+          "y": 434,
+          "text": "▼",
+          "size": 10
+        },
+        {
+          "x": 70,
+          "y": 460,
+          "text": "EQUIPOTENCIALIDAD CON MALLA GENERAL"
+        },
+        {
+          "x": 70,
+          "y": 480,
+          "text": "FUERA DEL ALCANCE — IEEE 80 (§4.2.4)",
+          "size": 8
+        },
+        {
+          "x": 460,
+          "y": 380,
+          "text": "LO QUE SALE DEL MÓDULO: DC PROTEGIDO (332,8 / 402,2 V) · BUS RS485 · TIERRA LOCAL"
+        },
+        {
+          "x": 460,
+          "y": 404,
+          "text": "LA CONEXIÓN ENTRE MÓDULOS (COLECCIÓN DC Y RED DE COMUNICACIÓN) CORRESPONDE A LA ETAPA DE INGENIERÍA DE PLANTA",
+          "size": 8
+        },
+        {
+          "x": 460,
+          "y": 428,
+          "text": "ESTE PLANO DELIMITA EL ALCANCE: MÓDULO TIPO (D-002…D-016) ↔ SISTEMA DE PLANTA",
+          "size": 8
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 100,
+          "x2": 400,
+          "y2": 160,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 200,
+          "x2": 400,
+          "y2": 250,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 270,
+          "x2": 400,
+          "y2": 350,
+          "dash": true,
+          "color": "#c0392b",
+          "width": 1.5
+        },
+        {
+          "x1": 460,
+          "y1": 200,
+          "x2": 800,
+          "y2": 250,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 460,
+          "y1": 270,
+          "x2": 800,
+          "y2": 350,
+          "dash": true,
+          "color": "#c0392b",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 380,
+          "x2": 400,
+          "y2": 430,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 450,
+          "x2": 400,
+          "y2": 520,
+          "dash": true,
+          "color": "#c0392b",
+          "width": 1.5
+        }
+      ]
+    },
+    {
+      "title": "D-018 — MÓDULO TIPO × 588",
+      "order": 18,
+      "elements": [],
+      "connections": [],
+      "texts": [
+        {
+          "x": 60,
+          "y": 36,
+          "text": "MÓDULO TIPO × 588 — INSTANCIAS DEL MÓDULO TIPO",
+          "size": 13
+        },
+        {
+          "x": 60,
+          "y": 60,
+          "text": "CADA MÓDULO (M-001 … M-588) SE CONSTRUYE CON LOS ESQUEMAS D-002 A D-017 — NO SE DUPLICAN PLANOS"
+        },
+        {
+          "x": 68,
+          "y": 127,
+          "text": "M-001 … M-028"
+        },
+        {
+          "x": 68,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 203,
+          "y": 127,
+          "text": "M-029 … M-056"
+        },
+        {
+          "x": 203,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 338,
+          "y": 127,
+          "text": "M-057 … M-084"
+        },
+        {
+          "x": 338,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 473,
+          "y": 127,
+          "text": "M-085 … M-112"
+        },
+        {
+          "x": 473,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 608,
+          "y": 127,
+          "text": "M-113 … M-140"
+        },
+        {
+          "x": 608,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 743,
+          "y": 127,
+          "text": "M-141 … M-168"
+        },
+        {
+          "x": 743,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 878,
+          "y": 127,
+          "text": "M-169 … M-196"
+        },
+        {
+          "x": 878,
+          "y": 146,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 68,
+          "y": 217,
+          "text": "M-197 … M-224"
+        },
+        {
+          "x": 68,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 203,
+          "y": 217,
+          "text": "M-225 … M-252"
+        },
+        {
+          "x": 203,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 338,
+          "y": 217,
+          "text": "M-253 … M-280"
+        },
+        {
+          "x": 338,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 473,
+          "y": 217,
+          "text": "M-281 … M-308"
+        },
+        {
+          "x": 473,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 608,
+          "y": 217,
+          "text": "M-309 … M-336"
+        },
+        {
+          "x": 608,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 743,
+          "y": 217,
+          "text": "M-337 … M-364"
+        },
+        {
+          "x": 743,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 878,
+          "y": 217,
+          "text": "M-365 … M-392"
+        },
+        {
+          "x": 878,
+          "y": 236,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 68,
+          "y": 307,
+          "text": "M-393 … M-420"
+        },
+        {
+          "x": 68,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 203,
+          "y": 307,
+          "text": "M-421 … M-448"
+        },
+        {
+          "x": 203,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 338,
+          "y": 307,
+          "text": "M-449 … M-476"
+        },
+        {
+          "x": 338,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 473,
+          "y": 307,
+          "text": "M-477 … M-504"
+        },
+        {
+          "x": 473,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 608,
+          "y": 307,
+          "text": "M-505 … M-532"
+        },
+        {
+          "x": 608,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 743,
+          "y": 307,
+          "text": "M-533 … M-560"
+        },
+        {
+          "x": 743,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 878,
+          "y": 307,
+          "text": "M-561 … M-588"
+        },
+        {
+          "x": 878,
+          "y": 326,
+          "text": "D-002…D-017"
+        },
+        {
+          "x": 60,
+          "y": 420,
+          "text": "TOTAL: 588 MÓDULOS · 21 GRUPOS × 28 INSTANCIAS DEL MÓDULO TIPO"
+        },
+        {
+          "x": 60,
+          "y": 442,
+          "text": "POTENCIA: 588 × 8 × 650 Wp = 3.057.600 Wp ≈ 3,06 MWp (CÁLCULO DERIVADO DEL REQUISITO)"
+        },
+        {
+          "x": 60,
+          "y": 464,
+          "text": "REFERENCIA CRUZADA: D-001 (ÍNDICE) · D-002 (MÓDULO TIPO) · D-017 (INTERFAZ)"
+        },
+        {
+          "x": 60,
+          "y": 486,
+          "text": "EL DISEÑO DEL MÓDULO TIPO ES EL DE D-002 A D-016 · CUALQUIER INSTANCIA HEREDA LA MISMA INGENIERÍA"
+        }
+      ],
+      "shapes": [
+        {
+          "x1": 60,
+          "y1": 120,
+          "x2": 185,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 195,
+          "y1": 120,
+          "x2": 320,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 330,
+          "y1": 120,
+          "x2": 455,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 465,
+          "y1": 120,
+          "x2": 590,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 600,
+          "y1": 120,
+          "x2": 725,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 735,
+          "y1": 120,
+          "x2": 860,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 870,
+          "y1": 120,
+          "x2": 995,
+          "y2": 190,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 210,
+          "x2": 185,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 195,
+          "y1": 210,
+          "x2": 320,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 330,
+          "y1": 210,
+          "x2": 455,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 465,
+          "y1": 210,
+          "x2": 590,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 600,
+          "y1": 210,
+          "x2": 725,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 735,
+          "y1": 210,
+          "x2": 860,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 870,
+          "y1": 210,
+          "x2": 995,
+          "y2": 280,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 60,
+          "y1": 300,
+          "x2": 185,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 195,
+          "y1": 300,
+          "x2": 320,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 330,
+          "y1": 300,
+          "x2": 455,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 465,
+          "y1": 300,
+          "x2": 590,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 600,
+          "y1": 300,
+          "x2": 725,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 735,
+          "y1": 300,
+          "x2": 860,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        },
+        {
+          "x1": 870,
+          "y1": 300,
+          "x2": 995,
+          "y2": 370,
+          "fill": "#e8f0f8",
+          "color": "#1f4e79",
+          "width": 1.5
+        }
+      ]
+    }
+  ]
+}
