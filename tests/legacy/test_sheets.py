@@ -4,8 +4,9 @@ import sys
 import unittest
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BASE))
+BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
+sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
 from generator import project as project_mod                # noqa: E402
 from generator.builders import build_d002, build_d003       # noqa: E402
@@ -13,7 +14,7 @@ from generator.elements import SymbolCatalog                # noqa: E402
 from generator.model import ProjectSpec, load_spec          # noqa: E402
 from generator.validate import validate_spec                # noqa: E402
 
-CATALOG_PATH = BASE / "templates" / "symbol_catalog.json"
+CATALOG_PATH = BASE / "resources" / "symbol_catalog.json"
 
 
 class TestShapes(unittest.TestCase):

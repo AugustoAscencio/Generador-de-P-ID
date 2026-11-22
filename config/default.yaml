@@ -1,0 +1,72 @@
+# =============================================================================
+# qetgen — Configuración central del motor
+# =============================================================================
+# Un único archivo gobierna hoja, márgenes, cuadrícula, tipografía, cableado
+# y estilos. Todo lo que aquí se adjusta es reversible sin tocar código.
+#
+#   qetgen build spec.json --config config/default.yaml
+#   qetgen validate spec.json --config config/default.yaml
+#
+# Documentación: docs/CONFIGURACION.md
+# =============================================================================
+
+sheet:
+  # Preset de hoja (tamaño de la rejilla de QElectroTech).
+  #   A3_17x8  1020×640 px (58 de 129 folios reales)  ← estándar del proyecto
+  #   A3_18x9  1080×720 px (51 de 129 folios reales)
+  #   A4_11x7   660×560 px
+  #   A4_10x5   600×400 px
+  #   A2_24x11 1440×880 px
+  #   A1_39x20 2340×1600 px
+  #   A0_42x21 2520×1680 px
+  format: A3_17x8
+  # Margen interior de seguridad: ningún símbolo, texto ni cable puede
+  # invadirlo. El cajetín inferior está excluido por definición.
+  margin: 8
+  # Banda inferior reservada al cajetín (evidencia: height = rows*rowsize + 20).
+  titleblock_height: 20
+  show_grid: true
+
+layout:
+  # Paso de la cuadrícula de alineación (px). 10 px ≈ 1/6 de celda QET (60).
+  grid_size: 10
+  snap_to_grid: true
+  # Separación mínima entre dos cables paralelos (px).
+  min_separation: 12
+  # Respiro mínimo alrededor de una etiqueta (TAG, calibre, descripción).
+  label_margin: 4
+  # Número de posiciones candidatas a probar por etiqueta (N/E/S/O…).
+  label_max_candidates: 8
+  # Si es true, los elementos con locked:true NO se mueven.
+  respect_locked: true
+  # Calcular rutas ortogonales con A* (penalización de giros y cruces).
+  route_manhattan: true
+  turn_penalty: 20
+  crossing_penalty: 40
+  max_search_nodes: 60000
+
+typography:
+  font_family: Sans Serif
+  default_size: 9
+  min_size: 5
+  max_size: 24
+  # Ancho medio de carácter como fracción del tamaño de fuente (estimación
+  # métrica para el cálculo de cajas de texto).
+  char_width_ratio: 0.58
+  line_height_ratio: 1.25
+
+styles:
+  block_color: "#1f4e79"
+  block_fill: "#e8f0f8"
+  block_width: 1.5
+  table_color: "#7f7f7f"
+  warning_color: "#b26a00"
+  error_color: "#c0392b"
+  wire_color: "#000000"
+  background: "#ffffff"
+
+sources:
+  # Biblioteca de elementos de QElectroTech 0.100.0 (símbolos reales).
+  library_path: "C:\\Program Files\\QElectroTech\\elements"
+  # Catálogo lógico → .elmt real.
+  catalog_path: "resources/symbol_catalog.json"

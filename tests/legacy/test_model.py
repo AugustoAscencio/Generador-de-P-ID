@@ -4,8 +4,9 @@ import sys
 import unittest
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BASE))
+BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
+sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
 from generator.model import SpecError, load_spec  # noqa: E402
 
