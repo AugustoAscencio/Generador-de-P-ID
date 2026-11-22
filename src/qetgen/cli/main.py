@@ -511,6 +511,22 @@ def cmd_doctor(args) -> int:
     return EXIT_OK if not errors else EXIT_VALIDATION
 
 
+def cmd_serve(args) -> int:
+    """Arranca el servidor MCP por stdio."""
+    from ..mcp_server.main import main as serve_main
+
+    argv: list[str] = []
+    if getattr(args, "config", None):
+        argv += ["--config", args.config]
+    if getattr(args, "catalog", None):
+        argv += ["--catalog", args.catalog]
+    if getattr(args, "library", None):
+        argv += ["--library", args.library]
+    if getattr(args, "fallback", False):
+        argv.append("--fallback")
+    return serve_main(argv)
+
+
 # --------------------------------------------------------------------------
 # Parser
 # --------------------------------------------------------------------------
@@ -597,6 +613,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_doc.add_argument("--json", action="store_true", help="Salida en JSON")
     common(p_doc)
     p_doc.set_defaults(func=cmd_doctor)
+
+    p_srv = sub.add_parser("serve", help="Arranca el servidor MCP (stdio)")
+    p_srv.add_argument("--fallback", action="store_true",
+                       help="Fuerza el servidor propio (sin el SDK oficial)")
+    common(p_srv)
+    p_srv.set_defaults(func=cmd_serve)
 
     return parser
 

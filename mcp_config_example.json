@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "qetgen": {
+      "command": "python",
+      "args": ["-X", "utf8", "-m", "qetgen.cli", "serve"],
+      "env": {
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
+}

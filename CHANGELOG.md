@@ -8,9 +8,66 @@ Todas las versiones relevantes del proyecto. El formato sigue
 
 ## [No publicado] — trabajo en curso
 
+---
+
+## [1.0.0] — 2026-11-22
+
 ### Añadido
 
-- Servidor MCP universal (`mcp_server/`).
+- **Servidor MCP universal** (`src/qetgen/mcp_server/`): expone el motor como
+  herramientas MCP por `stdio`.
+  - **8 herramientas atómicas y tipadas**: `crear_diagrama`, `listar_simbolos`,
+    `agregar_elemento`, `conectar_elementos`, `ejecutar_auto_layout`,
+    `validar_estetica`, `obtener_resumen_canvas`, `exportar_archivo`.
+    El `inputSchema` de cada una se **genera del modelo Pydantic** que la
+    valida: una sola fuente de verdad para los tipos.
+  - **4 recursos**: `qetgen://catalogo`, `qetgen://config`,
+    `qetgen://formatos-hoja`, `qetgen://proyecto`.
+  - **2 prompts**: `system_prompt` (contrato de trabajo de la IA) y
+    `revisar_plano` (flujo de revisión accionable).
+  - **Dos transportes, una interfaz**: con el **SDK oficial** (`mcp>=1.0`) o
+    con un **fallback propio** (JSON-RPC 2.0 sobre JSON Lines) si el SDK no
+    está instalado. Ambos delegan en el mismo dispatcher.
+  - Errores **accionables** (nunca `KeyError` desnudo) y resultados con
+    `isError` + `structuredContent`.
+- **`qetgen serve`**: arranca el servidor MCP (`--fallback` fuerza el
+  transporte propio).
+- **`mcp_config_example.json`**: configuración de cliente lista para copiar.
+- **Documentación nueva**:
+  - `docs/CONFIGURACION.md`: **cada clave** de la configuración central, con
+    su calibración y su evidencia.
+  - `docs/MCP.md`: guía completa del servidor MCP (herramientas, recursos,
+    prompts, diagnóstico).
+  - `README.md`: reescrito para v1.0.0 (arquitectura, referencia de la CLI,
+    motor, MCP, caso FV 588, evidencia).
+  - `CONTRIBUTING.md`: entorno, reglas, flujo de trabajo, estilo y proceso de
+    publicación.
+- **`LICENSE`**: MIT.
+- **CI de GitHub Actions** (`.github/workflows/ci.yml`): Python 3.10 → 3.13 en
+  Ubuntu y Windows, `unittest` + `ruff`, empaquetado (`build` + `twine
+  check`) y verificación de los enlaces de la documentación.
+- `qetgen` instalado como comando (`pip install -e .` → `qetgen …`).
+
+### Cambiado
+
+- `SKILL.md` y `.opencode/skill/qet-generator/SKILL.md` reescritos para la
+  arquitectura actual: rutas `src/qetgen/`, CLI `qetgen`, configuración
+  central, motor de layout, códigos de diagnóstico y servidor MCP.
+- `AGENTS.md` actualizado al estado v1.0.0, con los defectos **reales**
+  detectados en el caso FV 588 registrados (8 textos desbordados, 2
+  terminales reutilizadas).
+- `docs/ARCHITECTURE.md`: `layout/` incluye `placement.py` y `pipeline.py`;
+  `cli/` y `mcp_server/` documentados con sus subcomandos.
+
+### Verificación
+
+- **221 tests** en verde (55 heredados de la v0.1 + 166 nuevos), incluidos
+  **30 tests del protocolo MCP** (dispatcher JSON-RPC, recursos, prompts y
+  un proceso real `qetgen serve --fallback` de extremo a extremo).
+- Sonda MCP de extremo a extremo: **17/17 respuestas** correctas y un `.qet`
+  válido de 10 469 bytes exportado desde el servidor.
+- El `.qet` de FV 588 sigue siendo **estructuralmente idéntico** al de la
+  v0.4.0: el servidor MCP y el motor geométrico no alteran el entregable.
 
 ---
 
