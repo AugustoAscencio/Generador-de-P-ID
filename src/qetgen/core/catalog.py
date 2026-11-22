@@ -66,6 +66,36 @@ class SymbolDefinition:
     def terminal_count(self) -> int:
         return len(self.terminals)
 
+    @property
+    def ink_bounds(self) -> BBox:
+        """Caja de la **tinta real** del símbolo (primitivas de ``<description>``).
+
+        Es la caja que se usa para detectar colisiones: lo que se pisa
+        visualmente es la tinta, no el espacio en blanco que el diseñador del
+        símbolo reservó alrededor. Si el símbolo no tiene primitivas, se cae
+        a :attr:`placement_bounds`.
+        """
+        if self.bounds.is_empty():
+            return self.placement_bounds
+        return self.bounds
+
+    @property
+    def placement_bounds(self) -> BBox:
+        """Caja de colocación del símbolo, **relativa al hotspot**.
+
+        Es la caja declarada por el ``.elmt`` (``width`` × ``height`` con el
+        hotspot en ``hotspot_x``/``hotspot_y``). Evidencia medida sobre los 14
+        símbolos del catálogo: las primitivas reales de ``<description>``
+        quedan **siempre dentro** de esta caja, por lo que es una envolvente
+        conservadora y verificable (test ``test_primitivas_dentro_del_slot``).
+        """
+        return BBox(
+            -self.hotspot_x,
+            -self.hotspot_y,
+            self.width - self.hotspot_x,
+            self.height - self.hotspot_y,
+        )
+
     def port(self, index: int) -> Port:
         """Terminal por índice; lanza ``IndexError`` si no existe."""
         return self.terminals[index]

@@ -38,6 +38,13 @@ class SheetConfig(_Section):
     margin: float = Field(default=8.0, ge=0, description="Margen interior de seguridad (px)")
     titleblock_height: float = Field(default=20.0, ge=0,
                                      description="Banda inferior reservada al cajetín (px)")
+    edge_tolerance: float = Field(
+        default=36.0, ge=0,
+        description=("Tolerancia de borde (px). Calibrada con los 416 textos "
+                     "reales de 22 proyectos de QET 0.100.0: 10 de ellos "
+                     "(2,40 %) se saldrían del folio con la métrica estimada, "
+                     "y 9 de esos 10 lo hacen en 36 px o menos. Un desborde "
+                     "mayor se considera error."))
     show_grid: bool = Field(default=True, description="Mostrar la rejilla de QET")
 
     @field_validator("format")
@@ -85,6 +92,9 @@ class TypographyConfig(_Section):
         description="Ancho medio de carácter como fracción del tamaño de fuente")
     line_height_ratio: float = Field(
         default=1.25, gt=0, description="Alto de línea como fracción del tamaño de fuente")
+    px_per_pt: float = Field(
+        default=4.0 / 3.0, gt=0,
+        description="Píxeles por punto tipográfico (96 dpi = 4/3) para el cálculo de cajas")
 
 
 class StyleConfig(_Section):

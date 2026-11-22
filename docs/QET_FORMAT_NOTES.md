@@ -262,5 +262,71 @@ Análisis de proyectos reales multi-folio (`industrial.qet` 50 folios,
   (los conductores los referencian; un uuid duplicado rompería el enlace).
 
 ---
+## 12. Geometría del folio y calibración del motor [CONFIRMADO — 2026-11-22]
+
+> Sonda reproducible: `python -X utf8 tools/measure_sheet_geometry.py`
+> (lee los 22 proyectos de ejemplo instalados de QElectroTech 0.100.0;
+> 129 folios, 3525 elementos, 416 textos).
+
+### 12.1 Atributos del folio
+
+| Atributo | ¿Existe en `<diagram>`? | Valor observado |
+|---|---|---|
+| `cols`, `rows` | sí (129/129) | rejilla visible (`displaycols`/`displayrows`) |
+| `colsize`, `rowsize` | sí (129/129) | tamaño de celda en px |
+| `height` | sí (129/129) | `rows * rowsize + 20` — **exacto en 129/129** |
+| `width` | **NO** (0/129) | se **deriva** como `cols * colsize` |
+| `displayAt` | 128/129 | `"bottom"` → banda de cajetín inferior |
+
+- El ancho **no se serializa**: QET lo calcula a partir de la rejilla. Por eso
+  el generador escribe `cols`/`colsize` y deriva `width` en el motor, en vez
+  de inventar un atributo.
+- La banda inferior de **20 px** es el cajetín (`displayAt="bottom"`). El área
+  de dibujo útil es `cols*colsize × rows*rowsize`; el folio completo añade
+  esa banda.
+
+### 12.2 Tamaños de folio reales (12 distintos)
+
+| Celdas | Celda (px) | Folio útil (px) | Folios reales |
+|---|---|---|---|
+| 17×8 | 60×80 | 1020×640 | 58 |
+| 18×9 | 60×80 | 1080×720 | 51 |
+| 15×6 | 50×80 | 750×480 | 6 |
+| 10×5 | 60×80 | 600×400 | 5 |
+| 39×20 | 60×80 | 2340×1600 | 2 |
+| 11×7 | 60×80 | 660×560 | 1 |
+| 19×10 | 60×80 | 1140×800 | 1 |
+| 24×11 | 60×80 | 1440×880 | 1 |
+| 20×11 | 60×80 | 1200×880 | 1 |
+| 42×21 | 60×80 | 2520×1680 | 1 |
+| 18×3 | 70×5 | 1260×15 | 1 |
+| 17×3 | 60×5 | 1020×15 | 1 |
+
+### 12.3 Qué contenido cabe de verdad
+
+- **3486 de 3525 elementos (98,9 %)** caen dentro del área de dibujo útil.
+- **Ningún elemento rebasa el borde derecho**: el máximo `x − cols*colsize` es
+  exactamente **0 px** (el borde derecho está en `cols*colsize`).
+- En vertical, algunos elementos reales caen en la banda del cajetín (hasta
+  95 px por debajo del área útil): QET lo permite, el motor lo marca como
+  `IN_TITLEBLOCK`.
+- Las **416 anclas de texto** están el 100 % dentro del área de dibujo.
+
+### 12.4 Calibración de la métrica tipográfica
+
+El motor estima la caja de un texto con `ancho ≈ caracteres · tamaño · 0,58` y
+`alto ≈ líneas · tamaño · 1,25` (tamaño en puntos, `px_per_pt = 4/3`).
+Contrastado con los 416 textos reales:
+
+- **10 de 416 (2,40 %)** se saldrían del borde derecho con la estimación.
+- **9 de esos 10** lo hacen en **36 px o menos**.
+- El caso extremo (184 px) es un rótulo polaco de 84 caracteres — un texto
+  genuinamente largo, no un error de la métrica.
+
+De ahí la tolerancia adoptada por el motor (`sheet.edge_tolerance = 36 px`):
+por debajo, **aviso**; por encima, **error** (`OUT_OF_SHEET`).
+
+---
+
 *Documento generado en la FASE 2 a partir de evidencia experimental. Actualizar cuando
 la FASE 6 (re-guardado por QET) aporte nuevos datos.*

@@ -25,6 +25,10 @@ sheet:
   margin: 8
   # Banda inferior reservada al cajetín (evidencia: height = rows*rowsize + 20).
   titleblock_height: 20
+  # Tolerancia de borde (px). Calibrada con los 416 textos reales de los 22
+  # proyectos de QET 0.100.0: 10 se saldrían del folio (2,40 %) y 9 de esos
+  # 10 lo hacen en 36 px o menos. Por encima de 36 px -> error.
+  edge_tolerance: 36
   show_grid: true
 
 layout:
@@ -54,6 +58,8 @@ typography:
   # métrica para el cálculo de cajas de texto).
   char_width_ratio: 0.58
   line_height_ratio: 1.25
+  # Píxeles por punto tipográfico (96 dpi = 4/3).
+  px_per_pt: 1.3333333333333333
 
 styles:
   block_color: "#1f4e79"

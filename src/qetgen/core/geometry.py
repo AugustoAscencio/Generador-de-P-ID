@@ -137,4 +137,35 @@ class BBox:
         return (self.x1, self.y1, self.x2, self.y2)
 
 
-__all__ = ["Vec2", "BBox"]
+# --------------------------------------------------------------------------
+# Rotaciones (convención QElectroTech: orientation 0..3 = 0°, 90°, 180°, 270°)
+# --------------------------------------------------------------------------
+
+def rotate_point(x: float, y: float, quarters: int) -> tuple[float, float]:
+    """Rota un punto 90°·``quarters`` **en sentido horario** (Y hacia abajo).
+
+    ``quarters`` se normaliza a 0..3. Con ``(0, -10)`` (norte) y un cuarto de
+    vuelta, el resultado es ``(10, 0)`` (este), que es la rotación que aplica
+    QElectroTech al atributo ``orientation`` de un elemento colocado.
+    """
+    q = int(quarters) % 4
+    for _ in range(q):
+        x, y = -y, x
+    return (x, y)
+
+
+def rotated_bbox(box: "BBox", quarters: int) -> "BBox":
+    """Caja envolvente de ``box`` tras rotarla ``quarters`` cuartos de vuelta.
+
+    Se rotan las cuatro esquinas alrededor del origen y se vuelve a tomar la
+    caja envolvente: el resultado es una AABB, como exige el detector de
+    colisiones.
+    """
+    corners = ((box.x1, box.y1), (box.x2, box.y1),
+               (box.x2, box.y2), (box.x1, box.y2))
+    rotated = [rotate_point(x, y, quarters) for x, y in corners]
+    result = BBox.from_points(rotated)
+    return result if result is not None else box
+
+
+__all__ = ["BBox", "Vec2", "rotate_point", "rotated_bbox"]

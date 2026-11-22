@@ -1,14 +1,17 @@
 """Formatos de hoja (tamaños de folio) y zona segura.
 
 Evidencia (medida sobre los 22 proyectos de ejemplo de QElectroTech 0.100.0,
-129 folios, 2026-11-22):
+129 folios, con ``tools/measure_sheet_geometry.py``):
 
-* ``width = cols * colsize`` — exacto en el 100 % de los folios.
-* ``height = rows * rowsize + 20`` — exacto en **129/129 folios (100 %)**.
-* Los 20 px adicionales son la banda inferiorreserved al cajetín
+* ``<diagram>`` **no guarda el atributo ``width``** (0 de 129 folios lo tienen):
+  el ancho del folio se **deriva** como ``cols * colsize`` [CONFIRMADO].
+* ``height == rows * rowsize + 20`` — exacto en **129/129 folios (100 %)**.
+* Los 20 px adicionales son la banda inferior reservada al cajetín
   (``displayAt="bottom"``).
-* El área de dibujo útil es ``cols*colsize × rows*rowsize``; 105 de 114 folios
-  reales mantienen todos sus elementos dentro de ella (92 %).
+* El área de dibujo útil es ``cols*colsize × rows*rowsize``; 3486 de 3525
+  elementos reales (98,9 %) caen dentro de ella, y **ninguno** rebasa el
+  borde derecho (desbordamiento máximo: 0 px).
+* existen **12 tamaños de folio distintos** en la biblioteca real.
 
 Esta hoja de evidencia es la base normativa de la zona segura que aplica el
 motor de layout y el validador estético.
