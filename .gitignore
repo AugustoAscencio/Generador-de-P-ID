@@ -10,3 +10,10 @@ desktop.ini
 
 # Word temporales
 ~$*.docx
+
+# Documento personal ajeno al proyecto de ingeniería (no versionar)
+entregables/34.docx
+
+# Salidas regenerables de herramientas
+output/*.svg
+output/*.tmp
