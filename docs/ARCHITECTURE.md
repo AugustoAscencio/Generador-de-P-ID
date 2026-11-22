@@ -87,11 +87,13 @@ Esto permite añadir un exportador nuevo (DXF, HTML, PDF) sin tocar el núcleo.
 |---|---|
 | `geometry.py` | Motor: intersección, inflado, recorte, transformación de cajas. |
 | `grid.py` | *Snap-to-grid* configurable (paso en px, alineación por eje). |
+| `placement.py` | Geometría de colocación: caja rotada de cada símbolo, posición y dirección de terminales, cajas de texto y bloque. |
 | `collision.py` | Detección de solapes reales entre símbolos, etiquetas y bloques. |
 | `textmetrics.py` | Estimación métrica del tamaño de un texto (ancho/alto) a partir de fuente, tamaño y contenido. |
 | `labels.py` | Colocación de etiquetas: candidatas N/E/S/O con respiro, elección de la primera libre. |
 | `router.py` | Routing Manhattan con A*: penalización de giros, penalización de cruces, separación mínima entre líneas paralelas. |
-| `autolayout.py` | Reubicación de elementos **respetando `locked: true`**. |
+| `autolayout.py` | Reubicación de elementos **respetando `locked: true`**, sin salirse del folio. |
+| `pipeline.py` | Orquestación (snap → auto-layout → routing) y **informe** de lo movido, lo bloqueado y lo no resuelto. La usan la CLI y el MCP. |
 
 ### 3.3 `exporters/` — las salidas
 
@@ -111,7 +113,9 @@ Un error impide exportar; un aviso deja decidir al usuario o a la IA.
 ### 3.5 `cli/` y `mcp_server/` — las interfaces
 
 * `cli/`: subcomandos `build`, `validate`, `export`, `symbols`, `sheets`, `fv588`,
-  `layout`, `serve`. Salida JSON opcional para integraciones.
+  `layout` (motor: snap, auto-layout, routing, auditoría y previsualización)
+  y `doctor` (diagnóstico del entorno). Salida JSON opcional para
+  integraciones; `serve` (MCP) llega con la v1.0.0.
 * `mcp_server/`: servidor MCP por `stdio` con SDK oficial si está disponible y
   **fallback propio** (JSON-RPC 2.0) si no, para que funcione sin instalar nada.
 

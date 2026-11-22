@@ -70,6 +70,20 @@ class LayoutConfig(_Section):
         default=8, ge=1, le=32, description="Posiciones de etiqueta a probar por componente")
     respect_locked: bool = Field(
         default=True, description="Respetar los elementos con locked=true")
+    column_gap: float = Field(
+        default=70.0, ge=0,
+        description="Separación horizontal entre columnas del auto-layout (px)")
+    row_gap: float = Field(
+        default=35.0, ge=0,
+        description="Separación vertical entre elementos del auto-layout (px)")
+    clearance: float = Field(
+        default=18.0, ge=0,
+        description="Holgura mínima alrededor de cada símbolo al reubicar (px)")
+    route_clearance: float = Field(
+        default=6.0, ge=0,
+        description=("Holgura alrededor de cada símbolo al trazar cables (px). "
+                     "Menor que 'clearance': el cable debe poder salir de la "
+                     "terminal sin que la holgura se la trague."))
     route_manhattan: bool = Field(
         default=True, description="Calcular rutas ortogonales (A* con penalización)")
     turn_penalty: float = Field(

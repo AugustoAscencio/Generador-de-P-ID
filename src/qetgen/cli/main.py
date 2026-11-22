@@ -215,6 +215,303 @@ def cmd_fv588(args) -> int:
 
 
 # --------------------------------------------------------------------------
+# Motor de layout y diagnóstico del entorno
+# --------------------------------------------------------------------------
+
+def _load_config(args):
+    """Carga la configuración central (YAML/JSON) o la de por defecto."""
+    from ..config import default_config_path, load_config
+
+    path = getattr(args, "config", None) or default_config_path()
+    return load_config(path), path
+
+
+def cmd_layout(args) -> int:
+    """Ejecuta el motor de layout y audita la estética del proyecto.
+
+    Por defecto **no escribe nada**: informa de lo que haría el motor
+    (*simulación*). Con ``--apply`` persiste el JSON resultante.
+    """
+    from ..layout.pipeline import LayoutOptions, apply_layout
+    from ..validation.aesthetics import validate_aesthetics
+
+    try:
+        project = load_spec(args.input)
+        catalog = _catalog(args)
+        config, config_path = _load_config(args)
+    except (SpecError, CatalogError) as exc:
+        _err(f"ERROR: {exc}")
+        return EXIT_INPUT
+
+    options = LayoutOptions(
+        snap=args.snap,
+        auto_layout=args.auto_layout,
+        route=not args.no_route,
+        snap_texts=args.snap_texts,
+        respect_locked=not args.ignore_locked,
+        folio=args.folio)
+
+    if args.folio is not None and not 1 <= args.folio <= len(project.folios):
+        _err(f"ERROR: el folio {args.folio} no existe "
+             f"(el proyecto tiene {len(project.folios)} folio/s).")
+        return EXIT_INPUT
+
+    outcome = apply_layout(project, catalog, config, options)
+
+    # -- auditoría estética --------------------------------------------------
+    aesthetic = None
+    if args.check:
+        aesthetic = validate_aesthetics(outcome.project, catalog, config)
+
+    # -- previsualización SVG ------------------------------------------------
+    previews: list[str] = []
+    if args.preview:
+        try:
+            from ..exporters.svg import export_sheet_svg
+            previews = []
+            for index, sheet in enumerate(outcome.project.folios, start=1):
+                if args.folio is not None and index != args.folio:
+                    continue
+                path = Path(args.preview) / f"folio_{index:02d}.svg"
+                export_sheet_svg(sheet, catalog, path)
+                previews.append(str(path))
+        except OSError as exc:
+            _err(f"ERROR escribiendo la previsualización: {exc}")
+            return EXIT_IO
+
+    # -- persistencia --------------------------------------------------------
+    saved = ""
+    if args.apply:
+        output = Path(args.output) if args.output else Path(
+            "output") / f"{Path(args.input).stem}_layout.json"
+        try:
+            save_spec(outcome.project, output)
+        except OSError as exc:
+            _err(f"ERROR escribiendo {output}: {exc}")
+            return EXIT_IO
+        saved = str(output)
+
+    # -- informe -------------------------------------------------------------
+    if args.json:
+        payload = outcome.as_dict()
+        payload["config"] = str(config_path)
+        payload["preview"] = previews
+        payload["saved"] = saved
+        if aesthetic is not None:
+            payload["aesthetics"] = aesthetic.as_dict()
+        _print(json.dumps(payload, ensure_ascii=False, indent=2))
+    else:
+        _print(f"Proyecto: {project.title}")
+        _print(f"Config:   {config_path}")
+        _print(f"Rejilla:  {config.layout.grid_size:g} px "
+               f"(snap {'activo' if config.layout.snap_to_grid else 'desactivado'})")
+        _print("")
+        for folio in outcome.folios:
+            flags = []
+            if folio.snapped:
+                flags.append(f"{folio.snapped} alineado(s)")
+            if folio.moved:
+                flags.append(f"{len(folio.moved)} movido(s)")
+            if folio.kept_locked:
+                flags.append(f"{len(folio.kept_locked)} bloqueado(s)")
+            if folio.routes:
+                flags.append(f"{folio.routes_ok}/{len(folio.routes)} ruta(s) OK")
+            _print(f"Folio {folio.folio:>2} — {folio.title[:40]:<42} "
+                   f"{'; '.join(flags) if flags else 'sin cambios'}")
+            for cid, old, new in folio.moved:
+                _print(f"      movido  {cid:<12} ({old[0]:.0f},{old[1]:.0f}) → "
+                       f"({new[0]:.0f},{new[1]:.0f})")
+            for cid in folio.unresolved:
+                _print(f"      SIN RESOLVER  {cid}: no se encontró hueco libre")
+            for route in folio.routes:
+                if not route.ok:
+                    _print(f"      SIN RUTA  {route.key}: {route.message}")
+        if outcome.locked_count:
+            _print("")
+            _print(f"Modo híbrido: {outcome.locked_count} elemento(s) con "
+                   f"locked:true respetados (no se mueven).")
+        if aesthetic is not None:
+            _print("")
+            _print(aesthetic.summary())
+            for issue in aesthetic.errors:
+                _print(f"  ERROR   [{issue.code}] {issue.folio}: {issue.message}")
+                if issue.suggestion:
+                    _print(f"          → {issue.suggestion}")
+            for issue in aesthetic.warnings[:20]:
+                _print(f"  aviso   [{issue.code}] {issue.folio}: {issue.message}")
+            if len(aesthetic.warnings) > 20:
+                _print(f"          … y {len(aesthetic.warnings) - 20} aviso(s) más")
+        if previews:
+            _print("")
+            _print(f"Previsualización SVG: {len(previews)} archivo(s) en {args.preview}")
+        if saved:
+            _print("")
+            _print(f"JSON guardado: {saved}")
+        elif not args.check and not args.preview:
+            _print("")
+            _print("Nada se ha escrito (simulación). Usa --apply para guardar "
+                   "el resultado.")
+
+    if aesthetic is not None and aesthetic.errors:
+        return EXIT_VALIDATION
+    if outcome.unresolved or outcome.routes_failed:
+        return EXIT_VALIDATION
+    return EXIT_OK
+
+
+def _doctor_check(name: str, ok: bool, detail: str, hint: str = "",
+                  status: str | None = None) -> dict:
+    """Construye un diagnóstico del entorno.
+
+    ``status`` puede fijarse explícitamente (``ok``/``warn``/``error``); si no,
+    se deduce de ``ok`` y de si hay consejo (``hint``).
+    """
+    if status is None:
+        status = "ok" if ok else ("warn" if hint else "error")
+    return {
+        "check": name,
+        "status": status,
+        "detail": detail,
+        "hint": hint,
+    }
+
+
+def cmd_doctor(args) -> int:
+    """Diagnostica el entorno de trabajo (dependencias, QET, catálogo, config)."""
+    from .. import __version__
+    from ..config import default_config_path, load_config
+
+    checks: list[dict] = []
+
+    # -- Python --------------------------------------------------------------
+    version_ok = sys.version_info >= (3, 10)
+    checks.append(_doctor_check(
+        "python", version_ok,
+        f"Python {sys.version.split()[0]}",
+        "qetgen requiere Python 3.10 o superior" if not version_ok else ""))
+
+    # -- dependencias --------------------------------------------------------
+    for module, required, hint in (
+            ("pydantic", True, "pip install pydantic>=2.0"),
+            ("yaml", True, "pip install PyYAML>=6.0"),
+            ("mcp", False, "pip install 'qetgen[mcp]' para usar el servidor MCP")):
+        try:
+            mod = __import__(module)
+            detail = f"{module} {getattr(mod, '__version__', '(sin versión)')}"
+            checks.append(_doctor_check(module, True, detail))
+        except ImportError:
+            checks.append(_doctor_check(
+                module, not required, f"{module} NO instalado",
+                hint if required else hint,
+                status="error" if required else "warn"))
+
+    # -- configuración -------------------------------------------------------
+    config_path = Path(args.config) if args.config else default_config_path()
+    try:
+        config = load_config(config_path)
+        checks.append(_doctor_check(
+            "config", True,
+            f"{config_path} — {config.sheet.format}, rejilla "
+            f"{config.layout.grid_size:g} px"))
+    except (SpecError, OSError) as exc:
+        config = None
+        checks.append(_doctor_check("config", False, f"{config_path}: {exc}",
+                                    "Revise config/default.yaml", status="error"))
+
+    # -- biblioteca de QElectroTech -----------------------------------------
+    library = args.library or (config.sources.library_path if config else None)
+    if library:
+        lib_path = Path(library)
+        elmt_count = len(list(lib_path.rglob("*.elmt"))) if lib_path.is_dir() else 0
+        checks.append(_doctor_check(
+            "qet_library", lib_path.is_dir(),
+            f"{lib_path} — {elmt_count} archivo(s) .elmt"
+            if lib_path.is_dir() else f"{lib_path}: no existe",
+            "" if lib_path.is_dir()
+            else "Instala QElectroTech 0.100.0 o corrige sources.library_path",
+            status="ok" if lib_path.is_dir() else "error"))
+
+    # -- catálogo de símbolos ------------------------------------------------
+    try:
+        catalog = _catalog(args)
+        entries = catalog.entries()
+        missing = []
+        for entry in entries:
+            elmt = str(entry.get("elmt_path", "")).replace("\\", "/").strip("/")
+            if not elmt or not (catalog.library / elmt).is_file():
+                missing.append(entry["type"])
+        checks.append(_doctor_check(
+            "catalog", not missing,
+            f"{len(entries)} símbolo(s) en el catálogo"
+            + (f" — faltan {len(missing)} .elmt: {', '.join(missing[:5])}"
+               if missing else ""),
+            "Revise resources/symbol_catalog.json" if missing else ""))
+    except (CatalogError, OSError) as exc:
+        catalog = None
+        checks.append(_doctor_check("catalog", False, str(exc),
+                                    "Revise resources/symbol_catalog.json"))
+
+    # -- proyecto opcional ---------------------------------------------------
+    project_report = None
+    if getattr(args, "input", None):
+        try:
+            project = load_spec(args.input)
+            structural = validate_project(project, catalog) if catalog else None
+            aesthetic = None
+            if config is not None and catalog is not None:
+                from ..validation.aesthetics import validate_aesthetics
+                aesthetic = validate_aesthetics(project, catalog, config)
+            project_report = {
+                "file": str(args.input),
+                "folios": len(project.folios),
+                "structural_ok": structural.ok if structural else None,
+                "structural_errors": [str(e) for e in structural.errors]
+                if structural else [],
+                "aesthetics": aesthetic.as_dict() if aesthetic else None,
+            }
+            ok = (structural is None or structural.ok) and \
+                 (aesthetic is None or aesthetic.ok)
+            checks.append(_doctor_check(
+                "project", ok,
+                f"{args.input}: {len(project.folios)} folio(s)"
+                + (f" — {aesthetic.summary()}" if aesthetic else ""),
+                "" if ok else "Revise los diagnósticos del proyecto",
+                status="ok" if ok else "error"))
+        except (SpecError, CatalogError) as exc:
+            checks.append(_doctor_check("project", False, str(exc),
+                                        "Revise el JSON de especificación"))
+
+    # -- salida --------------------------------------------------------------
+    errors = [c for c in checks if c["status"] == "error"]
+    warns = [c for c in checks if c["status"] == "warn"]
+
+    if args.json:
+        _print(json.dumps({
+            "version": __version__,
+            "ok": not errors,
+            "checks": checks,
+            "project": project_report,
+        }, ensure_ascii=False, indent=2))
+    else:
+        _print(f"qetgen v{__version__} — diagnóstico del entorno")
+        _print("")
+        for check in checks:
+            icon = {"ok": "OK   ", "warn": "AVISO", "error": "ERROR"}[check["status"]]
+            _print(f"  [{icon}] {check['check']:<14} {check['detail']}")
+            if check["hint"]:
+                _print(f"                    → {check['hint']}")
+        _print("")
+        if errors:
+            _print(f"{len(errors)} problema(s) bloqueante(s).")
+        elif warns:
+            _print(f"Todo operativo ({len(warns)} aviso(s)).")
+        else:
+            _print("Todo operativo.")
+
+    return EXIT_OK if not errors else EXIT_VALIDATION
+
+
+# --------------------------------------------------------------------------
 # Parser
 # --------------------------------------------------------------------------
 
@@ -269,6 +566,37 @@ def build_parser() -> argparse.ArgumentParser:
     p_fv.add_argument("--qet", help="Ruta del .qet de salida")
     common(p_fv)
     p_fv.set_defaults(func=cmd_fv588)
+
+    p_lay = sub.add_parser(
+        "layout", help="Motor de layout: snap, auto-layout, routing y auditoría")
+    p_lay.add_argument("input", help="JSON de especificación")
+    p_lay.add_argument("--snap", action="store_true",
+                       help="Alinea a la rejilla lo que no esté bloqueado")
+    p_lay.add_argument("--snap-texts", action="store_true",
+                       help="Alinea también los textos a la rejilla")
+    p_lay.add_argument("--auto-layout", action="store_true",
+                       help="Reubica los componentes en columnas lógicas")
+    p_lay.add_argument("--no-route", action="store_true",
+                       help="No calcula las rutas Manhattan")
+    p_lay.add_argument("--ignore-locked", action="store_true",
+                       help="Ignora locked:true (desactiva el modo híbrido)")
+    p_lay.add_argument("--folio", type=int, help="Opera solo sobre este folio (1..N)")
+    p_lay.add_argument("--check", action="store_true",
+                       help="Audita la estética y devuelve error si hay defectos")
+    p_lay.add_argument("--preview", metavar="DIR",
+                       help="Escribe un SVG de previsualización por folio")
+    p_lay.add_argument("--apply", action="store_true",
+                       help="Guarda el JSON resultante (por defecto es simulación)")
+    p_lay.add_argument("-o", "--output", help="Ruta del JSON de salida (con --apply)")
+    p_lay.add_argument("--json", action="store_true", help="Salida en JSON")
+    common(p_lay)
+    p_lay.set_defaults(func=cmd_layout)
+
+    p_doc = sub.add_parser("doctor", help="Diagnostica el entorno de trabajo")
+    p_doc.add_argument("input", nargs="?", help="Proyecto a comprobar (opcional)")
+    p_doc.add_argument("--json", action="store_true", help="Salida en JSON")
+    common(p_doc)
+    p_doc.set_defaults(func=cmd_doctor)
 
     return parser
 

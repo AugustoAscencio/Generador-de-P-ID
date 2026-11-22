@@ -24,6 +24,8 @@ from .collision import (Collision, CollisionReport, Occupant, analyze_sheet,
                         detect_collisions, overlap_area, sheet_occupants)
 from .grid import Grid
 from .labels import CANDIDATE_SIDES, PlacedLabel, place_labels
+from .pipeline import (FolioResult, LayoutOptions, LayoutOutcome, apply_layout,
+                       snap_sheet)
 from .placement import (component_bounds, component_ink_bounds,
                         component_label_bounds, label_bounds, shape_bounds,
                         terminal_direction, terminal_position, transform_box)
@@ -34,7 +36,10 @@ __all__ = [
     "CANDIDATE_SIDES",
     "Collision",
     "CollisionReport",
+    "FolioResult",
     "Grid",
+    "LayoutOptions",
+    "LayoutOutcome",
     "LayoutReport",
     "ManhattanRouter",
     "Occupant",
@@ -43,6 +48,7 @@ __all__ = [
     "TextBox",
     "TextMeasurer",
     "analyze_sheet",
+    "apply_layout",
     "auto_layout",
     "component_bounds",
     "component_ink_bounds",
@@ -54,6 +60,7 @@ __all__ = [
     "place_labels",
     "route_sheet",
     "shape_bounds",
+    "snap_sheet",
     "sheet_occupants",
     "terminal_direction",
     "terminal_position",

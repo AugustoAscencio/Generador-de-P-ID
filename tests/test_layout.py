@@ -416,6 +416,36 @@ class TestAutoLayout(unittest.TestCase):
             self.assertEqual(component.x % 10, 0)
             self.assertEqual(component.y % 10, 0)
 
+    def test_una_capa_llena_envuelve_a_otra_columna(self):
+        """Si una capa no cabe en una columna, los símbolos envuelven."""
+        sheet = Sheet(title="F", elements=[
+            Component(id=f"E{i}", type="lamp", x=100 + i, y=100 + i)
+            for i in range(20)
+        ])
+        fmt = get_sheet_format("A3_17x8")
+        updated, report = auto_layout(sheet, self.catalog, Grid(size=10),
+                                      fmt.drawing_area)
+        self.assertEqual(report.unresolved, [])
+        self.assertEqual(len(updated.elements), 20)
+        analysis = analyze_sheet(updated, self.catalog, TextMeasurer())
+        self.assertEqual(analysis.errors, [])
+
+    def test_nada_queda_fuera_del_folio(self):
+        """El auto-layout nunca saca un símbolo del folio."""
+        sheet = Sheet(title="F", elements=[
+            Component(id=f"E{i}", type="lamp", x=100 + i * 30, y=100)
+            for i in range(30)
+        ])
+        fmt = get_sheet_format("A3_17x8")
+        updated, _ = auto_layout(sheet, self.catalog, Grid(size=10),
+                                 fmt.drawing_area)
+        for component in updated.elements:
+            box = component_bounds(component, self.catalog.get("lamp"))
+            self.assertGreaterEqual(box.x1, fmt.drawing_area.x1 - 0.01)
+            self.assertLessEqual(box.x2, fmt.drawing_area.x2 + 0.01)
+            self.assertGreaterEqual(box.y1, fmt.drawing_area.y1 - 0.01)
+            self.assertLessEqual(box.y2, fmt.drawing_area.y2 + 0.01)
+
 
 class TestSvg(unittest.TestCase):
 

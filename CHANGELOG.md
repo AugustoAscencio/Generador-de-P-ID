@@ -14,6 +14,55 @@ Todas las versiones relevantes del proyecto. El formato sigue
 
 ---
 
+## [0.4.0] — 2026-11-22
+
+### Añadido
+
+- **`qetgen layout`**: ejecuta el motor de layout desde la línea de comandos.
+  - `--snap` / `--snap-texts`: alineación a la rejilla de lo no bloqueado.
+  - `--auto-layout`: reubicación en columnas lógicas (modo híbrido).
+  - `--check`: auditoría estética; **código de salida 1** si hay defectos.
+  - `--preview DIR`: previsualización SVG (respeta `--folio`).
+  - `--apply`: persiste el JSON resultante (por defecto es **simulación**).
+  - `--folio N`: opera sobre un solo folio; un folio inexistente es un error
+    claro, no un silencio.
+  - `--json`: salida estructurada para integraciones.
+- **`qetgen doctor`**: diagnóstico del entorno (Python, Pydantic, PyYAML, SDK
+  de MCP, configuración, biblioteca de QElectroTech, catálogo de símbolos y,
+  opcionalmente, el proyecto). Cada comprobación tiene estado
+  (`ok`/`warn`/`error`) y un consejo accionable.
+- **`layout/pipeline.py`**: orquestación (snap → auto-layout → routing) con
+  informe de lo movido, lo bloqueado y lo no resuelto. La comparten la CLI y
+  el servidor MCP.
+- Nuevos parámetros de configuración: `column_gap`, `row_gap`, `clearance`,
+  `route_clearance`.
+
+### Corregido
+
+- El **auto-layout sacaba símbolos del folio** (colocaba un panel en x=1030
+  en un folio de 1020): ahora calcula la caja rotada de cada símbolo, acota
+  la posición del hotspot y **comprime el hueco entre columnas** si no caben.
+- El **ajuste de seguridad rompía la rejilla** (x=25 en vez de 30): el
+  ajuste se hace sobre los múltiplos de la rejilla que caben.
+- Una capa con demasiados elementos se quedaba **sin colocar**: el flujo
+  envuelve a una columna nueva a la derecha.
+- El router **tragaba las terminales** con una holgura de 18 px: la holgura
+  del cableado (`route_clearance`, 6 px) es ahora independiente de la del
+  reubicado (`clearance`, 18 px).
+- Un terminal situado dentro de la caja de un símbolo vecino ya puede
+  **salir** de ella (antes no había ningún nodo de rejilla válido).
+- La previsualización SVG respetaba `--folio` (exportaba los 18 folios).
+
+### Verificación
+
+- **191 tests** en verde (55 heredados de la v0.1 + 136 nuevos).
+- Caso real FV 588: auto-layout de los **111 símbolos sin dejar ninguno sin
+  colocar**, **0 solapes entre símbolos** y **60/60 rutas** trazadas.
+- `qetgen doctor` detecta honestamente los 8 defectos de texto desbordado
+  del proyecto FV 588 (código de salida 1).
+
+---
+
 ## [0.3.0] — 2026-11-22
 
 ### Añadido

@@ -43,6 +43,14 @@ layout:
   label_max_candidates: 8
   # Si es true, los elementos con locked:true NO se mueven.
   respect_locked: true
+  # Separación entre columnas y entre filas del auto-layout (px).
+  column_gap: 70
+  row_gap: 35
+  # Holgura mínima alrededor de cada símbolo al reubicar (px).
+  clearance: 18
+  # Holgura alrededor de cada símbolo al trazar cables (px). Menor que
+  # 'clearance': el cable debe poder salir de la terminal.
+  route_clearance: 6
   # Calcular rutas ortogonales con A* (penalización de giros y cruces).
   route_manhattan: true
   turn_penalty: 20

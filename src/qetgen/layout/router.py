@@ -86,6 +86,37 @@ class _Segment:
         return abs(self.x1 - self.x2) < 1e-9
 
 
+def _clip_segment(x1: float, y1: float, x2: float, y2: float,
+                  box: BBox) -> tuple[float, float] | None:
+    """Recorta el segmento contra la caja (Liang–Barsky).
+
+    Devuelve ``(t_entrada, t_salida)`` —los parámetros del tramo que queda
+    dentro de la caja— o ``None`` si el segmento no la toca. Con
+    ``t_entrada == 0`` el segmento **nace dentro** de la caja.
+    """
+    dx = x2 - x1
+    dy = y2 - y1
+    t0, t1 = 0.0, 1.0
+    for p, q in ((-dx, x1 - box.x1), (dx, box.x2 - x1),
+                 (-dy, y1 - box.y1), (dy, box.y2 - y1)):
+        if abs(p) < 1e-12:
+            if q < 0.0:
+                return None        # paralelo a la arista y fuera de la caja
+            continue
+        r = q / p
+        if p < 0.0:
+            if r > t1:
+                return None
+            t0 = max(t0, r)
+        else:
+            if r < t0:
+                return None
+            t1 = min(t1, r)
+    if t0 > t1:
+        return None
+    return (t0, t1)
+
+
 def _segment_hits_box(x1: float, y1: float, x2: float, y2: float,
                        box: BBox) -> bool:
     """¿El segmento ``(x1,y1)-(x2,y2)`` toca la caja ``box``?
@@ -96,25 +127,7 @@ def _segment_hits_box(x1: float, y1: float, x2: float, y2: float,
     considera intersección (así lo exige el routing: el cable no puede
     atravesar un símbolo).
     """
-    dx = x2 - x1
-    dy = y2 - y1
-    t0, t1 = 0.0, 1.0
-    for p, q in ((-dx, x1 - box.x1), (dx, box.x2 - x1),
-                 (-dy, y1 - box.y1), (dy, box.y2 - y1)):
-        if abs(p) < 1e-12:
-            if q < 0.0:
-                return False        # paralelo a la arista y fuera de la caja
-            continue
-        r = q / p
-        if p < 0.0:
-            if r > t1:
-                return False
-            t0 = max(t0, r)
-        else:
-            if r < t0:
-                return False
-            t1 = min(t1, r)
-    return t0 <= t1
+    return _clip_segment(x1, y1, x2, y2, box) is not None
 
 
 class ManhattanRouter:
@@ -168,8 +181,30 @@ class ManhattanRouter:
                    for obstacle in self.obstacles)
 
     def _leg_blocked(self, x1: float, y1: float, x2: float, y2: float) -> bool:
-        """¿El tramo de acceso a un nodo atraviesa un obstáculo?"""
-        return self._crosses_obstacle(x1, y1, x2, y2)
+        """¿El tramo de acceso a un nodo atraviesa un obstáculo?
+
+        Caso especial: el terminal de partida puede quedar **dentro** de la
+        caja inflada de un símbolo vecino (la holgura de seguridad lo
+        engulle). En ese caso se le permite **salir** de esa caja —el cable
+        tiene que poder salir del símbolo— pero el resto del tramo se
+        comprueba con normalidad, incluido el re-entrada en la misma caja.
+        """
+        for obstacle in self.obstacles:
+            clip = _clip_segment(x1, y1, x2, y2, obstacle)
+            if clip is None:
+                continue
+            t0, t1 = clip
+            if t0 > 1e-9:
+                return True         # el tramo atraviesa la caja por medio
+            # El ancla está dentro (o en el borde): solo se vigila la parte
+            # del tramo que queda fuera de la caja.
+            if t1 >= 1.0 - 1e-9:
+                return True         # no sale de la caja: es un nulo
+            exit_x = x1 + (x2 - x1) * t1
+            exit_y = y1 + (y2 - y1) * t1
+            if _segment_hits_box(exit_x, exit_y, x2, y2, obstacle):
+                return True         # vuelve a entrar en la misma caja
+        return False
 
     # -- penalizaciones -----------------------------------------------------
 
