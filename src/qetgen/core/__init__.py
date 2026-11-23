@@ -4,13 +4,22 @@ No depende de XML, ni de QElectroTech, ni de la capa de presentación.
 """
 
 from .catalog import SymbolCatalog, SymbolDefinition
-from .errors import (CatalogError, GeometryError, QetGenError, SpecError,
-                     ValidationError)
+from .errors import CatalogError, GeometryError, QetGenError, SpecError, ValidationError
 from .geometry import BBox, Vec2
-from .io import (load_spec, project_from_dict, project_to_dict, save_spec,
-                 sheet_to_dict)
-from .models import (Connection, Component, Label, Port, Project, Shape, Sheet,
-                     component, connection, label, shape)
+from .io import load_spec, project_from_dict, project_to_dict, save_spec, sheet_to_dict
+from .models import (
+                     Component,
+                     Connection,
+                     Label,
+                     Port,
+                     Project,
+                     Shape,
+                     Sheet,
+                     component,
+                     connection,
+                     label,
+                     shape,
+)
 from .sheet import SHEET_FORMATS, SheetFormat, get_sheet_format
 
 __all__ = [

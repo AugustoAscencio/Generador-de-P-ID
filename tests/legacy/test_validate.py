@@ -5,13 +5,15 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
 sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
-from generator.elements import SymbolCatalog                     # noqa: E402
-from generator.model import (ConnectionSpec, ElementSpec,       # noqa: E402
-                              FolioSpec, ProjectSpec, TextSpec)
-from generator.validate import validate_spec                     # noqa: E402
+from generator.elements import SymbolCatalog  # noqa: E402
+from generator.model import ConnectionSpec, ElementSpec, FolioSpec, ProjectSpec, TextSpec  # noqa: E402
+from generator.validate import validate_spec  # noqa: E402
+
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 CATALOG_PATH = BASE / "resources" / "symbol_catalog.json"
 
@@ -30,7 +32,7 @@ class CatalogBase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG_PATH)
+        cls.catalog = SymbolCatalog(CATALOG_PATH, library_path=FIXTURE_LIBRARY)
 
 
 class TestValidaciones(CatalogBase):

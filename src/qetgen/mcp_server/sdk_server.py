@@ -12,6 +12,7 @@ Si el SDK no está disponible, la importación falla limpiamente y
 from __future__ import annotations
 
 import json
+from typing import Any
 
 from .. import __version__
 from .dispatch import Dispatcher
@@ -21,8 +22,8 @@ from .session import Session
 def sdk_available() -> bool:
     """``True`` si el SDK oficial ``mcp`` está importable."""
     try:
-        import mcp.types  # noqa: F401
         import mcp.server  # noqa: F401
+        import mcp.types  # noqa: F401
     except ImportError:
         return False
     return True

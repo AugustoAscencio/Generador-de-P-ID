@@ -30,7 +30,7 @@ from typing import Any
 from pydantic import ValidationError
 
 from .errors import SpecError
-from .models import Connection, Component, Label, Project, Shape, Sheet
+from .models import Component, Connection, Label, Project, Shape, Sheet
 
 # --------------------------------------------------------------------------
 # Carga

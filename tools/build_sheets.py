@@ -29,7 +29,7 @@ def main() -> int:
     save_spec(project, out)
 
     print(f"OK  {out} — {len(project.folios)} planos")
-    for (code, _name), folio in zip(ESTRUCTURA_18, project.folios):
+    for (code, _name), folio in zip(ESTRUCTURA_18, project.folios, strict=True):
         print(f"    {code}  {len(folio.elements):>3} elementos, "
               f"{len(folio.connections):>3} conexiones, "
               f"{len(folio.texts):>3} textos, "

@@ -17,9 +17,8 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BASE / "src"))
 
-from qetgen.config import (QetGenConfig, default_config_path,  # noqa: E402
-                           load_config)
-from qetgen.core.errors import SpecError                   # noqa: E402
+from qetgen.config import QetGenConfig, default_config_path, load_config  # noqa: E402
+from qetgen.core.errors import SpecError  # noqa: E402
 
 
 class TestConfiguracionCentral(unittest.TestCase):

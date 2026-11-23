@@ -14,9 +14,12 @@ Geometrías usadas (leídas de los .elmt reales):
 
 from __future__ import annotations
 
+from ...core.models import Component as ElementSpec
+from ...core.models import Connection as ConnectionSpec
+from ...core.models import Label as TextSpec
+from ...core.models import Shape as ShapeSpec
+from ...core.models import Sheet as FolioSpec
 from .builders import _arrow_down, _block, build_d002, build_d003
-from ...core.models import (Component as ElementSpec, Connection as ConnectionSpec,
-                            Label as TextSpec, Shape as ShapeSpec, Sheet as FolioSpec)
 
 
 def _t(x, y, text, size=9):
@@ -473,21 +476,25 @@ def build_d011() -> FolioSpec:
 
     b, t = _block(60, 110, 360, 170, "ESTADO 0 — REPOSO / INICIALIZACIÓN",
                   "VERIFICA FINALES DE CARRERA I0.0–I0.3 · HOMOLOGA POSICIÓN (§4.9.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(200, 175))
     texts.append(_t(220, 172, "INICIALIZACIÓN COMPLETA →"))
 
     b, t = _block(60, 190, 360, 250, "ESTADO 1 — SEGUIMIENTO AUTOMÁTICO",
                   "I1.0 = 1 · I1.1 = 0 · CINEMÁTICA INVERSA → Q0.0–Q0.3 (§4.9.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     b, t = _block(60, 330, 360, 390, "ESTADO 3 — MODO MANUAL",
                   "I1.0 = 0 · PULSADORES I0.4–I0.7 · ENCLAVADO POR FC (§4.9.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     b, t = _block(500, 110, 840, 170, "ESTADO 2 — STOW / POSICIÓN DE SEGURIDAD",
                   "θ2 = 90° · AI0 > 20 m/s → I1.1 = 1 (§4.9.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_t(500, 180, "ACCESIBLE DESDE E0 / E1 / E3 CON VIENTO > UMBRAL — "
                               "PRIORIDAD ABSOLUTA (§4.9.2)", 8))
 
@@ -524,7 +531,8 @@ def build_d012() -> FolioSpec:
 
     b, t = _block(60, 100, 960, 150, "STOW (ESTADO 2) — PRIORIDAD MÁXIMA SOBRE "
                                      "SEGUIMIENTO Y MANUAL")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     reglas = [
         "1) FINAL DE CARRERA (I0.0–I0.3) IMPIDE EL MOVIMIENTO HACIA EL LÍMITE "
@@ -538,19 +546,24 @@ def build_d012() -> FolioSpec:
     y = 170
     for r in reglas:
         b, t = _block(60, y, 620, y + 50, r)
-        shapes.extend(b); texts.extend(t)
+        shapes.extend(b)
+        texts.extend(t)
         y += 70
 
     # Pares mutuamente excluyentes
     b, t = _block(660, 170, 800, 220, "Q0.0 — ELEVACIÓN +")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     b, t = _block(820, 170, 960, 220, "Q0.1 — ELEVACIÓN −")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_t(660, 228, "MUTUAMENTE EXCLUYENTES (ENCLAVAMIENTO LÓGICO — §4.9.2)", 8))
     b, t = _block(660, 250, 800, 300, "Q0.2 — AZIMUT +")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     b, t = _block(820, 250, 960, 300, "Q0.3 — AZIMUT −")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_t(660, 308, "MUTUAMENTE EXCLUYENTES (ENCLAVAMIENTO LÓGICO — §4.9.2)", 8))
     texts.append(_t(660, 330, "LOS DOS SENTIDOS DE UN MISMO EJE NO PUEDEN ACTIVARSE "
                                "SIMULTÁNEAMENTE (§4.9.2)", 8))
@@ -573,7 +586,8 @@ def build_d013() -> FolioSpec:
 
     b, t = _block(60, 110, 300, 190, "CTRL-01 — DomBusTracker2",
                   "BORNES A / B DEL BUS RS485 (§2.5.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     # Bornera RS485
     els.append(_el("D013-A", "dc_terminal", 400, 140, "A"))
@@ -587,18 +601,22 @@ def build_d013() -> FolioSpec:
 
     b, t = _block(400, 240, 700, 300, "USR-DR404 — CONCENTADOR",
                   "RS485 → ETHERNET/WI-FI · HASTA 32 DISPOSITIVOS · < 1200 m (§2.4.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(550, 304))
     b, t = _block(400, 318, 700, 368, "ETHERNET / WI-FI")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(550, 372))
     b, t = _block(400, 386, 700, 446, "USR-W610 — SERVIDOR SERIAL",
                   "RS232/RS485 → RJ45 / WI-FI 2,4 GHz · 280 m · 24 DISP. (§2.4.4)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_t(710, 405, "→", 10))
     b, t = _block(730, 386, 960, 446, "DOMOTICZ / SISTEMA SUPERIOR",
                   "MONITOREO REMOTO EN TIEMPO REAL (§2.4.5)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     texts.extend([
         _t(60, 240, "BUS DEL MÓDULO: CTRL-01 → TB-RS485 (A/B)"),
@@ -623,21 +641,24 @@ def build_d014() -> FolioSpec:
     texts.append(_t(60, 60, "ELECTRODOS DE DISPERSIÓN + EQUIPOTENCIALIDAD DE MASAS "
                             "(§4.2)"))
 
-    for i, (x, name) in enumerate([(180, "ESTRUCTURA — BASTIDORES + VIGAS"),
-                                   (460, "COLUMNA"),
-                                   (740, "GABINETE CTRL-01 + TABLERO DC")]):
+    for x, name in [(180, "ESTRUCTURA — BASTIDORES + VIGAS"),
+                    (460, "COLUMNA"),
+                    (740, "GABINETE CTRL-01 + TABLERO DC")]:
         b, t = _block(x - 120, 110, x + 120, 160, name)
-        shapes.extend(b); texts.extend(t)
+        shapes.extend(b)
+        texts.extend(t)
         texts.append(_arrow_down(x, 166))
 
     b, t = _block(60, 184, 860, 234, "CONDUCTOR DE PROTECCIÓN PE — BARRA DE "
                                      "EQUIPOTENCIALIDAD DEL MÓDULO",
                   "PE 6 mm² (CIRCUITO FV) · PE 2,5 mm² (24 VDC) — §4.2.4")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(450, 240))
 
     b, t = _block(60, 256, 860, 306, "SISTEMA DE TIERRA LOCAL — ESQUEMA TT (§4.2.1)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(450, 312))
 
     # 8 jabalinas (símbolo real de tierra)
@@ -756,12 +777,14 @@ def build_d017() -> FolioSpec:
     texts.append(_t(60, 60, "QUÉ SALE DEL MÓDULO Y QUÉ REQUIERE INGENIERÍA DE PLANTA"))
 
     b, t = _block(60, 100, 400, 160, "MÓDULO TIPO — ESQUEMAS D-002 A D-016")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
 
     # Cadena DC
     b, t = _block(60, 200, 400, 250, "SALIDA DC PROTEGIDA — TB-DC: X1+ / X2− / PE "
                                      "(D-004 / D-016)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(230, 254))
     shapes.append(ShapeSpec(x1=60, y1=270, x2=400, y2=350, color="#c0392b", width=1.5,
                             dash=True))
@@ -771,7 +794,8 @@ def build_d017() -> FolioSpec:
 
     # Cadena comunicación
     b, t = _block(460, 200, 800, 250, "RS485 — TB-RS485: A / B / SH (D-013 / D-016)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(630, 254))
     shapes.append(ShapeSpec(x1=460, y1=270, x2=800, y2=350, color="#c0392b", width=1.5,
                             dash=True))
@@ -782,7 +806,8 @@ def build_d017() -> FolioSpec:
 
     # Cadena tierra
     b, t = _block(60, 380, 400, 430, "TIERRA LOCAL TT — 8 JABALINAS (D-014)")
-    shapes.extend(b); texts.extend(t)
+    shapes.extend(b)
+    texts.extend(t)
     texts.append(_arrow_down(230, 434))
     shapes.append(ShapeSpec(x1=60, y1=450, x2=400, y2=520, color="#c0392b", width=1.5, dash=True))
     texts.append(_t(70, 460, "EQUIPOTENCIALIDAD CON MALLA GENERAL", 9))

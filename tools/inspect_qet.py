@@ -73,7 +73,7 @@ def main():
 
     # 1) Censo de etiquetas
     counts = Counter(e.tag for e in root.iter())
-    print("=== CENSO DE ETIQUETAS (total %d nodos) ===" % sum(counts.values()))
+    print(f"=== CENSO DE ETIQUETAS (total {sum(counts.values())} nodos) ===")
     for tag, n in counts.most_common():
         print(f"  {tag}: {n}")
     print()

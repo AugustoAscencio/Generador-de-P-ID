@@ -15,19 +15,25 @@ parámetros van en ``snake_case``.
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
-from ..core.catalog import SymbolCatalog
 from ..layout.pipeline import LayoutOptions, apply_layout
 from ..validation.aesthetics import validate_aesthetics
 from ..validation.structural import validate_project
-from .schemas import (AgregarElementoInput, ConectarElementosInput,
-                       CrearDiagramaInput, EjecutarAutoLayoutInput,
-                       ExportarArchivoInput, ListarSimbolosInput,
-                       ObtenerResumenCanvasInput, ValidarEsteticaInput)
+from .schemas import (
+    AgregarElementoInput,
+    ConectarElementosInput,
+    CrearDiagramaInput,
+    EjecutarAutoLayoutInput,
+    ExportarArchivoInput,
+    ListarSimbolosInput,
+    ObtenerResumenCanvasInput,
+    ValidarEsteticaInput,
+)
 from .session import Session, ToolError
 
 #: Tipo de manejador: recibe la sesión y los argumentos ya validados.

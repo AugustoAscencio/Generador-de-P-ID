@@ -19,7 +19,6 @@ import html
 import math
 import re
 import xml.etree.ElementTree as ET
-from pathlib import Path
 
 from ...core.catalog import SymbolDefinition
 

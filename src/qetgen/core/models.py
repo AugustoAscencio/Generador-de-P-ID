@@ -342,7 +342,7 @@ class Project(_Base):
         return value
 
     @model_validator(mode="after")
-    def _at_least_one_folio(self) -> "Project":
+    def _at_least_one_folio(self) -> Project:
         if not self.folios:
             raise ValueError("el proyecto debe tener al menos un folio")
         return self

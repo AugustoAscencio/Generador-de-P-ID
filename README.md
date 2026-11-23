@@ -278,9 +278,14 @@ todo. El **núcleo nunca contiene XML de ElementTree**: el exportador relee el
 
 ## Calidad
 
-- **221 tests automáticos** (`unittest`, sin dependencias externas) que cubren
+- **227 tests automáticos** (`unittest`, sin dependencias externas) que cubren
   formato, modelos, colisiones, routing, auditoría, CLI, configuración y el
   protocolo MCP completo.
+- **Suite hermética**: los tests usan los 14 `.elmt` **reales** versionados en
+  `tests/fixtures/qet_elements/` (44 KB), así que el CI verifica la geometría
+  real **sin** necesidad de que QElectroTech esté instalado en el runner.
+  `tests/test_fixtures.py` garantiza que son byte-idénticos (SHA-256) a la
+  biblioteca instalada.
 - **CI en GitHub Actions**: Python 3.10 → 3.13, `unittest` + `ruff`.
 - **Control de regresión**: el `.qet` generado es **estructuralmente idéntico**
   entre versiones (normalizando los UUID de instancia, aleatorios por diseño).
@@ -288,7 +293,7 @@ todo. El **núcleo nunca contiene XML de ElementTree**: el exportador relee el
   `.qet` a medias.
 
 ```bash
-python -m unittest discover -s tests      # 221 tests
+python -m unittest discover -s tests      # 227 tests
 ruff check src tests tools
 ```
 

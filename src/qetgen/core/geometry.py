@@ -17,17 +17,17 @@ class Vec2:
     x: float
     y: float
 
-    def __add__(self, other: "Vec2") -> "Vec2":
+    def __add__(self, other: Vec2) -> Vec2:
         return Vec2(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: "Vec2") -> "Vec2":
+    def __sub__(self, other: Vec2) -> Vec2:
         return Vec2(self.x - other.x, self.y - other.y)
 
-    def distance_to(self, other: "Vec2") -> float:
+    def distance_to(self, other: Vec2) -> float:
         """Distancia euclídea."""
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
 
-    def manhattan_to(self, other: "Vec2") -> float:
+    def manhattan_to(self, other: Vec2) -> float:
         """Distancia Manhattan (L1) — la métrica natural del routing ortogonal."""
         return abs(self.x - other.x) + abs(self.y - other.y)
 
@@ -50,7 +50,7 @@ class BBox:
     # -- construcción ------------------------------------------------------
 
     @classmethod
-    def from_points(cls, points: list[tuple[float, float]]) -> "BBox | None":
+    def from_points(cls, points: list[tuple[float, float]]) -> BBox | None:
         """Caja envolvente de un conjunto de puntos; ``None`` si está vacío."""
         if not points:
             return None
@@ -59,7 +59,7 @@ class BBox:
         return cls(min(xs), min(ys), max(xs), max(ys))
 
     @classmethod
-    def from_size(cls, x: float, y: float, width: float, height: float) -> "BBox":
+    def from_size(cls, x: float, y: float, width: float, height: float) -> BBox:
         """Caja desde un origen y un tamaño (con centro en el origen)."""
         return cls(x - width / 2.0, y - height / 2.0, x + width / 2.0, y + height / 2.0)
 
@@ -87,12 +87,12 @@ class BBox:
     def contains_point(self, x: float, y: float) -> bool:
         return self.x1 <= x <= self.x2 and self.y1 <= y <= self.y2
 
-    def contains(self, other: "BBox") -> bool:
+    def contains(self, other: BBox) -> bool:
         """``True`` si ``other`` está completamente dentro de esta caja."""
         return (other.x1 >= self.x1 and other.y1 >= self.y1
                 and other.x2 <= self.x2 and other.y2 <= self.y2)
 
-    def intersects(self, other: "BBox", margin: float = 0.0) -> bool:
+    def intersects(self, other: BBox, margin: float = 0.0) -> bool:
         """Intersección con margen de holgura (``margin`` en px)."""
         return not (
             self.x2 + margin < other.x1
@@ -101,7 +101,7 @@ class BBox:
             or other.y2 + margin < self.y1
         )
 
-    def overlap_area(self, other: "BBox") -> float:
+    def overlap_area(self, other: BBox) -> float:
         """Área solapada con otra caja (0 si no se tocan)."""
         w = min(self.x2, other.x2) - max(self.x1, other.x1)
         h = min(self.y2, other.y2) - max(self.y1, other.y1)
@@ -111,15 +111,15 @@ class BBox:
 
     # -- transformaciones --------------------------------------------------
 
-    def translated(self, dx: float, dy: float) -> "BBox":
+    def translated(self, dx: float, dy: float) -> BBox:
         return BBox(self.x1 + dx, self.y1 + dy, self.x2 + dx, self.y2 + dy)
 
-    def inflated(self, margin: float) -> "BBox":
+    def inflated(self, margin: float) -> BBox:
         """Caja ampliada (margen positivo) o reducida (margen negativo)."""
         return BBox(self.x1 - margin, self.y1 - margin,
                     self.x2 + margin, self.y2 + margin)
 
-    def inset(self, margin: float) -> "BBox":
+    def inset(self, margin: float) -> BBox:
         """Caja **reducida** un margen interior (margen negativo = expande).
 
         Es la operación de "encoger hacia dentro", simétrica a
@@ -128,7 +128,7 @@ class BBox:
         return BBox(self.x1 + margin, self.y1 + margin,
                     self.x2 - margin, self.y2 - margin)
 
-    def clipped_to(self, bounds: "BBox") -> "BBox":
+    def clipped_to(self, bounds: BBox) -> BBox:
         """Caja recortada a otra caja (para limitar a la zona segura)."""
         return BBox(max(self.x1, bounds.x1), max(self.y1, bounds.y1),
                     min(self.x2, bounds.x2), min(self.y2, bounds.y2))
@@ -154,7 +154,7 @@ def rotate_point(x: float, y: float, quarters: int) -> tuple[float, float]:
     return (x, y)
 
 
-def rotated_bbox(box: "BBox", quarters: int) -> "BBox":
+def rotated_bbox(box: BBox, quarters: int) -> BBox:
     """Caja envolvente de ``box`` tras rotarla ``quarters`` cuartos de vuelta.
 
     Se rotan las cuatro esquinas alrededor del origen y se vuelve a tomar la

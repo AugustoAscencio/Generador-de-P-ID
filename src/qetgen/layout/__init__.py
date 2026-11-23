@@ -20,15 +20,28 @@ Capas del motor, de la más pura a la más aplicada:
 """
 
 from .autolayout import LayoutReport, auto_layout, compute_layers
-from .collision import (Collision, CollisionReport, Occupant, analyze_sheet,
-                        detect_collisions, overlap_area, sheet_occupants)
+from .collision import (
+                        Collision,
+                        CollisionReport,
+                        Occupant,
+                        analyze_sheet,
+                        detect_collisions,
+                        overlap_area,
+                        sheet_occupants,
+)
 from .grid import Grid
 from .labels import CANDIDATE_SIDES, PlacedLabel, place_labels
-from .pipeline import (FolioResult, LayoutOptions, LayoutOutcome, apply_layout,
-                       snap_sheet)
-from .placement import (component_bounds, component_ink_bounds,
-                        component_label_bounds, label_bounds, shape_bounds,
-                        terminal_direction, terminal_position, transform_box)
+from .pipeline import FolioResult, LayoutOptions, LayoutOutcome, apply_layout, snap_sheet
+from .placement import (
+                        component_bounds,
+                        component_ink_bounds,
+                        component_label_bounds,
+                        label_bounds,
+                        shape_bounds,
+                        terminal_direction,
+                        terminal_position,
+                        transform_box,
+)
 from .router import ManhattanRouter, RouteResult, route_sheet
 from .textmetrics import TextBox, TextMeasurer
 

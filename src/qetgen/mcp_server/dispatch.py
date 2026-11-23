@@ -69,7 +69,7 @@ class Dispatcher:
         return "id" not in request or request.get("id") is None
 
     @staticmethod
-    def _server_info(dispatcher: "Dispatcher") -> dict:
+    def _server_info(dispatcher: Dispatcher) -> dict:
         return {
             "name": "qetgen",
             "version": dispatcher.server_version,

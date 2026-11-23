@@ -19,20 +19,25 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))
 
-from qetgen.mcp_server.dispatch import Dispatcher, handle_line     # noqa: E402
-from qetgen.mcp_server.fallback import serve_stdio                 # noqa: E402
-from qetgen.mcp_server.prompts import get_prompt, list_prompts      # noqa: E402
-from qetgen.mcp_server.resources import (list_resources,           # noqa: E402
-                                         read_resource)
-from qetgen.mcp_server.session import Session, ToolError           # noqa: E402
-from qetgen.mcp_server.tools import TOOLS, call_tool, list_tools   # noqa: E402
+from qetgen.mcp_server.dispatch import Dispatcher, handle_line  # noqa: E402
+from qetgen.mcp_server.fallback import serve_stdio  # noqa: E402
+from qetgen.mcp_server.prompts import get_prompt, list_prompts  # noqa: E402
+from qetgen.mcp_server.resources import list_resources, read_resource  # noqa: E402
+from qetgen.mcp_server.session import Session, ToolError  # noqa: E402
+from qetgen.mcp_server.tools import TOOLS, call_tool, list_tools  # noqa: E402
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 
 def make_session() -> Session:
-    """Sesión con el catálogo real de símbolos y la configuración central."""
-    return Session.create()
+    """Sesión con el catálogo real de símbolos y la configuración central.
+
+    Usa la biblioteca de fixtures para no depender de que QElectroTech esté
+    instalado en la máquina que ejecuta los tests.
+    """
+    return Session.create(library_path=FIXTURE_LIBRARY)
 
 
 class TestHerramientas(unittest.TestCase):
@@ -311,7 +316,7 @@ class TestServidorStdio(unittest.TestCase):
         request = {"jsonrpc": "2.0", "id": 1, "method": "tools/list"}
         result = subprocess.run(
             [sys.executable, "-X", "utf8", "-m", "qetgen.cli", "serve",
-             "--fallback"],
+             "--fallback", "--library", str(FIXTURE_LIBRARY)],
             input=json.dumps(request) + "\n", capture_output=True, text=True,
             encoding="utf-8", cwd=str(BASE))
         self.assertEqual(result.returncode, 0, result.stderr[:2000])

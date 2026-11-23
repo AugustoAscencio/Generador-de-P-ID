@@ -48,7 +48,7 @@ class Session:
     @classmethod
     def create(cls, config_path: str | Path | None = None,
                catalog_path: str | Path | None = None,
-               library_path: str | Path | None = None) -> "Session":
+               library_path: str | Path | None = None) -> Session:
         """Crea la sesión con el catálogo y la configuración del entorno."""
         config = load_config(config_path or default_config_path())
         catalog = SymbolCatalog(
@@ -157,7 +157,6 @@ class Session:
                 numero: str = "", bloqueado: bool = False,
                 folio: int = 1) -> dict:
         """Conecta dos elementos (operación atómica)."""
-        project = self.require_project()
         sheet = self.require_sheet(folio)
         catalog = self._require_catalog()
 

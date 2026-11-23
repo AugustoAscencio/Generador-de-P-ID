@@ -27,9 +27,13 @@ import uuid as uuid_mod
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from ...core.catalog import (INSTANCE_FONT, ORIENTATION_LETTER_TO_NUM,
-                              SymbolCatalog, SymbolDefinition)
-from ...core.models import Component, Connection, Label, Project, Shape, Sheet
+from ...core.catalog import (
+    INSTANCE_FONT,
+    ORIENTATION_LETTER_TO_NUM,
+    SymbolCatalog,
+    SymbolDefinition,
+)
+from ...core.models import Component, Label, Project, Shape, Sheet
 from ...core.sheet import SheetFormat, get_sheet_format
 
 QET_VERSION = "0.100.0"

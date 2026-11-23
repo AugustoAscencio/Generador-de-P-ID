@@ -10,6 +10,73 @@ Todas las versiones relevantes del proyecto. El formato sigue
 
 ---
 
+## [1.0.1] — 2026-11-22
+
+### Corregido
+
+- **CI de GitHub Actions en rojo en las 8 combinaciones de la matriz**
+  (Python 3.10 → 3.13 × Ubuntu + Windows) y el job de empaquetado omitido
+  por dependencia de los tests. Dos causas distintas, ambas resueltas:
+  - **Los checks de consola se ejecutaban con un *here-doc* de bash**
+    (`python - <<'PY'`), que `pwsh` no entiende: en Windows el paso
+    *Verificar la versión declarada* fallaba y el resto del job se
+    omitía. Ahora los checks son **scripts de Python**
+    (`tools/check_version.py`, `tools/check_doc_links.py`), que se ejecutan
+    igual en `bash` y en `pwsh`.
+  - **Los tests dependían de que QElectroTech estuviera instalado** en la
+    máquina que los ejecutaba: en los runners de Linux (sin QET) fallaban
+    34 tests (16 fallos + 18 errores), y la suite no verificaba nada de
+    la geometría real. La suite es ahora **hermética**.
+- **La suite de tests ya no depende de la instalación local de
+  QElectroTech.** Los 14 `.elmt` reales que usa el catálogo están
+  versionados en `tests/fixtures/qet_elements/` (44 KB, copia byte-exacta
+  de la biblioteca 0.100.0) y `tests/test_fixtures.py` garantiza que:
+  - cubren **exactamente** el catálogo (ni uno de más, ni uno de menos);
+  - son **byte-idénticos** (SHA-256) al `.elmt` de la biblioteca instalada
+    — comparación que se **omite** si QElectroTech no está presente.
+  La **producción** (CLI y MCP) sigue usando siempre la biblioteca
+  instalada: los fixtures son material de prueba, nunca una fuente de
+  símbolos en tiempo de ejecución.
+- `qetgen sheets` no aceptaba las opciones comunes (`--catalog`,
+  `--library`, `--config`): era el único subcomando que las ignoraba.
+- `sdk_server.py` usaba el tipo `Any` sin importarlo (`F821`): el
+  servidor MCP con SDK oficial fallaba al arrancar.
+- `session.py` asignaba una variable que no se usaba (`F841`).
+
+### Añadido
+
+- **`tools/sync_fixtures.py`**: refresca los fixtures desde la biblioteca
+  instalada y verifica sus SHA-256 (`--check` solo verifica). El CI lo
+  ejecuta para detectar que los fixtures han derivado.
+- **`tests/fixtures/README.md`**: procedencia, justificación y procedimiento
+  de refresco de los fixtures.
+
+### Cambiado
+
+- **Lint (`ruff`)**: el CI ejecutaba `ruff` pero nunca llegó a correr
+  (los tests fallaban antes). Con la regla activa se han corregido
+  **110 avisos** del código: imports sin usar, anotaciones obsoletas,
+  `zip()` sin `strict=` explícito (con la decisión documentada caso por
+  caso: `strict=True` donde las longitudes deben coincidir,
+  `strict=False` en ventanas deslizantes) y 22 sentencias con `;` en
+  `sheets/fv588/sheets.py`. El código no cambia de comportamiento: el
+  `.qet` de FV 588 sigue siendo **estructuralmente idéntico** al de la
+  v1.0.0.
+- `qetgen doctor` y `qetgen build` del job de empaquetado usan la
+  biblioteca de fixtures: el smoke test ejercita catálogo, diagnóstico y
+  generación **sin** depender de QElectroTech en el runner.
+
+### Verificación
+
+- **227 tests** en verde (221 + 6 nuevos de cobertura e integridad de los
+  fixtures), con QElectroTech instalado **y sin él**.
+- `ruff check src tests tools`: **0 errores**.
+- Simulación completa del CI (los 6 pasos, en un entorno sin QET): todo OK.
+- El `.qet` de FV 588 y su JSON de especificación: **idénticos** a los de
+  la v1.0.0.
+
+---
+
 ## [1.0.0] — 2026-11-22
 
 ### Añadido
@@ -242,6 +309,7 @@ Todas las versiones relevantes del proyecto. El formato sigue
 - 55 tests, análisis de evidencia (`inspect_qet`, `deep_qet`) y
   conversión Markdown → Word.
 
+[1.0.1]: https://github.com/AugustoAscencio/Generador-de-P-ID/releases/tag/v1.0.1
 [1.0.0]: https://github.com/AugustoAscencio/Generador-de-P-ID/releases/tag/v1.0.0
 [0.4.0]: https://github.com/AugustoAscencio/Generador-de-P-ID/releases/tag/v0.4.0
 [0.3.0]: https://github.com/AugustoAscencio/Generador-de-P-ID/releases/tag/v0.3.0

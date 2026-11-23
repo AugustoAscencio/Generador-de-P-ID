@@ -34,7 +34,7 @@ qetgen doctor                 # todo debe salir en verde
 ### Verificación rápida
 
 ```bash
-python -m unittest discover -s tests      # 221 tests (sin pytest necesario)
+python -m unittest discover -s tests      # 227 tests (sin pytest necesario)
 ruff check src tests tools
 ```
 
@@ -142,11 +142,11 @@ qetgen layout examples/proyecto_fv_588.json --auto-layout --check
 #    (los UUID de instancia son aleatorios por diseño: se normalizan)
 ```
 
-Cifras de referencia del estado actual (v1.0.0):
+Cifras de referencia del estado actual (v1.0.1):
 
 | Comprobación | Resultado esperado |
 |---|---|
-| Tests | **221 OK** |
+| Tests | **227 OK** |
 | Auto-layout de los 111 símbolos | 0 sin colocar, **0 solapes entre símbolos** |
 | Rutas del proyecto | **60/60** trazadas |
 | Auditoría sobre las 18 hojas | 8 errores reales (texto desbordado), avisos de legibilidad |

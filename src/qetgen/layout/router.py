@@ -27,14 +27,13 @@ separación mínima             paralelos demasiado juntos
 from __future__ import annotations
 
 import heapq
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from ..core.catalog import SymbolCatalog
 from ..core.geometry import BBox
-from ..core.models import Connection, Sheet
+from ..core.models import Sheet
 from .grid import Grid
-from .placement import (component_ink_bounds, terminal_direction,
-                        terminal_position)
+from .placement import component_ink_bounds, terminal_direction, terminal_position
 
 #: Direcciones: 0=E(+x), 1=S(+y), 2=W(-x), 3=N(-y).
 DIR_E, DIR_S, DIR_W, DIR_N = 0, 1, 2, 3
@@ -153,7 +152,7 @@ class ManhattanRouter:
     def register_route(self, waypoints) -> None:
         """Registra una ruta ya trazada (para penalizar cruces y paralelos)."""
         points = list(waypoints)
-        for a, b in zip(points, points[1:]):
+        for a, b in zip(points, points[1:], strict=False):
             if abs(a[0] - b[0]) < 1e-9 and abs(a[1] - b[1]) < 1e-9:
                 continue
             segment = _Segment(a[0], a[1], b[0], b[1])
@@ -387,7 +386,7 @@ class ManhattanRouter:
 
         simplified = _simplify(points)
         length = sum(abs(a[0] - b[0]) + abs(a[1] - b[1])
-                     for a, b in zip(simplified, simplified[1:]))
+                     for a, b in zip(simplified, simplified[1:], strict=False))
         turns = _count_turns(simplified)
         crossings = self._count_route_crossings(simplified)
         return RouteResult(
@@ -399,7 +398,7 @@ class ManhattanRouter:
     def _count_route_crossings(self, points) -> int:
         """Cruces de la propia ruta con las ya registradas."""
         total = 0
-        for a, b in zip(points, points[1:]):
+        for a, b in zip(points, points[1:], strict=False):
             total += self._crossings(a[0], a[1], b[0], b[1])
         return total
 
@@ -409,7 +408,8 @@ def _simplify(points: list[tuple[float, float]]) -> list[tuple[float, float]]:
     if len(points) < 3:
         return points
     result = [points[0]]
-    for previous, point, following in zip(points, points[1:], points[2:]):
+    for previous, point, following in zip(points, points[1:], points[2:],
+                                          strict=False):
         collinear = ((previous[0] - point[0]) * (following[1] - point[1])
                      - (previous[1] - point[1]) * (following[0] - point[0]))
         if abs(collinear) > 1e-6:
@@ -421,7 +421,7 @@ def _simplify(points: list[tuple[float, float]]) -> list[tuple[float, float]]:
 def _count_turns(points) -> int:
     """Número de giros de 90° de una polilínea."""
     turns = 0
-    for a, b, c in zip(points, points[1:], points[2:]):
+    for a, b, c in zip(points, points[1:], points[2:], strict=False):
         v1 = (b[0] - a[0], b[1] - a[1])
         v2 = (c[0] - b[0], c[1] - b[1])
         if abs(v1[0] * v2[1] - v1[1] * v2[0]) > 1e-6:

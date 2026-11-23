@@ -11,28 +11,31 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))
 
-from qetgen.config import QetGenConfig                                  # noqa: E402
-from qetgen.core.catalog import SymbolCatalog, default_catalog_path     # noqa: E402
-from qetgen.core.geometry import BBox, rotate_point, rotated_bbox       # noqa: E402
-from qetgen.core.io import load_spec                                    # noqa: E402
-from qetgen.core.models import (Connection, Component, Label, Project,  # noqa: E402
-                                Shape, Sheet)
-from qetgen.core.sheet import get_sheet_format                          # noqa: E402
-from qetgen.exporters.svg import sheet_to_svg                           # noqa: E402
-from qetgen.layout.autolayout import auto_layout, compute_layers        # noqa: E402
-from qetgen.layout.collision import (analyze_sheet, detect_collisions,  # noqa: E402
-                                     overlap_area, sheet_occupants)
-from qetgen.layout.grid import Grid                                     # noqa: E402
-from qetgen.layout.labels import place_labels                           # noqa: E402
-from qetgen.layout.placement import (component_bounds, component_ink_bounds,
-                                     terminal_position)                  # noqa: E402
-from qetgen.layout.router import ManhattanRouter, route_sheet           # noqa: E402
-from qetgen.layout.textmetrics import TextMeasurer                      # noqa: E402
-from qetgen.validation.aesthetics import validate_aesthetics            # noqa: E402
+from qetgen.config import QetGenConfig  # noqa: E402
+from qetgen.core.catalog import SymbolCatalog  # noqa: E402
+from qetgen.core.geometry import BBox, rotate_point, rotated_bbox  # noqa: E402
+from qetgen.core.io import load_spec  # noqa: E402
+from qetgen.core.models import Component, Connection, Label, Project, Shape, Sheet  # noqa: E402
+from qetgen.core.sheet import get_sheet_format  # noqa: E402
+from qetgen.exporters.svg import sheet_to_svg  # noqa: E402
+from qetgen.layout.autolayout import auto_layout, compute_layers  # noqa: E402
+from qetgen.layout.collision import analyze_sheet, overlap_area, sheet_occupants  # noqa: E402
+from qetgen.layout.grid import Grid  # noqa: E402
+from qetgen.layout.labels import place_labels  # noqa: E402
+from qetgen.layout.placement import (  # noqa: E402
+    component_bounds,
+    component_ink_bounds,
+    terminal_position,
+)
+from qetgen.layout.router import ManhattanRouter, route_sheet  # noqa: E402
+from qetgen.layout.textmetrics import TextMeasurer  # noqa: E402
+from qetgen.validation.aesthetics import validate_aesthetics  # noqa: E402
+from tests.support import CATALOG_PATH, FIXTURE_LIBRARY  # noqa: E402
 
-CATALOG = default_catalog_path()
+CATALOG = CATALOG_PATH
 
 
 class TestGrid(unittest.TestCase):
@@ -126,7 +129,7 @@ class TestColocacion(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
 
     def test_tinta_dentro_del_slot_en_los_14_simbolos(self):
         """Evidencia: las primitivas reales caben en la caja declarada."""
@@ -173,7 +176,7 @@ class TestColisiones(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
         cls.measurer = TextMeasurer()
 
     def test_contencion_no_es_solape(self):
@@ -236,7 +239,7 @@ class TestEtiquetas(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
         cls.measurer = TextMeasurer()
 
     def test_coloca_una_etiqueta_libre(self):
@@ -262,7 +265,7 @@ class TestRouter(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
 
     def _sheet(self):
         return Sheet(
@@ -280,7 +283,7 @@ class TestRouter(unittest.TestCase):
         self.assertTrue(results[0].ok)
         points = results[0].waypoints
         self.assertGreaterEqual(len(points), 2)
-        for a, b in zip(points, points[1:]):
+        for a, b in zip(points, points[1:], strict=False):
             horizontal = abs(a[1] - b[1]) < 1e-6
             vertical = abs(a[0] - b[0]) < 1e-6
             self.assertTrue(horizontal or vertical,
@@ -316,7 +319,7 @@ class TestRouter(unittest.TestCase):
             obstacles=[obstacle])
         result = router.route((10, 100), (190, 100))
         self.assertTrue(result.ok)
-        for a, b in zip(result.waypoints, result.waypoints[1:]):
+        for a, b in zip(result.waypoints, result.waypoints[1:], strict=False):
             if abs(a[1] - b[1]) < 1e-6:      # tramo horizontal
                 self.assertFalse(
                     obstacle.y1 <= a[1] <= obstacle.y2
@@ -356,7 +359,7 @@ class TestAutoLayout(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
 
     def test_calcula_capas_por_el_grafo(self):
         sheet = Sheet(title="F", elements=[
@@ -451,7 +454,7 @@ class TestSvg(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
         cls.project = load_spec(BASE / "examples" / "proyecto_fv_588.json")
 
     def test_svg_valido(self):
@@ -490,7 +493,7 @@ class TestAuditoriaEstetica(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
         cls.config = QetGenConfig()
 
     def test_detecta_texto_que_desborda(self):

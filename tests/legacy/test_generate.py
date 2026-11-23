@@ -12,13 +12,16 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
 sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
-from generator import project as project_mod                  # noqa: E402
-from generator.elements import SymbolCatalog                   # noqa: E402
-from generator.model import load_spec                          # noqa: E402
-from generator.validate import validate_spec                    # noqa: E402
+from generator import project as project_mod  # noqa: E402
+from generator.elements import SymbolCatalog  # noqa: E402
+from generator.model import load_spec  # noqa: E402
+from generator.validate import validate_spec  # noqa: E402
+
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 EXAMPLE = BASE / "examples" / "basic_circuit.json"
 PV_EXAMPLE = BASE / "examples" / "pv_8_panels.json"
@@ -29,7 +32,7 @@ class GeneracionBase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG_PATH)
+        cls.catalog = SymbolCatalog(CATALOG_PATH, library_path=FIXTURE_LIBRARY)
 
 
 class TestGeneracionBasica(GeneracionBase):
@@ -146,8 +149,7 @@ class TestMultiFolio(GeneracionBase):
     """Evidencia §11: varios <diagram>, orders 1..N, ids de terminal POR FOLIO."""
 
     def _build_two_folio(self):
-        from generator.model import (ConnectionSpec, ElementSpec,
-                                     FolioSpec, ProjectSpec, TextSpec)
+        from generator.model import ConnectionSpec, ElementSpec, FolioSpec, ProjectSpec, TextSpec
         spec = ProjectSpec(title="Multi", folios=[
             FolioSpec(title="folio A", order=1,
                       elements=[ElementSpec(id="A1", type="ac_source", x=100, y=100),

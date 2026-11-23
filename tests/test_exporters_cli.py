@@ -12,23 +12,25 @@ from contextlib import redirect_stdout
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))
 
 from qetgen.cli.main import main as cli_main  # noqa: E402
-from qetgen.core.catalog import SymbolCatalog, default_catalog_path  # noqa: E402
+from qetgen.core.catalog import SymbolCatalog  # noqa: E402
 from qetgen.core.io import load_spec  # noqa: E402
 from qetgen.core.models import Project  # noqa: E402
 from qetgen.exporters.qet import build_project, export_project  # noqa: E402
 from qetgen.validation.structural import validate_project  # noqa: E402
+from tests.support import CATALOG_PATH, FIXTURE_LIBRARY  # noqa: E402
 
-CATALOG = default_catalog_path()
+CATALOG = CATALOG_PATH
 
 
 class TestExportadorQet(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
         cls.spec = load_spec(BASE / "examples" / "basic_circuit.json")
         cls.root, cls.results = build_project(cls.spec, cls.catalog)
 
@@ -110,7 +112,7 @@ class TestValidacion(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
 
     def test_proyecto_real_sin_errores(self):
         project = load_spec(BASE / "examples" / "proyecto_fv_588.json")
@@ -149,9 +151,14 @@ class TestValidacion(unittest.TestCase):
 class TestCli(unittest.TestCase):
 
     def _run(self, argv):
+        """Ejecuta la CLI con la biblioteca de fixtures.
+
+        Así los tests no dependen de que QElectroTech esté instalado en la
+        máquina que ejecuta la suite.
+        """
         buffer = io.StringIO()
         with redirect_stdout(buffer):
-            code = cli_main(argv)
+            code = cli_main([*argv, "--library", str(FIXTURE_LIBRARY)])
         return code, buffer.getvalue()
 
     def test_build_desde_json(self):

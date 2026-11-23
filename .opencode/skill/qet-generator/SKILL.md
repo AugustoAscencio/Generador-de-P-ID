@@ -63,7 +63,7 @@ python -m qetgen.cli layout ruta/spec.json --folio 3 --auto-layout --apply -o co
 python -m qetgen.cli layout ruta/spec.json --preview preview/
 
 # 7) Siempre: tests tras cualquier cambio
-python -m unittest discover -s tests               # deben pasar 221/221
+python -m unittest discover -s tests               # deben pasar 227/227
 
 # 8) Convertir documentación MD a Word si se pide
 python tools/md_to_docx.py entrada.md salida.docx "Encabezado"

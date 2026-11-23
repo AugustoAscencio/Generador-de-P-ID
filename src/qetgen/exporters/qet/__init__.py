@@ -1,8 +1,18 @@
 """Exportador QElectroTech (.qet)."""
 
-from .xml import (DiagramBuildResult, QET_VERSION, build_conductor, build_diagram,
-                  build_element, build_project, build_rectangle, build_text,
-                  export_project, new_uuid, wrap_html)
+from .xml import (
+    QET_VERSION,
+    DiagramBuildResult,
+    build_conductor,
+    build_diagram,
+    build_element,
+    build_project,
+    build_rectangle,
+    build_text,
+    export_project,
+    new_uuid,
+    wrap_html,
+)
 
 
 def export_qet(project, catalog, output_path):

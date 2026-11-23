@@ -8,13 +8,33 @@ del requisito explícito de 588 módulos. Lo no confirmado se marca
 ``PENDIENTE DE VERIFICACIÓN`` en el propio plano.
 """
 
-from .builders import (build_module_folios, create_aux_24vdc,
-                       create_dc_protection, create_pv_string, folio_to_dict)
-from .registry import (ESTRUCTURA_18, PROJECT_AUTHOR, PROJECT_FILENAME,
-                       PROJECT_TITLE, SHEET_TITLES)
-from .sheets import build_all, build_d001, build_d004, build_d005, build_d006, \
-    build_d007, build_d008, build_d009, build_d010, build_d011, build_d012, \
-    build_d013, build_d014, build_d015, build_d016, build_d017, build_d018
+from .builders import (
+    build_module_folios,
+    create_aux_24vdc,
+    create_dc_protection,
+    create_pv_string,
+    folio_to_dict,
+)
+from .registry import ESTRUCTURA_18, PROJECT_AUTHOR, PROJECT_FILENAME, PROJECT_TITLE, SHEET_TITLES
+from .sheets import (
+    build_all,
+    build_d001,
+    build_d004,
+    build_d005,
+    build_d006,
+    build_d007,
+    build_d008,
+    build_d009,
+    build_d010,
+    build_d011,
+    build_d012,
+    build_d013,
+    build_d014,
+    build_d015,
+    build_d016,
+    build_d017,
+    build_d018,
+)
 
 
 def build_project():

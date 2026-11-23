@@ -16,9 +16,11 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))
 
 from qetgen.cli.main import main as cli_main  # noqa: E402
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 FV588 = BASE / "examples" / "proyecto_fv_588.json"
 
@@ -28,10 +30,13 @@ def run_cli(*args: str) -> tuple[int, str]:
 
     ``stderr`` se combina con ``stdout`` para poder comprobar tanto el
     informe como los mensajes de error.
+
+    Se pasa siempre ``--library`` con la biblioteca de fixtures: así los
+    tests no dependen de que QElectroTech esté instalado en la máquina.
     """
     buffer = io.StringIO()
     with redirect_stdout(buffer), redirect_stderr(buffer):
-        code = cli_main(list(args))
+        code = cli_main([*args, "--library", str(FIXTURE_LIBRARY)])
     return code, buffer.getvalue()
 
 
@@ -151,7 +156,8 @@ class TestLayoutCLI(unittest.TestCase):
         out_buffer = io.StringIO()
         err_buffer = io.StringIO()
         with redirect_stdout(out_buffer), redirect_stderr(err_buffer):
-            code = cli_main(["layout", str(FV588), "--folio", "99"])
+            code = cli_main(["layout", str(FV588), "--folio", "99",
+                             "--library", str(FIXTURE_LIBRARY)])
         self.assertEqual(code, 2)
         self.assertEqual(out_buffer.getvalue(), "")
         self.assertIn("no existe", err_buffer.getvalue())

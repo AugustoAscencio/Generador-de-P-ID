@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -156,12 +156,12 @@ def _load_yaml(path: Path) -> dict:
         raise SpecError(
             "PyYAML no está instalado. Instálalo (pip install PyYAML) o usa "
             "un archivo de configuración en formato JSON.") from exc
-    with open(path, "r", encoding="utf-8") as handle:
+    with open(path, encoding="utf-8") as handle:
         return yaml.safe_load(handle) or {}
 
 
 def _load_json(path: Path) -> dict:
-    with open(path, "r", encoding="utf-8") as handle:
+    with open(path, encoding="utf-8") as handle:
         return json.load(handle)
 
 

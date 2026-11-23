@@ -19,8 +19,11 @@ Geometrías usadas (verificadas en los .elmt reales de la biblioteca):
 from __future__ import annotations
 
 from ...core.io import sheet_to_dict
-from ...core.models import (Component as ElementSpec, Connection as ConnectionSpec,
-                            Label as TextSpec, Shape as ShapeSpec, Sheet as FolioSpec)
+from ...core.models import Component as ElementSpec
+from ...core.models import Connection as ConnectionSpec
+from ...core.models import Label as TextSpec
+from ...core.models import Shape as ShapeSpec
+from ...core.models import Sheet as FolioSpec
 
 
 def _id(module: str, name: str) -> str:
@@ -42,7 +45,7 @@ def create_pv_string(count: int = 8, x0: float = 60, y: float = 150,
         elements.append(ElementSpec(
             id=eid, type="pv_cell", x=x0 + (i - 1) * dx, y=y,
             label=f"{label_base}{i}",
-            info={"designation": f"Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"},
+            info={"designation": "Panel FV 650Wp (SUPUESTO - doc. técnico: 625-650Wp)"},
         ))
         if prev is not None:
             connections.append(ConnectionSpec(

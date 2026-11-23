@@ -121,7 +121,7 @@ def validate_project(project: Project, catalog: SymbolCatalog) -> ValidationRepo
     # ------------------------------------------------------------------
     # Conexiones
     # ------------------------------------------------------------------
-    for folio, by_id in zip(project.folios, by_folio):
+    for folio, by_id in zip(project.folios, by_folio, strict=True):
         seen_links: set[tuple] = set()
         terminal_use: dict[tuple[str, int], int] = {}
         for i, connection in enumerate(folio.connections):

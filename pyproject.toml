@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qetgen"
-version = "1.0.0"
+version = "1.0.1"
 description = "Generador profesional de documentación eléctrica QElectroTech (.qet) con motor geométrico, exportadores y servidor MCP"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -1,7 +1,7 @@
 # AGENTS.md — Instrucciones para agentes (IA) que trabajen en este workspace
 
 > **Repositorio:** https://github.com/AugustoAscencio/Generador-de-P-ID
-> **Paquete:** `qetgen` v1.0.0 · **Skill disponible:** `qet-generator`
+> **Paquete:** `qetgen` v1.0.1 · **Skill disponible:** `qet-generator`
 > (`.opencode/skill/qet-generator/SKILL.md`) — se descubre automáticamente en
 > opencode. **Úsala** para generar/modificar planos.
 >
@@ -85,7 +85,7 @@ todo con cita de fuente Doc1 §x).
   terminal del panel, red de planta (fuera de alcance según Doc1).
 - Documentación final en voz de proyecto: `PROYECTO_FV_588.md` (raíz).
 
-### Base técnica: qetgen v1.0.0 (publicada en GitHub)
+### Base técnica: qetgen v1.0.1 (publicada en GitHub)
 
 | Versión | Tag | Contenido |
 |---|---|---|
@@ -93,7 +93,8 @@ todo con cita de fuente Doc1 §x).
 | v0.2.0 | `v0.2.0` | Arquitectura por capas (`src/qetgen/`), Pydantic v2 estricto, CLI `qetgen`, E/S atómica, 116 tests. |
 | v0.3.0 | `v0.3.0` | Motor geométrico: colisiones con cajas reales, routing Manhattan A\*, auto-layout, preview SVG, auditoría estética, config central, 174 tests. |
 | v0.4.0 | `v0.4.0` | CLI profesional (`qetgen layout`, `qetgen doctor`), pipeline de layout compartido, 191 tests. |
-| **v1.0.0** | `v1.0.0` | **Servidor MCP universal**, documentación completa (README, CONFIGURACION, MCP), LICENSE, CONTRIBUTING, CI. **221 tests.** |
+| v1.0.0 | `v1.0.0` | **Servidor MCP universal**, documentación completa (README, CONFIGURACION, MCP), LICENSE, CONTRIBUTING, CI. 221 tests. |
+| **v1.0.1** | `v1.0.1` | **CI en verde**: suite hermética (fixtures `.elmt` reales versionados), checks de consola como scripts de Python (funcionan en `bash` y `pwsh`), lint `ruff` limpio. **227 tests.** |
 
 - ✅ **Motor geométrico** (`src/qetgen/layout/`): rejilla, cajas reales rotadas,
   colisiones con criterio (containment ≠ overlap, salvo cajas idénticas),
@@ -171,7 +172,7 @@ python -m qetgen.cli layout examples/NOMBRE.json --preview preview/
 python -m qetgen.cli serve [--fallback]
 
 # Tests (SIEMPRE tras cualquier cambio)
-python -m unittest discover -s tests            # 221 tests
+python -m unittest discover -s tests            # 227 tests
 
 # Análisis de evidencia del formato
 python tools/inspect_qet.py <archivo.qet>        # censar estructura real

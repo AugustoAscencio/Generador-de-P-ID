@@ -5,14 +5,17 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
 sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
-from generator import project as project_mod                # noqa: E402
-from generator.builders import build_d002, build_d003       # noqa: E402
-from generator.elements import SymbolCatalog                # noqa: E402
-from generator.model import ProjectSpec, load_spec          # noqa: E402
-from generator.validate import validate_spec                # noqa: E402
+from generator import project as project_mod  # noqa: E402
+from generator.builders import build_d002, build_d003  # noqa: E402
+from generator.elements import SymbolCatalog  # noqa: E402
+from generator.model import ProjectSpec, load_spec  # noqa: E402
+from generator.validate import validate_spec  # noqa: E402
+
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 CATALOG_PATH = BASE / "resources" / "symbol_catalog.json"
 
@@ -21,7 +24,7 @@ class TestShapes(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG_PATH)
+        cls.catalog = SymbolCatalog(CATALOG_PATH, library_path=FIXTURE_LIBRARY)
 
     def test_d002_valida_y_genera(self):
         folio = build_d002()
@@ -66,6 +69,7 @@ class TestShapes(unittest.TestCase):
         """Bloques serializados en el JSON vuelven a cargar y validar."""
         import json
         import tempfile
+
         from generator.builders import folio_to_dict
         folio = build_d002()
         data = {"project": {"title": "T"},
@@ -79,7 +83,7 @@ class TestShapes(unittest.TestCase):
         self.assertEqual(len(spec.folios[0].shapes), 13)
 
     def test_text_size_fuera_de_rango_rechazado(self):
-        from generator.model import FolioSpec, SpecError, TextSpec
+        from generator.model import FolioSpec, TextSpec
         # size inválido se detecta al validar
         folio = FolioSpec(title="t", texts=[TextSpec(x=1, y=1, text="x", size=99)])
         spec = ProjectSpec(title="T", folios=[folio])

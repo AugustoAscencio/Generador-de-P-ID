@@ -7,20 +7,20 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))
 
 from pydantic import ValidationError  # noqa: E402
 
-from qetgen.core.catalog import SymbolCatalog, default_catalog_path  # noqa: E402
+from qetgen.core.catalog import SymbolCatalog  # noqa: E402
 from qetgen.core.errors import CatalogError, SpecError  # noqa: E402
 from qetgen.core.geometry import BBox, Vec2  # noqa: E402
-from qetgen.core.io import (load_spec, project_from_dict, project_to_dict,  # noqa: E402
-                            save_spec)
-from qetgen.core.models import (Connection, Component, Label, Project,  # noqa: E402
-                                Shape, Sheet)
+from qetgen.core.io import load_spec, project_from_dict, project_to_dict, save_spec  # noqa: E402
+from qetgen.core.models import Component, Connection, Project, Shape, Sheet  # noqa: E402
 from qetgen.core.sheet import SHEET_FORMATS, get_sheet_format  # noqa: E402
+from tests.support import CATALOG_PATH, FIXTURE_LIBRARY  # noqa: E402
 
-CATALOG = default_catalog_path()
+CATALOG = CATALOG_PATH
 
 
 class TestModelosEstrictos(unittest.TestCase):
@@ -162,7 +162,7 @@ class TestCatalogo(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG)
+        cls.catalog = SymbolCatalog(CATALOG, library_path=FIXTURE_LIBRARY)
 
     def test_tiene_14_simbolos(self):
         self.assertEqual(len(self.catalog.type_keys()), 14)
@@ -223,7 +223,7 @@ class TestEntradaSalida(unittest.TestCase):
         data = project_to_dict(original)
         restored = project_from_dict(data)
         self.assertEqual(len(restored.folios), len(original.folios))
-        for a, b in zip(original.folios, restored.folios):
+        for a, b in zip(original.folios, restored.folios, strict=True):
             self.assertEqual(a.title, b.title)
             self.assertEqual(a.order, b.order)
             self.assertEqual(len(a.elements), len(b.elements))

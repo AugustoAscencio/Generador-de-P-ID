@@ -14,19 +14,34 @@ Uso previsto: la v0.1 queda congelada y este módulo se elimina en la v2.0.
 
 from __future__ import annotations
 
-from ..core.catalog import (INSTANCE_FONT, ORIENTATION_LETTER_TO_NUM,
-                            SymbolCatalog, SymbolDefinition)
+from ..core.catalog import INSTANCE_FONT, ORIENTATION_LETTER_TO_NUM, SymbolCatalog, SymbolDefinition
 from ..core.errors import CatalogError, SpecError
 from ..core.geometry import BBox, Vec2
-from ..core.io import (component_to_dict, connection_to_dict, label_to_dict,
-                       load_spec, project_from_dict, project_to_dict, save_spec,
-                       sheet_to_dict, shape_to_dict)
-from ..core.models import (KNOWN_INFO_KEYS, Connection, Component, Label, Port,
-                           Project, Shape, Sheet)
+from ..core.io import (
+    component_to_dict,
+    connection_to_dict,
+    label_to_dict,
+    load_spec,
+    project_from_dict,
+    project_to_dict,
+    save_spec,
+    shape_to_dict,
+    sheet_to_dict,
+)
+from ..core.models import KNOWN_INFO_KEYS, Component, Connection, Label, Port, Project, Shape, Sheet
 from ..core.sheet import SheetFormat, get_sheet_format
-from ..exporters.qet import (DiagramBuildResult, build_conductor, build_diagram,
-                             build_element, build_project, build_rectangle,
-                             build_text, export_project, new_uuid, wrap_html)
+from ..exporters.qet import (
+    DiagramBuildResult,
+    build_conductor,
+    build_diagram,
+    build_element,
+    build_project,
+    build_rectangle,
+    build_text,
+    export_project,
+    new_uuid,
+    wrap_html,
+)
 from ..validation.structural import ValidationReport, validate_project, validate_spec
 
 # -- Alias de los modelos v0.1 -------------------------------------------------

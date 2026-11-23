@@ -5,15 +5,22 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
 sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
-from generator.builders import (build_module_folios,       # noqa: E402
-                                create_aux_24vdc, create_dc_protection,
-                                create_pv_string, folio_to_dict)
-from generator.elements import SymbolCatalog                # noqa: E402
-from generator.model import load_spec                       # noqa: E402
-from generator.validate import validate_spec                # noqa: E402
+from generator.builders import (  # noqa: E402
+    build_module_folios,
+    create_aux_24vdc,
+    create_dc_protection,
+    create_pv_string,
+    folio_to_dict,
+)
+from generator.elements import SymbolCatalog  # noqa: E402
+from generator.model import load_spec  # noqa: E402
+from generator.validate import validate_spec  # noqa: E402
+
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 CATALOG_PATH = BASE / "resources" / "symbol_catalog.json"
 
@@ -22,7 +29,7 @@ class TestBuilders(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG_PATH)
+        cls.catalog = SymbolCatalog(CATALOG_PATH, library_path=FIXTURE_LIBRARY)
 
     def test_create_pv_string_8(self):
         elements, connections = create_pv_string(count=8)

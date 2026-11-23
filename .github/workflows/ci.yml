@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   tests:
-    name: Tests · Python ${{ matrix.python-version }}
+    name: Tests · Python ${{ matrix.python-version }} · ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -41,22 +41,8 @@ jobs:
       - name: Instalar el proyecto y sus dependencias
         run: python -m pip install -e ".[dev]"
 
-      - name: Verificar la versión declarada
-        run: |
-          python - <<'PY'
-          import pathlib
-          import re
-
-          import qetgen
-
-          version = qetgen.__version__
-          text = pathlib.Path('pyproject.toml').read_text(encoding='utf-8')
-          match = re.search(r'^version\s*=\s*"([^"]+)"', text, re.M)
-          declared = match.group(1) if match else None
-          assert declared == version, (
-              f'versión incoherente: __init__={version} pyproject={declared}')
-          print('versión declarada:', version)
-          PY
+      - name: Verificar la version declarada
+        run: python tools/check_version.py
 
       - name: Suite completa (unittest)
         run: python -m unittest discover -s tests -v
@@ -86,15 +72,20 @@ jobs:
       - name: Comprobar los metadatos del paquete
         run: twine check dist/*
 
-      - name: Instalar el paquete recién construido y ejecutarlo
+      - name: Instalar el paquete recien construido y ejecutarlo
         run: |
           python -m pip install --force-reinstall dist/*.whl
           qetgen --version
           qetgen sheets --json > /dev/null
-          qetgen doctor --json > /dev/null
+          # La biblioteca de fixtures permite ejercitar el catalogo, el
+          # diagnostico y la generacion sin depender de QElectroTech.
+          qetgen doctor --library tests/fixtures/qet_elements --json > /dev/null
+          qetgen build examples/basic_circuit.json \
+            --library tests/fixtures/qet_elements -o smoke.qet
+          python -c "import pathlib; assert pathlib.Path('smoke.qet').stat().st_size > 0"
 
   docs:
-    name: Enlaces de la documentación
+    name: Enlaces de la documentacion
     runs-on: ubuntu-latest
     steps:
       - name: Clonar el repositorio
@@ -108,28 +99,8 @@ jobs:
       - name: Instalar el proyecto
         run: python -m pip install -e .
 
-      - name: Comprobar que la documentación apunta a archivos que existen
-        run: |
-          python - <<'PY'
-          import pathlib
-          import re
-          import sys
+      - name: Comprobar que la documentacion apunta a archivos que existen
+        run: python tools/check_doc_links.py
 
-          root = pathlib.Path('.')
-          docs = list(root.glob('*.md')) + list((root / 'docs').glob('*.md'))
-          missing = []
-          pattern = re.compile(r'\[[^\]]*\]\(([^)#]+)\)')
-          for doc in docs:
-              for target in pattern.findall(doc.read_text(encoding='utf-8')):
-                  if target.startswith(('http://', 'https://', 'mailto:')):
-                      continue
-                  resolved = (doc.parent / target).resolve()
-                  if not resolved.exists():
-                      missing.append(f'{doc}: {target}')
-          if missing:
-              print('Enlaces rotos:')
-              for item in missing:
-                  print('  -', item)
-              sys.exit(1)
-          print(f'{len(docs)} documentos verificados, sin enlaces rotos.')
-          PY
+      - name: Comprobar que los fixtures de la biblioteca estan sincronizados
+        run: python tools/sync_fixtures.py --check

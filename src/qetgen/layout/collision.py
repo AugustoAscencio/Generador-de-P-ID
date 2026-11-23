@@ -25,9 +25,14 @@ from dataclasses import dataclass, field
 from ..core.catalog import SymbolCatalog
 from ..core.geometry import BBox
 from ..core.models import Sheet
-from .placement import (component_bounds, component_ink_bounds,
-                        component_label_bounds, label_bounds, shape_bounds,
-                        transform_box)
+from .placement import (
+    component_bounds,
+    component_ink_bounds,
+    component_label_bounds,
+    label_bounds,
+    shape_bounds,
+    transform_box,
+)
 from .textmetrics import TextMeasurer
 
 #: Papeles de bloque que nunca generan colisiones.

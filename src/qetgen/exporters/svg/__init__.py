@@ -25,7 +25,6 @@ from ...core.catalog import SymbolCatalog
 from ...core.geometry import BBox
 from ...core.models import Project, Sheet
 from ...core.sheet import SheetFormat, get_sheet_format
-from ...layout.placement import component_bounds
 from .elmt import render_symbol
 
 #: Colores por defecto del preview.

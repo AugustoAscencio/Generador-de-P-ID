@@ -19,12 +19,15 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from ..core.catalog import SymbolCatalog
-from ..core.geometry import BBox
 from ..core.models import Project, Sheet
 from ..core.sheet import get_sheet_format
-from ..layout.collision import (analyze_sheet, component_bounds,
-                                component_label_bounds, label_bounds,
-                                shape_bounds)
+from ..layout.collision import (
+    analyze_sheet,
+    component_bounds,
+    component_label_bounds,
+    label_bounds,
+    shape_bounds,
+)
 from ..layout.grid import Grid
 from ..layout.router import route_sheet
 from ..layout.textmetrics import TextMeasurer
@@ -307,7 +310,7 @@ def _check_sheet(sheet: Sheet, catalog: SymbolCatalog, measurer: TextMeasurer,
             sheet, catalog, grid, safe,
             min_separation=min_separation,
             route_manhattan=route_manhattan)
-        for connection, result in zip(routed.connections, results):
+        for connection, result in zip(routed.connections, results, strict=True):
             if not result.ok:
                 report.issues.append(AestheticIssue(
                     code=CODE_UNROUTED, severity="warning", folio=folio,
@@ -325,8 +328,8 @@ def _check_sheet(sheet: Sheet, catalog: SymbolCatalog, measurer: TextMeasurer,
 
         # Cruces y paralelos entre rutas del mismo folio.
         segments: list[tuple[str, tuple, tuple]] = []
-        for connection, result in zip(routed.connections, results):
-            for a, b in zip(result.waypoints, result.waypoints[1:]):
+        for connection, result in zip(routed.connections, results, strict=True):
+            for a, b in zip(result.waypoints, result.waypoints[1:], strict=False):
                 segments.append((connection.key(), a, b))
         for i, (key_a, a1, a2) in enumerate(segments):
             for key_b, b1, b2 in segments[i + 1:]:

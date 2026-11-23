@@ -10,15 +10,18 @@ import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[2]      # raíz del repositorio
+sys.path.insert(0, str(BASE))  # para importar 'tests.support'
 sys.path.insert(0, str(BASE / "src"))            # motor canónico v1.0
 sys.path.insert(0, str(BASE / "qet_generator"))  # fachada v0.1
 
-from generator import project as project_mod                # noqa: E402
-from generator.builders import folio_to_dict                # noqa: E402
-from generator.elements import SymbolCatalog                # noqa: E402
-from generator.model import ProjectSpec, load_spec          # noqa: E402
-from generator.sheets import build_all                      # noqa: E402
-from generator.validate import validate_spec                # noqa: E402
+from generator import project as project_mod  # noqa: E402
+from generator.builders import folio_to_dict  # noqa: E402
+from generator.elements import SymbolCatalog  # noqa: E402
+from generator.model import ProjectSpec, load_spec  # noqa: E402
+from generator.sheets import build_all  # noqa: E402
+from generator.validate import validate_spec  # noqa: E402
+
+from tests.support import FIXTURE_LIBRARY  # noqa: E402
 
 CATALOG_PATH = BASE / "resources" / "symbol_catalog.json"
 
@@ -27,7 +30,7 @@ class TestLos18Planos(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.catalog = SymbolCatalog(CATALOG_PATH)
+        cls.catalog = SymbolCatalog(CATALOG_PATH, library_path=FIXTURE_LIBRARY)
         cls.folios = build_all()
         cls.spec = ProjectSpec(
             title="PROYECTO FV 588 MÓDULOS — SEGUEIDOR BIAXIAL 8×650 Wp",

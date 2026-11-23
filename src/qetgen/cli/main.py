@@ -93,7 +93,7 @@ def cmd_build(args) -> int:
     _print(f"    Conductores:   {n_cn}")
     _print(f"    Textos:        {n_tx}")
     _print(f"    Tamaño:        {output.stat().st_size:,} bytes")
-    _print(f"    Ábrelo con:    QElectroTech → Archivo → Abrir")
+    _print("    Ábrelo con:    QElectroTech → Archivo → Abrir")
     return EXIT_OK
 
 
@@ -575,6 +575,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_sh = sub.add_parser("sheets", help="Lista los formatos de hoja")
     p_sh.add_argument("--json", action="store_true", help="Salida en JSON")
+    common(p_sh)
     p_sh.set_defaults(func=cmd_sheets)
 
     p_fv = sub.add_parser("fv588", help="Regenera el paquete FV 588 (18 planos)")
