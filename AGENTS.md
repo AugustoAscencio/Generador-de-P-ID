@@ -109,6 +109,15 @@ todo con cita de fuente Doc1 §x).
   **fallback propio** (JSON-RPC 2.0) si no — interfaz idéntica.
 - ✅ **CI** (`.github/workflows/ci.yml`): Python 3.10→3.13 en Ubuntu y Windows,
   `unittest` + `ruff`, empaquetado y verificación de enlaces de la documentación.
+  **Verde en las 10 combinaciones** (8 jobs de tests + empaquetado + docs).
+  - Los checks de consola son **scripts de Python** (`tools/check_version.py`,
+    `tools/check_doc_links.py`): los *here-doc* de bash no funcionan en `pwsh`.
+  - La suite es **hermética**: usa los 14 `.elmt` reales versionados en
+    `tests/fixtures/qet_elements/` (44 KB). `tests/test_fixtures.py` verifica
+    que son byte-idénticos (SHA-256) a la biblioteca instalada (se omite si
+    QElectroTech no está). La **producción** (CLI/MCP) sigue usando siempre la
+    biblioteca instalada: los fixtures son solo material de prueba.
+  - Para refrescarlos: `python tools/sync_fixtures.py`.
 - ✅ **Round-trip** con QET 0.100.0 (evidencia en `evidencia/roundtrip/` y
   `docs/QET_FORMAT_NOTES.md` §9b).
 
@@ -173,11 +182,16 @@ python -m qetgen.cli serve [--fallback]
 
 # Tests (SIEMPRE tras cualquier cambio)
 python -m unittest discover -s tests            # 227 tests
+ruff check src tests tools                     # 0 errores
 
 # Análisis de evidencia del formato
 python tools/inspect_qet.py <archivo.qet>        # censar estructura real
 python tools/deep_qet.py <archivo.qet>           # análisis profundo
 python tools/measure_sheet_geometry.py           # calibración del folio
+
+# Fixtures de la biblioteca de símbolos (tests herméticos)
+python tools/sync_fixtures.py --check            # verificar SHA-256
+python tools/sync_fixtures.py                   # refrescar desde QET
 ```
 
 Entorno (verificado): Windows 11, QElectroTech 0.100.0 en
@@ -204,5 +218,7 @@ usar `python -X utf8` y `$env:PYTHONIOENCODING="utf-8"` para UTF-8 sin BOM).
 | `docs/CONFIGURACION.md` | Cada clave de configuración, con su calibración |
 | `docs/MCP.md` | El servidor MCP: herramientas, recursos, prompts |
 | `docs/SPEC_INVENTARIO.md` | Matriz de ingeniería del caso FV (trazabilidad Doc §x) |
-| `tools/` | Análisis de evidencia, medición de geometría, `md_to_docx.py` |
+| `tests/fixtures/qet_elements/` | Los 14 `.elmt` reales versionados (44 KB) → suite hermética |
+| `tests/support.py` | Utilidades compartidas por los tests (catálogo de fixtures) |
+| `tools/` | Análisis de evidencia, medición de geometría, checks de CI, `md_to_docx.py` |
 | `.github/workflows/ci.yml` | CI: tests (3.10→3.13 × 2 SO), lint, empaquetado, enlaces |
